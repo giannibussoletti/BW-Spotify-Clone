@@ -16,6 +16,7 @@ for (let i = 0; i < 8; i++) {
 
 const carouselPerTe = document.getElementById("per-te-carousel")
 const artistiCarousel = document.getElementById("artisti-carousel")
+const sezioneVideo = document.getElementById("video-row")
 
 for (let i = 0; i < 15; i++) {
   carouselPerTe.innerHTML += `
@@ -47,6 +48,39 @@ for (let i = 0; i < 15; i++) {
             </div>
 
           `
+}
+for (let i = 0; i < 12; i++) {
+  sezioneVideo.innerHTML += `<div class="col my-3 px-5">
+            <p style="font-size: 0.8rem" class="mb-2 p-0">Per i fan di rancore</p>
+
+            <div class="row position-relative rounded-2">
+              <video class="rounded-2 p-0">
+                <source src="./output.mp4" type="video/mp4" />
+              </video>
+              <div
+                class="rounded-top-2 row m-0 position-absolute video-top align-items-center pt-3 pb-5">
+                <div class="col">
+                  <img
+                    class="img-fluid"
+                    src="https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/5DkmrXKeWgDS86KKEw45o6/it"
+                    alt="" />
+                </div>
+                <div class="col-9">
+                  <h3 class="m-0 fw-bold">This is Rancore</h3>
+                  <p style="font-size: 0.8rem" class="m-0">playlist - spotify</p>
+                </div>
+              </div>
+              <div
+                class="row rounded-bottom-2 bottom-0 m-0 position-absolute video-bottom align-items-center py-3">
+                <div class="col rounded-bottom-2">
+                  <p class="m-0"></p>
+                  <p style="font-size: 0.8rem" class="my-5 pt-5 pb-3">
+                    This is Rancore. Tutti i brani in un'unica playlist.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>`
 }
 
 const rightMovement = function (event) {
