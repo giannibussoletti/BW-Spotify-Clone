@@ -5,9 +5,9 @@ for (let i = 0; i < 8; i++) {
   consigliati.innerHTML += `
 <div class="col mb-3 d-flex align-items-center">
   <img
-    style="height: 48px; width: 48px"
+    style="height: 66px; width: 66px"
     src="https://cdn-images.dzcdn.net/images/artist/71eeb9e2eeb375df35a3c0654a5a01ab/1000x1000-000000-80-0-0.jpg" />
-  <p class="m-0 ms-3" style="font-size: 0.8em">Storie d'amore</p>
+  <p class="m-0 ms-3">Storie d'amore</p>
 </div>
 `
 }
