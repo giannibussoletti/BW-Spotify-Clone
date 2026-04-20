@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="./homepage.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <!-- Bottoni in alto -->
+        <div class="row">
+          <div class="col-12">
+            <a href="#">Tutto</a>
+            <a href="#">Musica</a>
+            <a href="#">Podcast</a>
+          </div>
+        </div>
+        <!-- Consigli -->
+        <div id="consigliati" class="row row-cols-2 row-cols-md-2 row-cols-lg-4"></div>
+      </div>
+      <!-- Creato per te -->
+      <div class="row row-cols-2 justify-content-between">
+        <div class="col">
+          <h6>creato per <br /><span>Gianni</span></h6>
+        </div>
+        <div class="col text-end align-self-end">
+          <h6 class="mb-0">Mostra Tutto</h6>
+        </div>
+      </div>
+      <!-- sezione Creato pe te -->
+      <div class="container-fluid px-0 my-5">
+        <!-- creato per te carosello -->
+        <div class="row position-relative my-5">
+          <!-- INIZIO CAROSELLO -->
+          <div
+            id="per-te-carousel"
+            class="p-0 smooth-carousel m-0 row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-5 flex-nowrap overflow-auto hiding-bar"></div>
+          <!-- BUTTONS -->
+          <span
+            onclick="rightMovement(0)"
+            style="width: 5%"
+            class="end-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-right">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+          </span>
+          <span
+            onclick="leftMovement(0)"
+            style="width: 5%"
+            class="start-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-left">
+            <i class="bi bi-arrow-left-circle-fill"></i>
+          </span>
+        </div>
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"></script>
+    <script src="./homepage.js"></script>
+  </body>
+</html>

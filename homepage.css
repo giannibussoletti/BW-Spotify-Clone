@@ -1,0 +1,36 @@
+.hiding-bar::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
+.hiding-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.smooth-carousel {
+  scroll-behavior: smooth;
+}
+
+.smooth-carousel img {
+  transition: all 500ms ease;
+}
+
+.smooth-carousel img:hover {
+  transform: scale(0.95);
+  z-index: 10;
+  position: relative;
+}
+
+.arrow-left,
+.arrow-right {
+  z-index: 10;
+}
+
+.arrow-right {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.arrow-left {
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
