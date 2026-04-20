@@ -972,6 +972,98 @@
           </div>
           <!-- fine sidebar end   -->
         </div>
+      <!-- sezione bottoni in alto -->
+      <div class="container">
+        <!-- Bottoni in alto -->
+        <div class="row">
+          <div class="col-12">
+            <a class="btn rounded-pill link-underline-opacity-0 fw-bold text-dark bg-light" href="#"
+              >Tutto</a
+            >
+            <a class="btn rounded-pill link-underline-opacity-0 fw-bold text-dark bg-light" href="#"
+              >Musica</a
+            >
+            <a class="btn rounded-pill link-underline-opacity-0 fw-bold text-dark bg-light" href="#"
+              >Podcast</a
+            >
+          </div>
+        </div>
+      </div>
+      <!-- Consigli -->
+    </header>
+
+    <main>
+      <div class="container">
+        <div id="consigliati" class="row row-cols-2 row-cols-md-2 row-cols-lg-4"></div>
+      </div>
+
+      <!-- Sezione caroselli  -->
+      <div class="container-fluid p-0">
+        <!-- sezione Creato pe te -->
+        <div class="row row-cols-2 justify-content-between mb-3 mx-0 px-3">
+          <div class="col p-0">
+            <h6 class="mb-0 p-0">creato per <br /><span>Gianni</span></h6>
+          </div>
+          <div class="col text-end align-self-end p-0">
+            <h6 class="mb-0">Mostra Tutto</h6>
+          </div>
+        </div>
+
+        <!-- creato per te carosello -->
+        <div class="row position-relative m-0">
+          <!-- INIZIO CAROSELLO -->
+          <div
+            id="per-te-carousel"
+            class="p-0 smooth-carousel m-0 row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-5 flex-nowrap overflow-auto hiding-bar"></div>
+          <!-- BUTTONS -->
+          <span
+            onclick="rightMovement(0)"
+            style="width: 15%"
+            class="end-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-right">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+          </span>
+          <span
+            onclick="leftMovement(0)"
+            style="width: 15%"
+            class="start-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-left">
+            <i class="bi bi-arrow-left-circle-fill"></i>
+          </span>
+        </div>
+
+        <!-- I tuoi artisti preferiti -->
+        <div class="row row-cols-2 justify-content-between mx-0 my-3 px-3">
+          <div class="col p-0">
+            <h6 class="mb-0 p-0">i tuoi artisti <br /><span>Preferiti</span></h6>
+          </div>
+          <div class="col text-end align-self-end p-0">
+            <h6 class="mb-0">Mostra Tutto</h6>
+          </div>
+        </div>
+        <!-- sezione i tuoi artisti preferiti -->
+        <!-- i tuoi artisti preferiti carosello -->
+        <div class="row position-relative m-0">
+          <!-- INIZIO CAROSELLO -->
+          <div
+            id="artisti-carousel"
+            class="p-0 smooth-carousel m-0 row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-5 flex-nowrap overflow-auto hiding-bar"></div>
+          <!-- BUTTONS -->
+          <span
+            onclick="rightMovement(1)"
+            style="width: 15%"
+            class="end-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-right">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+          </span>
+          <span
+            onclick="leftMovement(1)"
+            style="width: 15%"
+            class="start-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-left">
+            <i class="bi bi-arrow-left-circle-fill"></i>
+          </span>
+        </div>
+      </div>
+      <!-- Sezione Video-->
+      <div class="container-fluid my-5">
+        <div id="video-row" class="row row-cols-1 row-cols-md-2 row-cols-xl-3"></div>
       </div>
     </main>
     <footer>
