@@ -85,9 +85,9 @@ for (let i = 0; i < 4; i++) {
 
 const rightMovement = function (event) {
   if (event === 0) {
-    carouselPerTe.scrollBy(consigliati.offsetWidth, 0)
+    carouselPerTe.scrollBy(consigliati.offsetWidth / 2, 0)
   } else if (event === 1) {
-    artistiCarousel.scrollBy(artistiCarousel.offsetWidth, 0)
+    artistiCarousel.scrollBy(artistiCarousel.offsetWidth / 2, 0)
   }
   // else {
   //     newReleasesElementId.scrollBy(watchAgainElementId.offsetWidth, 0)
@@ -95,9 +95,9 @@ const rightMovement = function (event) {
 }
 const leftMovement = function (event) {
   if (event === 0) {
-    carouselPerTe.scrollBy(-consigliati.offsetWidth, 0)
+    carouselPerTe.scrollBy(-consigliati.offsetWidth / 2, 0)
   } else if (event === 1) {
-    artistiCarousel.scrollBy(-artistiCarousel.offsetWidth, 0)
+    artistiCarousel.scrollBy(-artistiCarousel.offsetWidth / 2, 0)
   }
   //  else {
   //     newReleasesElementId.scrollBy(-watchAgainElementId.offsetWidth, 0)
