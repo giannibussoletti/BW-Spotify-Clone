@@ -22,7 +22,7 @@ const sezioneVideo = document.getElementById("video-row")
 for (let i = 0; i < 15; i++) {
   carouselPerTe.innerHTML += `
 
-            <div style="max-width:200px;" class="card border-0 px-2">
+            <div style="max-width:200px;" class="card border-0 px-2 bg-transparent"> 
               <img src="https://cdn-images.dzcdn.net/images/cover/e16455433a84c7e19025403ae3eec52d/250x250-000000-80-0-0.jpg" class="card-img-top w-100 rounded-1" alt="..." />
               <div class="card-body p-0 pt-2">
                 <p class="card-text">
@@ -38,7 +38,7 @@ for (let i = 0; i < 15; i++) {
   //
   artistiCarousel.innerHTML += `
 
-            <div style="max-width:200px;" class="card border-0 px-2">
+            <div style="max-width:200px;" class="card border-0 px-2 bg-transparent">
               <img src="https://cdn-images.dzcdn.net/images/artist/7dc65523befdb7b865eb3f8595bbbd40/500x500-000000-80-0-0.jpg" class="card-img-top w-100 rounded-circle" alt="..." />
               <div class="card-body p-0 pt-2">
               <h6 style="font-size:.9em;" class="card-title pb-0 mb-1">Willie Peyote</h6>
