@@ -21,10 +21,10 @@ const sezioneVideo = document.getElementById("video-row")
 for (let i = 0; i < 15; i++) {
   carouselPerTe.innerHTML += `
 
-            <div style="max-width:150px;" class="card border-0 px-2">
+            <div style="max-width:200px;" class="card border-0 px-2">
               <img src="https://cdn-images.dzcdn.net/images/cover/e16455433a84c7e19025403ae3eec52d/250x250-000000-80-0-0.jpg" class="card-img-top w-100 rounded-1" alt="..." />
               <div class="card-body p-0 pt-2">
-                <p style="font-size:0.8em;" class="card-text">
+                <p class="card-text">
                   Best of queen, Jimi Hendrix, Edith Piaf
                 </p>
               </div>
@@ -37,11 +37,11 @@ for (let i = 0; i < 15; i++) {
   //
   artistiCarousel.innerHTML += `
 
-            <div style="max-width:150px;" class="card border-0 px-2">
+            <div style="max-width:200px;" class="card border-0 px-2">
               <img src="https://cdn-images.dzcdn.net/images/artist/7dc65523befdb7b865eb3f8595bbbd40/500x500-000000-80-0-0.jpg" class="card-img-top w-100 rounded-circle" alt="..." />
               <div class="card-body p-0 pt-2">
               <h6 style="font-size:.9em;" class="card-title pb-0 mb-1">Willie Peyote</h6>
-                <p style="font-size:0.8em;" class="card-text">
+                <p class="card-text">
                   Artista
                 </p>
               </div>
@@ -49,11 +49,11 @@ for (let i = 0; i < 15; i++) {
 
           `
 }
-for (let i = 0; i < 12; i++) {
-  sezioneVideo.innerHTML += `<div class="col my-3 px-5">
-            <p style="font-size: 0.8rem" class="mb-2 p-0">Per i fan di rancore</p>
+for (let i = 0; i < 4; i++) {
+  sezioneVideo.innerHTML += `<div class="col p-4">
+            <p class="mb-2 p-0">Per i fan di rancore</p>
 
-            <div class="row position-relative rounded-2">
+            <div class="row position-relative rounded-2 m-0">
               <video class="rounded-2 p-0">
                 <source src="./output.mp4" type="video/mp4" />
               </video>
