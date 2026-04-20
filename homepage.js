@@ -69,3 +69,19 @@ const leftMovement = function (event) {
   //     newReleasesElementId.scrollBy(-watchAgainElementId.offsetWidth, 0)
   //   }
 }
+
+// js di ALe
+// funzione di movimento carosello
+function scrollLeftBtn() {
+  document.getElementById("scroll").scrollBy({
+    left: -200,
+    behavior: "smooth",
+  })
+}
+function scrollRightBtn() {
+  document.getElementById("scroll").scrollBy({
+    left: 200,
+    behavior: "smooth",
+  })
+}
+// fine movimento carosello
