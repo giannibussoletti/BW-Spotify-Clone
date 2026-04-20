@@ -44,12 +44,6 @@
             class="d-flex align-items-center flex-grow-1 justify-content-center mx-3 center-group"
             style="max-width: 600px"
           >
-            <div
-              class="btn-circle-32 rounded-circle d-md-none d-flex align-items-center justify-content-center fw-bold text-black me-3"
-            >
-              A
-            </div>
-
             <button class="btn-home flex-shrink-0 me-2 shadow d-none d-md-flex">
               <i class="bi bi-house-door-fill fs-4"></i>
             </button>
@@ -70,12 +64,6 @@
                 class="bi bi-archive position-absolute end-0 top-50 translate-middle-y me-3 text-secondary fs-5"
               ></i>
             </div>
-
-            <div class="d-flex d-md-none gap-2 overflow-x-auto">
-              <button class="btn btn-spotify-chip active">Tutti</button>
-              <button class="btn btn-spotify-chip">Musica</button>
-              <button class="btn btn-spotify-chip">Podcast</button>
-            </div>
           </div>
 
           <div
@@ -89,9 +77,40 @@
               ></span>
             </button>
 
-            <button class="btn border-0 text-secondary p-2">
-              <i class="bi bi-people fs-5"></i>
-            </button>
+            <!-- drop people -->
+            <div class="btn-group dropstart">
+              <button
+                type="button"
+                class="btn border-0 text-secondary p-2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-people fs-5"></i>
+              </button>
+              <ul
+                class="dropdown-menu p-3 top-100 end-0 z-3"
+                style="height: fit-content"
+              >
+                <li class="mb-3">
+                  <div>
+                    <h2>
+                      Controlla <br />cosa stanno <br />
+                      riproducendo <br />
+                      i tuoi amici con <br />
+                      l'app Windows
+                    </h2>
+                    <h6>
+                      Esplora le tracce che i tuoi <br />amici stanno ascoltando
+                      e <br />
+                      lasciati ispirare
+                    </h6>
+
+                    <p>Scarica direttamente da Spotify</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- fine drop people -->
 
             <div
               class="btn-circle-32 rounded-circle d-flex align-items-center justify-content-center fw-bold text-black ms-2"
@@ -105,8 +124,127 @@
                 >
                   A
                 </button>
-                <ul class="dropdown-menu bottom-0 end-0" style="top: 35px">
-                  <li></li>
+                <ul
+                  class="dropdown-menu p-3 top-100 end-0 z-3"
+                  style="height: fit-content"
+                >
+                  <li class="mb-3">
+                    <a class="dropdown-item fw-bold fs-5" href="#"
+                      ><div class="d-flex justify-content-between">
+                        <h5>Account</h5>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-arrow-up-right-square"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z"
+                          />
+                        </svg></div
+                    ></a>
+                  </li>
+
+                  <li class="mb-3">
+                    <a class="dropdown-item fw-bold fs-5" href="#">Profilo</a>
+                  </li>
+                  <li class="mb-3">
+                    <a class="dropdown-item fw-bold fs-5" href="#">Recenti</a>
+                  </li>
+                  <li class="mb-3">
+                    <a class="dropdown-item fw-bold fs-5" href="#"
+                      ><div class="d-flex justify-content-between">
+                        Effettua l'upgrade a Premium
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-arrow-up-right-square ms-5"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z"
+                          />
+                        </svg></div
+                    ></a>
+                  </li>
+                  <li class="mb-3">
+                    <a class="dropdown-item fw-bold fs-5" href="#"
+                      ><div class="d-flex justify-content-between">
+                        Assistenza
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-arrow-up-right-square"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z"
+                          />
+                        </svg></div
+                    ></a>
+                  </li>
+                  <li class="mb-3">
+                    <a class="dropdown-item fw-bold fs-5" href="#"
+                      ><div class="d-flex justify-content-between">
+                        Scarica
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-arrow-up-right-square"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707z"
+                          />
+                        </svg></div
+                    ></a>
+                  </li>
+
+                  <li class="mb-3">
+                    <a class="dropdown-item fw-bold fs-5" href="#"
+                      >Impostazione</a
+                    >
+                  </li>
+                  <li class="mb-3">
+                    <a class="dropdown-item fw-bold fs-5" href="#">Esci</a>
+                  </li>
+                  <li class="dropdown-item"><hr /></li>
+                  <li class="dropdown-item">
+                    <a class="dropdown-item fw-bold m-0 fs-5" href="#"
+                      >I tuoi aggiormaneti</a
+                    >
+                    <div class="d-flex flex-column align-items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="50"
+                        height="50"
+                        fill="currentColor"
+                        class="bi bi-check2"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0"
+                        />
+                      </svg>
+                      <h6 class="fw-bold m-0 fs-5">Tutto completato</h6>
+                      <p class="m-0 fw-light text-secondary">
+                        Visita questo spazio per notizie sui tuoi follower,<br />sulle
+                        playlist,sugli eventi e molto altro ancora.
+                      </p>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
