@@ -7,11 +7,9 @@ const artistDetails =
 
 // js di zio gianni
 // Inject Consigliati
-const searchConsigliati =
-  "https://striveschool-api.herokuapp.com/api/deezer/search?q=italiana";
 const consigliati = document.getElementById("consigliati");
 const getConsigli = function () {
-  fetch(search + "italiana")
+  fetch(search + "rihanna")
     .then((res) => {
       if (res.ok) {
         return res.json();
@@ -21,7 +19,7 @@ const getConsigli = function () {
     })
     .then((data) => {
       console.log(data);
-      data.data.forEach((track) => {
+      data.data.slice(0, 8).forEach((track) => {
         const id = track.id;
         console.log(id);
         const titoloAlbum = track.title;
@@ -30,11 +28,14 @@ const getConsigli = function () {
         console.log(titoloAlbum, imgAlbum, artistaAlbum);
         const cardCarosello = document.createElement("div");
         cardCarosello.classList.add("card", "col-6", "d-flex");
-        cardCarosello.innerHTML = `<div class="w-25"><img src="${imgAlbum}" class="img-fluid"/></div>
-              <div class="d-flex flex-column">
-              <p class="m-0 ms-3">${titoloAlbum}</p>
-              <p class="m-0 ms-3">${artistaAlbum}</p>
-              </div>`;
+        cardCarosello.innerHTML = `<div class="col m-0 p-1">
+        <div class="d-flex align-items-center bg-dark bg-opacity-75 rounded-2">
+        <img class="rounded-start-2"
+        style="height: 50px; width: 50px"
+        src="${imgAlbum}" />
+        <p class="m-0 ms-3 fw-bold">${titoloAlbum}</p>
+        </div>
+        </div>`;
         consigliati.appendChild(cardCarosello);
       });
     })
