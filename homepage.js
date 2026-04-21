@@ -1,42 +1,42 @@
-const search = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
+const search = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
 // arrayparolericerca${input.value}
 const albumDetails =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";
 const artistDetails =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";
 
-const dropdownForSearch = document.getElementById("dropdownForSearch")
-const inputNavbarValue = document.getElementById("inputNavbar")
-const audio = document.getElementById("audio")
+const dropdownForSearch = document.getElementById("dropdownForSearch");
+const inputNavbarValue = document.getElementById("inputNavbar");
+const audio = document.getElementById("audio");
 
 // Inject Consigliati
-const consigliati = document.getElementById("consigliati")
+const consigliati = document.getElementById("consigliati");
 const getConsigli = function () {
   fetch(search + "rihanna")
     .then((res) => {
       if (res.ok) {
-        return res.json()
+        return res.json();
       } else {
-        throw new Error(res.status)
+        throw new Error(res.status);
       }
     })
     .then((data) => {
-      console.log(data)
+      console.log(data);
       data.data.slice(0, 8).forEach((track) => {
-        const id = track.id
-        console.log(id)
-        const titoloAlbum = track.title
-        const imgAlbum = track.album.cover_medium
-        const artistaAlbum = track.artist.name
-        console.log(titoloAlbum, imgAlbum, artistaAlbum)
-        const cardCarosello = document.createElement("div")
+        const id = track.id;
+        console.log(id);
+        const titoloAlbum = track.title;
+        const imgAlbum = track.album.cover_medium;
+        const artistaAlbum = track.artist.name;
+        console.log(titoloAlbum, imgAlbum, artistaAlbum);
+        const cardCarosello = document.createElement("div");
         cardCarosello.classList.add(
           "card",
           "d-flex",
           "border-0",
           "bg-transparent",
           "flex",
-        )
+        );
         cardCarosello.innerHTML = `<div class="col m-0 p-2">
         <div class="d-flex align-items-center bg-dark bg-opacity-75 rounded-2 p-2">
         <img class="rounded-start-2"
@@ -44,52 +44,57 @@ const getConsigli = function () {
         src="${imgAlbum}" />
         <p class="m-0 ms-3 fw-bold">${titoloAlbum}</p>
         </div>
-        </div>`
-        consigliati.appendChild(cardCarosello)
-      })
+        </div>`;
+        consigliati.appendChild(cardCarosello);
+      });
     })
     .catch((err) => {
-      console.log(err)
-    })
-}
-getConsigli()
+      console.log(err);
+    });
+};
+getConsigli();
 // Inject carosello
-const artistiCarousel = document.getElementById("artisti-carousel")
-const sezioneVideo = document.getElementById("video-row")
-const carouselPerTe = document.getElementById("per-te-carousel")
+const artistiCarousel = document.getElementById("artisti-carousel");
+const sezioneVideo = document.getElementById("video-row");
+const carouselPerTe = document.getElementById("per-te-carousel");
 const getAlbum = function () {
   fetch(search + "rock")
     .then((res) => {
       if (res.ok) {
-        return res.json()
+        return res.json();
       } else {
-        throw new Error(res.status)
+        throw new Error(res.status);
       }
     })
     .then((data) => {
-      console.log(data)
+      console.log(data);
       data.data.forEach((track) => {
-        const id = track.id
-        console.log(id)
-        const titoloAlbum = track.title
-        const imgAlbum = track.album.cover_medium
-        const artistaAlbum = track.artist.name
-        console.log(titoloAlbum, imgAlbum, artistaAlbum)
-        const cardCarosello = document.createElement("div")
-        cardCarosello.classList.add("card", "col-6", "m-3", "position-relative")
+        const id = track.id;
+        console.log(id);
+        const titoloAlbum = track.title;
+        const imgAlbum = track.album.cover_medium;
+        const artistaAlbum = track.artist.name;
+        console.log(titoloAlbum, imgAlbum, artistaAlbum);
+        const cardCarosello = document.createElement("div");
+        cardCarosello.classList.add(
+          "card",
+          "col-6",
+          "m-3",
+          "position-relative",
+        );
         cardCarosello.innerHTML = `<img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid rounded-1 mt-3">
                        <div class="card-body">
                        <p class="card-text fs-5">${artistaAlbum}</p>
                        <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
-                       </div>`
-        carouselPerTe.appendChild(cardCarosello)
-      })
+                       </div>`;
+        carouselPerTe.appendChild(cardCarosello);
+      });
     })
     .catch((err) => {
-      console.log(err)
-    })
-}
-getAlbum()
+      console.log(err);
+    });
+};
+getAlbum();
 
 // get library
 // funzione di alessia
@@ -163,102 +168,59 @@ for (let i = 0; i < 4; i++) {
                 </div>
               </div>
             </div>
-          </div>`
+          </div>`;
 }
 
 const rightMovement = function (event) {
   if (event === 0) {
-    carouselPerTe.scrollBy(consigliati.offsetWidth / 2, 0)
+    carouselPerTe.scrollBy(consigliati.offsetWidth / 2, 0);
   } else if (event === 1) {
-    artistiCarousel.scrollBy(artistiCarousel.offsetWidth / 2, 0)
+    artistiCarousel.scrollBy(artistiCarousel.offsetWidth / 2, 0);
   }
-}
+};
 const leftMovement = function (event) {
   if (event === 0) {
-    carouselPerTe.scrollBy(-consigliati.offsetWidth / 2, 0)
+    carouselPerTe.scrollBy(-consigliati.offsetWidth / 2, 0);
   } else if (event === 1) {
-    artistiCarousel.scrollBy(-artistiCarousel.offsetWidth / 2, 0)
+    artistiCarousel.scrollBy(-artistiCarousel.offsetWidth / 2, 0);
   }
-}
+};
 // funzione di movimento carosello
 function scrollLeftBtn() {
   document.getElementById("scroll").scrollBy({
     left: -200,
     behavior: "smooth",
-  })
+  });
 }
 function scrollRightBtn() {
   document.getElementById("scroll").scrollBy({
     left: 200,
     behavior: "smooth",
-  })
+  });
 }
-// fine movimento carosello
-// funzione per l'input
-
-inputNavbarValue.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    // proviamo ad inserire la funzione qui
-
-    getLibrary()
-
-    // fine proviamo ad inserire la funzione qui
-
-    console.log(inputNavbarValue.value)
-    fetch(search + inputNavbarValue.value)
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw new Error(res.status)
-        }
-      })
-      .then((data) => {
-        console.log(data)
-        dropdownForSearch.innerHTML =
-          '<li class="list-group-item" value="">Seleziona un brano</li>'
-        data.data.forEach((tracks) => {
-          const elementoLista = document.createElement("li")
-          const link = tracks.preview
-          const title = tracks.title
-          const img = tracks.picture
-          const name = tracks.name
-          console.log(link)
-          elementoLista.classList.add("list-group-item")
-          elementoLista.innerHTML = `${title}-${name}`
-          dropdownForSearch.appendChild(elementoLista)
-          elementoLista.addEventListener("click", function (event) {
-            audio.src = link
-            audio.play()
-            dropdownForSearch.innerHTML = ""
-          })
-        })
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-})
-
-const getLibrary = function () {
-  fetch(search + `${inputNavbarValue.value}`)
+const getLibrary = function (searchValue) {
+  fetch(search + searchValue)
     .then((res) => {
       if (res.ok) {
-        return res.json()
+        return res.json();
       } else {
-        throw new Error(res.status)
+        throw new Error(res.status);
       }
     })
     .then((data) => {
-      console.log(data)
+      console.log(data);
+
+      const appendLibrary = document.getElementById("appendLibrary");
+      appendLibrary.innerHTML = "";
+
       data.data.forEach((track) => {
-        const titoloAlbum = track.title
-        const imgAlbum = track.album.cover_medium
-        const artistaAlbum = track.artist.name
-        const appendLibrary = document.getElementById("appendLibrary")
-        const cardLibrary = document.createElement("div")
-        cardLibrary.classList.add("col-12", "d-flex", "m-2")
-        cardLibrary.innerHTML = `<img
+        const titoloAlbum = track.title;
+        const imgAlbum = track.album.cover_medium;
+        const artistaAlbum = track.artist.name;
+
+        const cardLibrary = document.createElement("div");
+        cardLibrary.classList.add("col-12", "d-flex", "m-2");
+        cardLibrary.innerHTML = ` <img
                 src="${imgAlbum}"
                 alt="Preferiti Spotify"
                 class="img-fluid w-25 rounded-1 me-1" />
@@ -268,12 +230,64 @@ const getLibrary = function () {
                   <p>Album</p>
                   <p class="ms-1">• ${artistaAlbum}</p>
                 </div>
-              </div>`
-        appendLibrary.appendChild(cardLibrary)
-      })
+              </div>;`;
+        appendLibrary.appendChild(cardLibrary);
+      });
     })
     .catch((err) => {
-      console.log(err)
-    })
-}
-// getLibrary()
+      console.log(err);
+    });
+};
+getLibrary("vasco rossi");
+inputNavbarValue.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    getLibrary(inputNavbarValue.value);
+    console.log(inputNavbarValue.value);
+    fetch(search + inputNavbarValue.value)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error(res.status);
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        dropdownForSearch.innerHTML =
+          '<li class="list-group-item" value="">Seleziona un brano</li>';
+        data.data.slice(0, 5).forEach((tracks) => {
+          const elementoLista = document.createElement("li");
+          const link = tracks.preview;
+          const title = tracks.title;
+          const name = tracks.name;
+          const img = tracks.album.cover_medium;
+          console.log(link);
+          elementoLista.classList.add("list-group-item", "p-0");
+          elementoLista.innerHTML = `
+          <div class="card mb-3 h-100" >
+          <div class="row g-0">
+          <div class="col-md-4">
+          <img src="${img}" class="img-fluid rounded-start border border-2"style="max-height:100px;">
+          </div>
+          <div class="col-md-8">
+          <div class="card-body">
+          <h6 class="card-title">${title}</h6>
+          <p class="card-text">${name}</p>
+          </div>
+          </div>
+          </div>
+          </div>
+          `;
+          dropdownForSearch.appendChild(elementoLista);
+          elementoLista.addEventListener("click", function (event) {
+            audio.src = link;
+            audio.play();
+            dropdownForSearch.innerHTML = "";
+          });
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+});
