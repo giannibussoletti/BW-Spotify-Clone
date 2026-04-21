@@ -25,9 +25,15 @@ const getConsigli = function () {
         const artistaAlbum = track.artist.name;
         console.log(titoloAlbum, imgAlbum, artistaAlbum);
         const cardCarosello = document.createElement("div");
-        cardCarosello.classList.add("card", "col-6", "d-flex");
-        cardCarosello.innerHTML = `<div class="col m-0 p-1">
-        <div class="d-flex align-items-center bg-dark bg-opacity-75 rounded-2">
+        cardCarosello.classList.add(
+          "card",
+          "d-flex",
+          "border-0",
+          "bg-transparent",
+          "flex",
+        );
+        cardCarosello.innerHTML = `<div class="col m-0 p-2">
+        <div class="d-flex align-items-center bg-dark bg-opacity-75 rounded-2 p-2">
         <img class="rounded-start-2"
         style="height: 50px; width: 50px"
         src="${imgAlbum}" />
@@ -47,7 +53,7 @@ const artistiCarousel = document.getElementById("artisti-carousel");
 const sezioneVideo = document.getElementById("video-row");
 const carouselPerTe = document.getElementById("per-te-carousel");
 const getAlbum = function () {
-  fetch(search + "caparezza")
+  fetch(search + "rock")
     .then((res) => {
       if (res.ok) {
         return res.json();
@@ -71,10 +77,10 @@ const getAlbum = function () {
           "m-3",
           "position-relative",
         );
-        cardCarosello.innerHTML = `<img src="${imgAlbum}" alt="Preferiti Spotify" class="h-50 img-fluid rounded-1">
+        cardCarosello.innerHTML = `<img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid rounded-1 mt-3">
                        <div class="card-body">
-                       <p class="card-text">${titoloAlbum} • ${artistaAlbum}</p>
-                       <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:30%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
+                       <p class="card-text fs-5">${artistaAlbum}</p>
+                       <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
                        </div>`;
         carouselPerTe.appendChild(cardCarosello);
       });
