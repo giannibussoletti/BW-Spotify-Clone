@@ -54,7 +54,7 @@ for (let i = 0; i < 15; i++) {
 }
 for (let i = 0; i < 4; i++) {
   sezioneVideo.innerHTML += `<div class="col p-4">
-            <p class="mb-2 p-0">Per i fan di rancore</p>
+            <p class="mb-2 p-0 text-secondary">Per i fan di rancore</p>
 
             <div class="row position-relative rounded-2 m-0">
               <video class="rounded-2 p-0">
