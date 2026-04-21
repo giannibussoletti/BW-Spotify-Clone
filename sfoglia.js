@@ -1,4 +1,4 @@
-const query = "b"
+const query = "rap"
 const searchWorld = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`
 // // arrayparolericerca${input.value}
 // const albumDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
@@ -26,7 +26,7 @@ fetch(searchWorld)
   .then((response) => response.json())
   .then((data) => {
     console.log(data)
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < data.data.length; i++) {
       const nomeArtisti = data.data[i].artist.name
       const fotoArtisti = data.data[i].artist.picture_medium
 
@@ -48,7 +48,7 @@ fetch(searchWorld)
 
       card.style.overflow = "clip"
       card.innerHTML = `
-      <div class="d-flex rounded-4" style="overflow:clip; background-color:${randomColor};">
+      <div class="d-flex rounded-4 h-100" style="overflow:clip; background-color:${randomColor};">
       <h3 class="p-3 fw-bold" id="name-singer">${nomeArtisti}</h3>
                 <img
                   src=${fotoArtisti}
