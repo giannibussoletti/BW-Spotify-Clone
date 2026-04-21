@@ -1,3 +1,15 @@
+.main-page {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.indipendent-scroll {
+  position: fixed;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
 .hiding-bar::-webkit-scrollbar {
   width: 0;
   background-color: transparent;
@@ -28,19 +40,11 @@
 }
 
 .arrow-right {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 .arrow-left {
-  background: linear-gradient(
-    270deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 /* css di ale  */
