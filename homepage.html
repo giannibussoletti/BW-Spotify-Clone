@@ -222,20 +222,29 @@
       <div class="container-fluid m-0 position-absolute" style="top: 68px">
         <div class="row">
           <div class="col-2 indipendent-scroll">
-            <div class="col-12 d-flex justify-content-between m-3">
-              <div><h5>La tua libreria</h5></div>
+            <div class="col-12 d-flex justify-content-between align-items-center m-3">
+              <div><h6 class="fw-bolder text-white">La tua libreria</h6></div>
               <div>
                 <button
                   class="btn btn-secondary"
-                  style="min-width: 40px; height: 40px; padding-top: 8px; border-radius: 50px">
-                  <i class="bi bi-plus-lg"></i>
+                  style="
+                    min-width: 40px;
+                    height: 40px;
+                    padding-top: 8px;
+                    border-radius: 50px;
+                    scale: 0.8;
+                  ">
+                  <i class="bi bi-plus-lg fqw"></i>
                 </button>
                 <i class="bi bi-arrows-angle-expand m-2"></i>
               </div>
             </div>
             <div class="col-12 m-2 d-flex align-items-center">
               <div class="d-flex align-items-center w-100 bg-transparent">
-                <button class="btn btn-secondary rounded-circle" onclick="scrollLeftBtn()">
+                <button
+                  style="min-width: 40px; height: 40px; padding-top: 8px; border-radius: 50px"
+                  class="btn btn-secondary"
+                  onclick="scrollLeftBtn()">
                   <i class="bi bi-chevron-compact-left"></i>
                 </button>
                 <div class="scroll-container flex-grow-1" id="scroll">
@@ -256,7 +265,10 @@
                     Podcast
                   </button>
                 </div>
-                <button class="btn btn-secondary rounded-circle shadow" onclick="scrollRightBtn()">
+                <button
+                  style="min-width: 40px; height: 40px; padding-top: 8px; border-radius: 50px"
+                  class="btn btn-secondary"
+                  onclick="scrollRightBtn()">
                   <i class="bi bi-chevron-compact-right"></i>
                 </button>
               </div>
@@ -1071,7 +1083,9 @@
                   <button class="m-2 text-secondary bg-transparent border-0 fs-4">
                     <i class="bi bi-chevron-bar-left"></i>
                   </button>
-                  <button class="m-2 text-black bg-white rounded-circle border-0 fs-3">
+                  <button
+                    style="min-width: 40px; height: 40px; border-radius: 50px"
+                    class="m-2 text-black bg-white border-0 fs-3">
                     <i class="bi bi-caret-right-fill"></i>
                   </button>
                   <button class="m-2 text-secondary bg-transparent border-0 fs-4">
