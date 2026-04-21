@@ -1,10 +1,8 @@
-const query = "b"
+const query = "rap"
 const searchWorld = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`
-// arrayparolericerca${input.value}
-const albumDetails =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
-const artistDetails =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+// // arrayparolericerca${input.value}
+// const albumDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+// const artistDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
 
 const cardSfoglia = document.querySelectorAll(".card-sfoglia")
 console.log(cardSfoglia)
@@ -28,31 +26,29 @@ fetch(searchWorld)
   .then((response) => response.json())
   .then((data) => {
     console.log(data)
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < data.data.length; i++) {
       const nomeArtisti = data.data[i].artist.name
       const fotoArtisti = data.data[i].artist.picture_medium
 
       console.log(nomeArtisti)
       console.log(fotoArtisti)
 
-      const container = document.getElementById("card-container")
-      container.classList.add("d-flex")
+      cardContainer.classList.add("d-flex")
       const card = document.createElement("div")
       const randomIndex = Math.floor(Math.random() * colors.length)
       const randomColor = colors[randomIndex]
-      card.style.backgroundColor = randomColor
+      // card.style.backgroundColor = randomColor
       card.classList.add(
         "col-12",
         "col-md-6",
         "col-xl-3",
-        "rounded-4",
-        "d-flex",
         "justify-content-between",
         "card-sfoglia",
       )
 
       card.style.overflow = "clip"
       card.innerHTML = `
+      <div class="d-flex rounded-4 h-100" style="overflow:clip; background-color:${randomColor};">
       <h3 class="p-3 fw-bold" id="name-singer">${nomeArtisti}</h3>
                 <img
                   src=${fotoArtisti}
@@ -64,9 +60,9 @@ fetch(searchWorld)
                     top: 32px;
                     right: -10px;
                   "
-                />`
+                /></div>`
 
-      container.appendChild(card)
+      cardContainer.appendChild(card)
     }
   })
   .catch((err) => {
