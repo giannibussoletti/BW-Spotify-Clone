@@ -1,10 +1,8 @@
 const query = "b"
 const searchWorld = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`
 // arrayparolericerca${input.value}
-const albumDetails =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
-const artistDetails =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+const albumDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+const artistDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
 
 const cardSfoglia = document.querySelectorAll(".card-sfoglia")
 console.log(cardSfoglia)
