@@ -95,47 +95,6 @@ const getAlbum = function () {
     });
 };
 getAlbum();
-
-// get library
-// funzione di alessia
-// const getLibrary = function () {
-//   fetch(search + "cremonini")
-//     .then((res) => {
-//       if (res.ok) {
-//         return res.json()
-//       } else {
-//         throw new Error(res.status)
-//       }
-//     })
-//     .then((data) => {
-//       console.log(data)
-//       data.data.forEach((track) => {
-//         const titoloAlbum = track.title
-//         const imgAlbum = track.album.cover_medium
-//         const artistaAlbum = track.artist.name
-//         const appendLibrary = document.getElementById("appendLibrary")
-//         const cardLibrary = document.createElement("div")
-//         cardLibrary.classList.add("col-12", "d-flex", "m-2")
-//         cardLibrary.innerHTML = `<img
-//                 src="${imgAlbum}"
-//                 alt="Preferiti Spotify"
-//                 class="img-fluid w-25 rounded-1 me-1" />
-//               <div class="d-flex flex-column">
-//                 <h6>${titoloAlbum}</h6>
-//                 <div class="d-flex">
-//                   <p>Album</p>
-//                   <p class="ms-1">• ${artistaAlbum}</p>
-//                 </div>
-//               </div>`
-//         appendLibrary.appendChild(cardLibrary)
-//       })
-//     })
-//     .catch((err) => {
-//       console.log(err)
-//     })
-// }
-// getLibrary()
-
 // funzione di gianni
 for (let i = 0; i < 4; i++) {
   sezioneVideo.innerHTML += `<div class="col p-4">
@@ -291,3 +250,4 @@ inputNavbarValue.addEventListener("keydown", function (event) {
       });
   }
 });
+// se cancello la ricerca non sparisce il banner

@@ -188,3 +188,6 @@ body {
 .video-bottom {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
+#gradientheart{
+background: linear-gradient(135deg, #3b0af5, #8e8cfb, #c4efd9);
+}
