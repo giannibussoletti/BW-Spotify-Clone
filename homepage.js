@@ -4,11 +4,13 @@ const consigliati = document.getElementById("consigliati")
 
 for (let i = 0; i < 8; i++) {
   consigliati.innerHTML += `
-<div class="col mb-3 d-flex align-items-center">
-  <img
-    style="height: 66px; width: 66px"
+<div class="col m-0 p-1">
+<div class="d-flex align-items-center bg-dark bg-opacity-75 rounded-2">
+  <img class="rounded-start-2"
+    style="height: 50px; width: 50px"
     src="https://cdn-images.dzcdn.net/images/artist/71eeb9e2eeb375df35a3c0654a5a01ab/1000x1000-000000-80-0-0.jpg" />
-  <p class="m-0 ms-3">Storie d'amore</p>
+  <p class="m-0 ms-3 fw-bold">Storie d'amore</p>
+  </div>
 </div>
 `
 }
@@ -52,7 +54,7 @@ for (let i = 0; i < 15; i++) {
 }
 for (let i = 0; i < 4; i++) {
   sezioneVideo.innerHTML += `<div class="col p-4">
-            <p class="mb-2 p-0">Per i fan di rancore</p>
+            <p class="mb-2 p-0 text-secondary">Per i fan di rancore</p>
 
             <div class="row position-relative rounded-2 m-0">
               <video class="rounded-2 p-0">
