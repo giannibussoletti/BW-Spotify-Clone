@@ -4,8 +4,6 @@ const albumDetails =
   "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";
 const artistDetails =
   "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";
-
-// js di zio gianni
 // Inject Consigliati
 const consigliati = document.getElementById("consigliati");
 const getConsigli = function () {
@@ -44,9 +42,7 @@ const getConsigli = function () {
     });
 };
 getConsigli();
-
 // Inject carosello
-
 const artistiCarousel = document.getElementById("artisti-carousel");
 const sezioneVideo = document.getElementById("video-row");
 const carouselPerTe = document.getElementById("per-te-carousel");
@@ -165,9 +161,6 @@ const rightMovement = function (event) {
   } else if (event === 1) {
     artistiCarousel.scrollBy(artistiCarousel.offsetWidth / 2, 0);
   }
-  // else {
-  //     newReleasesElementId.scrollBy(watchAgainElementId.offsetWidth, 0)
-  //   }
 };
 const leftMovement = function (event) {
   if (event === 0) {
@@ -175,12 +168,7 @@ const leftMovement = function (event) {
   } else if (event === 1) {
     artistiCarousel.scrollBy(-artistiCarousel.offsetWidth / 2, 0);
   }
-  //  else {
-  //     newReleasesElementId.scrollBy(-watchAgainElementId.offsetWidth, 0)
-  //   }
 };
-
-// js di ALe
 // funzione di movimento carosello
 function scrollLeftBtn() {
   document.getElementById("scroll").scrollBy({
@@ -196,6 +184,43 @@ function scrollRightBtn() {
 }
 // fine movimento carosello
 // funzione per l'input
-const inputNavbar = document.getElementById("inputNavbar");
-const cercaCanzoni =
-  "https://striveschool-api.herokuapp.com/api/deezer/search?q=${inputNavbar.value}";
+const dropdownForSearch = document.getElementById("dropdownForSearch");
+const inputNavbarValue = document.getElementById("inputNavbar");
+const audio = document.getElementById("audio");
+inputNavbarValue.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    console.log(inputNavbarValue.value);
+    fetch(search + inputNavbarValue.value)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error(res.status);
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        dropdownForSearch.innerHTML =
+          '<li class="list-group-item" value="">Seleziona un brano</li>';
+        data.data.forEach((tracks) => {
+          const elementoLista = document.createElement("li");
+          const link = tracks.preview;
+          const title = tracks.title;
+          const img = tracks.picture;
+          const name = tracks.name;
+          console.log(link);
+          elementoLista.classList.add("list-group-item");
+          elementoLista.innerHTML = `${title}-${name}`;
+          dropdownForSearch.appendChild(elementoLista);
+          elementoLista.addEventListener("click", function (event) {
+            audio.src = link;
+            audio.play();
+            dropdownForSearch.innerHTML = "";
+          });
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+});
