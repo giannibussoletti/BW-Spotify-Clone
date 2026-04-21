@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
   <head>
-    <title>homepage</title>
+    <title>sfoglia</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -352,15 +352,25 @@
           <div class="col-8">
             <h2>Sfoglia tutto</h2>
             <div class="d-flex">
-              <div class="bg-danger rounded-4 d-flex justify-content-between">
+              <!-- scheda sfoglia -->
+              <div
+                class="rounded-4 d-flex justify-content-between card-sfoglia"
+                style="overflow: clip"
+              >
                 <h3 class="p-3 fw-bold">Musica</h3>
                 <img
                   src="https://placecats.com/200/200"
                   class="rounded-4 w-50"
                   alt="foto_artista"
-                  style="rotate: 30deg"
+                  style="
+                    rotate: 30deg;
+                    position: relative;
+                    top: 32px;
+                    right: -10px;
+                  "
                 />
               </div>
+              <!--fine scheda sfoglia -->
             </div>
           </div>
           <!-- inizio sidebar end   -->
@@ -1135,5 +1145,6 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="./homepage.js"></script>
+    <script src="./sfoglia.js"></script>
   </body>
 </html>
