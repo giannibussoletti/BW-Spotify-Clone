@@ -50,6 +50,7 @@
               <i
                 class="bi bi-search position-absolute start-0 top-50 translate-middle-y ms-3 text-secondary fs-5"></i>
               <input
+                id="inputNavbar"
                 type="text"
                 class="form-control search-input text-white"
                 placeholder="Cosa vuoi ascoltare?" />
@@ -149,19 +150,20 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 d-flex m-2">
+            <div id="appendLibrary"></div>
+            <!-- <div class="col-12 d-flex m-2">
               <img
-                src="https://www.placecats.com/100/100"
+                src="${img}"
                 alt="Preferiti Spotify"
                 class="img-fluid w-25 rounded-1 me-1" />
               <div class="d-flex flex-column">
-                <h6>Donne ricche</h6>
+                <h6>${titolocanzone}</h6>
                 <div class="d-flex">
                   <p>Album</p>
-                  <p class="ms-1">• Tony Pitoni</p>
+                  <p class="ms-1">• ${artista}</p>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div style="margin-top: 68px" class="col-8 indipendent-scroll main-page">
             <section>
@@ -191,7 +193,9 @@
                 </div>
                 <!-- Consigli -->
                 <div class="container">
-                  <div id="consigliati" class="row row-cols-2 row-cols-md-2 row-cols-lg-4"></div>
+                  <div id="consigliati" class="row row-cols-2 row-cols-md-2 row-cols-lg-4">
+                    <!-- qui inserire le card dei consigli -->
+                  </div>
                 </div>
               </div>
             </section>
@@ -201,7 +205,7 @@
                 <!-- sezione Creato pe te -->
                 <div class="row row-cols-2 justify-content-between mb-3 mx-0 px-3">
                   <div class="col p-0">
-                    <h6 class="mb-0 p-0">creato per <br /><span>Gianni</span></h6>
+                    <h6 class="mb-0 p-0">Creato per <br/><span>Gianni</span></h6>
                   </div>
                   <div class="col text-end align-self-end p-0">
                     <h6 class="mb-0">Mostra Tutto</h6>
@@ -269,7 +273,7 @@
               </div>
             </section>
           </div>
-          <!-- inizio sidebar end   -->
+<!-- inizio sidebar end   -->
           <div class="col-2 ps-3 indipendent-scroll end-0">
             <div
               class="d-flex justify-content-between position-sticky z-2 py-3 w-100 bg-black"
