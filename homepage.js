@@ -1,6 +1,14 @@
+const searchGeneries =
+  "https://striveschool-api.herokuapp.com/api/deezer/search?q=queen";
+// arrayparolericerca${input.value}
+const albumDetails =
+  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";
+const artistDetails =
+  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";
+
 // js di zio gianni
 // Inject Consigliati
-const consigliati = document.getElementById("consigliati")
+const consigliati = document.getElementById("consigliati");
 
 for (let i = 0; i < 8; i++) {
   consigliati.innerHTML += `
@@ -10,46 +18,84 @@ for (let i = 0; i < 8; i++) {
     src="https://cdn-images.dzcdn.net/images/artist/71eeb9e2eeb375df35a3c0654a5a01ab/1000x1000-000000-80-0-0.jpg" />
   <p class="m-0 ms-3">Storie d'amore</p>
 </div>
-`
+`;
 }
 
 // Inject carosello
 
-const carouselPerTe = document.getElementById("per-te-carousel")
-const artistiCarousel = document.getElementById("artisti-carousel")
-const sezioneVideo = document.getElementById("video-row")
+const artistiCarousel = document.getElementById("artisti-carousel");
+const sezioneVideo = document.getElementById("video-row");
+const carouselPerTe = document.getElementById("per-te-carousel");
+const getAlbum = function () {
+  fetch(searchGeneries)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error(res.status);
+      }
+    })
+    .then((data) => {
+      console.log(data);
+      data.data.forEach((track) => {
+        const id = track.id;
+        console.log(id);
+        const titoloAlbum = track.title;
+        const imgAlbum = track.album.cover_medium;
+        const artistaAlbum = track.artist.name;
+        console.log(titoloAlbum, imgAlbum, artistaAlbum);
+        const cardCarosello = document.createElement("div");
+        cardCarosello.classList.add(
+          "card",
+          "col-6",
+          "m-3",
+          "position-relative",
+        );
+        cardCarosello.innerHTML = `<img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid rounded-1">
+                       <div class="card-body">
+                       <p class="card-text">${titoloAlbum} • ${artistaAlbum}</p>
+                       <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:50%;right: 10%; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
+                       </div>`;
+        carouselPerTe.appendChild(cardCarosello);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+getAlbum();
 
-for (let i = 0; i < 15; i++) {
-  carouselPerTe.innerHTML += `
+// for (let i = 0; i < 15; i++) {
+//   carouselPerTe.innerHTML += `
 
-            <div style="max-width:200px;" class="card border-0 px-2 bg-transparent"> 
-              <img src="https://cdn-images.dzcdn.net/images/cover/e16455433a84c7e19025403ae3eec52d/250x250-000000-80-0-0.jpg" class="card-img-top w-100 rounded-1" alt="..." />
-              <div class="card-body p-0 pt-2">
-                <p class="card-text">
-                  Best of queen, Jimi Hendrix, Edith Piaf
-                </p>
-              </div>
-            </div>
+//             <div style="max-width:200px;" class="card border-0 px-2 bg-transparent">
+//               <img src="https://cdn-images.dzcdn.net/images/cover/e16455433a84c7e19025403ae3eec52d/250x250-000000-80-0-0.jpg" class="card-img-top w-100 rounded-1" alt="..." />
+//               <div class="card-body p-0 pt-2">
+//                 <p class="card-text">
+//                   Best of queen, Jimi Hendrix, Edith Piaf
+//                 </p>
+//               </div>
+//             </div>
 
-          `
-  //
-  //
-  //
-  //
-  artistiCarousel.innerHTML += `
+//           `;
+//
+//   //
+//   //
+//   //
+//   artistiCarousel.innerHTML += `
 
-            <div style="max-width:200px;" class="card border-0 px-2 bg-transparent">
-              <img src="https://cdn-images.dzcdn.net/images/artist/7dc65523befdb7b865eb3f8595bbbd40/500x500-000000-80-0-0.jpg" class="card-img-top w-100 rounded-circle" alt="..." />
-              <div class="card-body p-0 pt-2">
-              <h6 style="font-size:.9em;" class="card-title pb-0 mb-1">Willie Peyote</h6>
-                <p class="card-text">
-                  Artista
-                </p>
-              </div>
-            </div>
+//             <div style="max-width:200px;" class="card border-0 px-2 bg-transparent">
+//               <img src="https://cdn-images.dzcdn.net/images/artist/7dc65523befdb7b865eb3f8595bbbd40/500x500-000000-80-0-0.jpg" class="card-img-top w-100 rounded-circle" alt="..." />
+//               <div class="card-body p-0 pt-2">
+//               <h6 style="font-size:.9em;" class="card-title pb-0 mb-1">Willie Peyote</h6>
+//                 <p class="card-text">
+//                   Artista
+//                 </p>
+//               </div>
+//             </div>
 
-          `
-}
+//           `;
+// }
 for (let i = 0; i < 4; i++) {
   sezioneVideo.innerHTML += `<div class="col p-4">
             <p class="mb-2 p-0">Per i fan di rancore</p>
@@ -81,29 +127,29 @@ for (let i = 0; i < 4; i++) {
                 </div>
               </div>
             </div>
-          </div>`
+          </div>`;
 }
 
 const rightMovement = function (event) {
   if (event === 0) {
-    carouselPerTe.scrollBy(consigliati.offsetWidth / 2, 0)
+    carouselPerTe.scrollBy(consigliati.offsetWidth / 2, 0);
   } else if (event === 1) {
-    artistiCarousel.scrollBy(artistiCarousel.offsetWidth / 2, 0)
+    artistiCarousel.scrollBy(artistiCarousel.offsetWidth / 2, 0);
   }
   // else {
   //     newReleasesElementId.scrollBy(watchAgainElementId.offsetWidth, 0)
   //   }
-}
+};
 const leftMovement = function (event) {
   if (event === 0) {
-    carouselPerTe.scrollBy(-consigliati.offsetWidth / 2, 0)
+    carouselPerTe.scrollBy(-consigliati.offsetWidth / 2, 0);
   } else if (event === 1) {
-    artistiCarousel.scrollBy(-artistiCarousel.offsetWidth / 2, 0)
+    artistiCarousel.scrollBy(-artistiCarousel.offsetWidth / 2, 0);
   }
   //  else {
   //     newReleasesElementId.scrollBy(-watchAgainElementId.offsetWidth, 0)
   //   }
-}
+};
 
 // js di ALe
 // funzione di movimento carosello
@@ -111,12 +157,12 @@ function scrollLeftBtn() {
   document.getElementById("scroll").scrollBy({
     left: -200,
     behavior: "smooth",
-  })
+  });
 }
 function scrollRightBtn() {
   document.getElementById("scroll").scrollBy({
     left: 200,
     behavior: "smooth",
-  })
+  });
 }
 // fine movimento carosello
