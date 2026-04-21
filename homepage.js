@@ -1,57 +1,123 @@
+const search = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
+// arrayparolericerca${input.value}
+const albumDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+const artistDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+
 // js di zio gianni
 // Inject Consigliati
 const consigliati = document.getElementById("consigliati")
-
-for (let i = 0; i < 8; i++) {
-  consigliati.innerHTML += `
-<div class="col m-0 p-1">
-<div class="d-flex align-items-center bg-dark bg-opacity-75 rounded-2">
-  <img class="rounded-start-2"
-    style="height: 50px; width: 50px"
-    src="https://cdn-images.dzcdn.net/images/artist/71eeb9e2eeb375df35a3c0654a5a01ab/1000x1000-000000-80-0-0.jpg" />
-  <p class="m-0 ms-3 fw-bold">Storie d'amore</p>
-  </div>
-</div>
-`
+const getConsigli = function () {
+  fetch(search + "rihanna")
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        throw new Error(res.status)
+      }
+    })
+    .then((data) => {
+      console.log(data)
+      data.data.slice(0, 8).forEach((track) => {
+        const id = track.id
+        console.log(id)
+        const titoloAlbum = track.title
+        const imgAlbum = track.album.cover_medium
+        const artistaAlbum = track.artist.name
+        console.log(titoloAlbum, imgAlbum, artistaAlbum)
+        const cardCarosello = document.createElement("div")
+        cardCarosello.classList.add("card", "d-flex", "border-0", "bg-transparent", "flex")
+        cardCarosello.innerHTML = `<div class="col m-0 p-2">
+        <div class="d-flex align-items-center bg-dark bg-opacity-75 rounded-2 p-2">
+        <img class="rounded-start-2"
+        style="height: 50px; width: 50px"
+        src="${imgAlbum}" />
+        <p class="m-0 ms-3 fw-bold">${titoloAlbum}</p>
+        </div>
+        </div>`
+        consigliati.appendChild(cardCarosello)
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
+getConsigli()
 
 // Inject carosello
 
-const carouselPerTe = document.getElementById("per-te-carousel")
 const artistiCarousel = document.getElementById("artisti-carousel")
 const sezioneVideo = document.getElementById("video-row")
-
-for (let i = 0; i < 15; i++) {
-  carouselPerTe.innerHTML += `
-
-            <div style="max-width:200px;" class="card border-0 px-2 bg-transparent"> 
-              <img src="https://cdn-images.dzcdn.net/images/cover/e16455433a84c7e19025403ae3eec52d/250x250-000000-80-0-0.jpg" class="card-img-top w-100 rounded-1" alt="..." />
-              <div class="card-body p-0 pt-2">
-                <p class="card-text">
-                  Best of queen, Jimi Hendrix, Edith Piaf
-                </p>
-              </div>
-            </div>
-
-          `
-  //
-  //
-  //
-  //
-  artistiCarousel.innerHTML += `
-
-            <div style="max-width:200px;" class="card border-0 px-2 bg-transparent">
-              <img src="https://cdn-images.dzcdn.net/images/artist/7dc65523befdb7b865eb3f8595bbbd40/500x500-000000-80-0-0.jpg" class="card-img-top w-100 rounded-circle" alt="..." />
-              <div class="card-body p-0 pt-2">
-              <h6 style="font-size:.9em;" class="card-title pb-0 mb-1">Willie Peyote</h6>
-                <p class="card-text">
-                  Artista
-                </p>
-              </div>
-            </div>
-
-          `
+const carouselPerTe = document.getElementById("per-te-carousel")
+const getAlbum = function () {
+  fetch(search + "rock")
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        throw new Error(res.status)
+      }
+    })
+    .then((data) => {
+      console.log(data)
+      data.data.forEach((track) => {
+        const id = track.id
+        console.log(id)
+        const titoloAlbum = track.title
+        const imgAlbum = track.album.cover_medium
+        const artistaAlbum = track.artist.name
+        console.log(titoloAlbum, imgAlbum, artistaAlbum)
+        const cardCarosello = document.createElement("div")
+        cardCarosello.classList.add("card", "col-6", "m-3", "position-relative")
+        cardCarosello.innerHTML = `<img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid rounded-1 mt-3">
+                       <div class="card-body">
+                       <p class="card-text fs-5">${artistaAlbum}</p>
+                       <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
+                       </div>`
+        carouselPerTe.appendChild(cardCarosello)
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
+getAlbum()
+const getLibrary = function () {
+  fetch(search + "greenday")
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        throw new Error(res.status)
+      }
+    })
+    .then((data) => {
+      console.log(data)
+      data.data.forEach((track) => {
+        const titoloAlbum = track.title
+        const imgAlbum = track.album.cover_medium
+        const artistaAlbum = track.artist.name
+        const appendLibrary = document.getElementById("appendLibrary")
+        const cardLibrary = document.createElement("div")
+        cardLibrary.classList.add("col-12", "d-flex", "m-2")
+        cardLibrary.innerHTML = `<img
+                src="${imgAlbum}"
+                alt="Preferiti Spotify"
+                class="img-fluid w-25 rounded-1 me-1" />
+              <div class="d-flex flex-column">
+                <h6>${titoloAlbum}</h6>
+                <div class="d-flex">
+                  <p>Album</p>
+                  <p class="ms-1">• ${artistaAlbum}</p>
+                </div>
+              </div>`
+        appendLibrary.appendChild(cardLibrary)
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+getLibrary()
 for (let i = 0; i < 4; i++) {
   sezioneVideo.innerHTML += `<div class="col p-4">
             <p class="mb-2 p-0 text-secondary">Per i fan di rancore</p>
@@ -122,3 +188,7 @@ function scrollRightBtn() {
   })
 }
 // fine movimento carosello
+// funzione per l'input
+const inputNavbar = document.getElementById("inputNavbar")
+const cercaCanzoni =
+  "https://striveschool-api.herokuapp.com/api/deezer/search?q=${inputNavbar.value}"
