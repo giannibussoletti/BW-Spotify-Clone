@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
   <head>
-    <title>sfoglia</title>
+    <title>album_page</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -62,9 +62,11 @@
                 placeholder="Cosa vuoi ascoltare?"
               />
               <div class="position-absolute search-divider"></div>
-              <i
-                class="bi bi-archive position-absolute end-0 top-50 translate-middle-y me-3 text-secondary fs-5"
-              ></i>
+              <a href="./sfoglia.html">
+                <i
+                  class="bi bi-archive position-absolute end-0 top-50 translate-middle-y me-3 text-secondary fs-5"
+                ></i>
+              </a>
             </div>
           </div>
 
@@ -355,29 +357,213 @@
             style="margin-top: 68px"
             class="col-8 indipendent-scroll main-page"
           >
-            <h2>Sfoglia tutto</h2>
-            <div class="d-flex">
-              <!-- scheda sfoglia -->
-              <div
-                class="rounded-4 d-flex justify-content-between card-sfoglia"
-                style="overflow: clip"
-              >
-                <h3 class="p-3 fw-bold">Musica</h3>
-                <img
-                  src="https://placecats.com/200/200"
-                  class="rounded-4 w-50"
-                  alt="foto_artista"
-                  style="
-                    rotate: 30deg;
-                    position: relative;
-                    top: 32px;
-                    right: -10px;
-                  "
-                />
+            <div class="bg-gradient d-flex align-items-center">
+              <img
+                src=" https://placecats.com/200/200"
+                class="rounded-3 m-5"
+                alt="foto_album"
+              />
+              <div>
+                <p>Album</p>
+                <h1 class="fw-bold" style="font-size: 5em">
+                  TAREK DA COLORARE
+                </h1>
+                <div class="d-flex align-items-center">
+                  <img
+                    src="https://placecats.com/40/40"
+                    class="rounded-circle me-3"
+                    alt="foto_artista"
+                  />
+                  <p class="fw-bold m-0">
+                    Rancora • 2026 • <span> 13 </span> brani,
+                    <span> 44 </span> min <span> 49 </span> sec.
+                  </p>
+                </div>
               </div>
-
-              <!--fine scheda sfoglia -->
             </div>
+            <div class="d-flex justify-content-between">
+              <div class="d-flex align-items-center mt-3">
+                <!-- button  -->
+                <a
+                  href="#"
+                  class="btn text-black d-flex align-items-center rounded-circle me-3 px-3 fs-3"
+                  style="background-color: #3be477"
+                  ><i class="bi bi-play-fill"></i
+                ></a>
+                <!-- img -->
+                <img
+                  src="https://placecats.com/50/70"
+                  alt=" foto_short"
+                  class="rounded-3 me-3 border border-2 border-light"
+                />
+                <!-- shuffle -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="50"
+                  height="50"
+                  fill="currentColor"
+                  class="bi bi-shuffle me-3 text-secondary"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5"
+                  />
+                  <path
+                    d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192"
+                  />
+                </svg>
+                <!-- plus -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="50"
+                  height="50"
+                  fill="currentColor"
+                  class="bi bi-plus-circle me-3 text-secondary"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+                  />
+                  <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
+                  />
+                </svg>
+                <!-- arrow -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="50"
+                  height="50"
+                  fill="currentColor"
+                  class="bi bi-arrow-down-circle me-3 text-secondary"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                  />
+                </svg>
+                <!-- dots -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="50"
+                  height="50"
+                  fill="currentColor"
+                  class="bi bi-three-dots me-3 text-secondary"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"
+                  />
+                </svg>
+              </div>
+              <div class="d-flex align-items-center">
+                <p class="mb-0 me-2">Elenco</p>
+                <!-- list -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-list-task"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z"
+                  />
+                  <path
+                    d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="row mt-5 align-items-center">
+              <div class="col-1">
+                <p class="text-center m-0 fs-5">#</p>
+              </div>
+              <div class="col-10">
+                <p class="m-0 fs-5">Titolo</p>
+              </div>
+              <div class="col-1 text-center">
+                <!-- clock -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-clock m-0"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+                  />
+                  <path
+                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
+                  />
+                </svg>
+                <!-- arrow dropdown -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-caret-down-fill m-0"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
+                  />
+                </svg>
+                <!-- fine arrow drop -->
+              </div>
+            </div>
+            <hr class="m-2" />
+            <!-- lista canzoni/tempo -->
+            <div class="row align-items-center">
+              <div class="col-1 text-center fs-5">1</div>
+              <div class="col-10">
+                <div class="d-flex flex-column">
+                  <p class="fw-bold mb-1 fs-3">fanfole</p>
+                  <p class="text-secondary fs-5 mb-0">Rancore</p>
+                </div>
+              </div>
+              <div class="col-1 m-0">
+                <p class="fs-5">3:04</p>
+              </div>
+            </div>
+            <!-- fine lista canzoni/tempo -->
+            <!-- album list/card -->
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="mb-0 mt-4 fw-bold fs-3">Altro di Rancora</h5>
+              <p class="mb-0 mt-4">
+                <a
+                  href="#"
+                  class="mb-0 text-secondary text-decoration-none fw-bold"
+                  >Vedi discografia</a
+                >
+              </p>
+            </div>
+            <!-- card altro -->
+            <div>
+              <div class="card bg-transparent border-0 w-25 mt-3">
+                <img
+                  src="https://placecats.com/300/200"
+                  class="card-img-top"
+                  alt="foto_album"
+                />
+                <div class="card-body">
+                  <p class="card-text fs-3 m-0">nome album</p>
+                  <p class="card-text text-secondary">anno album</p>
+                </div>
+              </div>
+            </div>
+            <!-- fine card altro -->
+            <!--fine album  list/card -->
             <!-- footer -->
             <hr />
             <section style="margin-bottom: 15em" class="footer-mainpage">
@@ -1230,7 +1416,5 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script src="./homepage.js"></script>
-    <script src="./sfoglia.js"></script>
   </body>
 </html>
