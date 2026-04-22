@@ -30,9 +30,6 @@ fetch(searchWorld)
       const nomeArtisti = data.data[i].artist.name
       const fotoArtisti = data.data[i].artist.picture_medium
 
-      console.log(nomeArtisti)
-      console.log(fotoArtisti)
-
       cardContainer.classList.add("d-flex")
       const card = document.createElement("div")
       const randomIndex = Math.floor(Math.random() * colors.length)
@@ -69,12 +66,11 @@ fetch(searchWorld)
     console.log("Errore", err)
   })
 
-  
 document.addEventListener("click", function (e) {
-  const card = e.target.closest(".card-sfoglia");
+  const card = e.target.closest(".card-sfoglia")
   if (card) {
-    const artistName = card.querySelector("#name-singer").innerText;
-    window.location.href = `artist_page.html?id=${artistName}`; 
+    const artistName = card.querySelector("#name-singer").innerText
+    window.location.href = `artist_page.html?id=${artistName}`
     // Nota: se passi il nome, il mio artist_page.js lo gestirà tramite la search
   }
-});
+})
