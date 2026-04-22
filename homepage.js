@@ -278,7 +278,7 @@ inputNavbarValue.addEventListener("keydown", function (event) {
 
 const nomeArtista = document.querySelectorAll(".name_artist")
 const videoSong = document.getElementById("video_song")
-const cardCorrelati = document.querySelectorAll(".card_correlati")
+const cardCorrelati = document.getElementById("card_correlati")
 
 const nameArtistsidebar = function (x, y) {
   fetch(search + x)
@@ -302,21 +302,19 @@ const nameArtistsidebar = function (x, y) {
       }
       //
       //
-      for (let i = 0; i < data.data.length; i++) {
-        cardCorrelati.innerHTML = `<img
-                        src=${data.data[i].album.cover_medium}
+      cardCorrelati.innerHTML = `<img
+                        src=${data.data[0].album.cover_medium}
                         class="card-img-top"
                         alt="video_correlati"
                       />
                       <div class="card-body">
                         <p class="card-text" id="song_title">
-                          <span class="mt-2">${data.data[i].album.title}</span>
+                          <span class="mt-2">${data.data[0].album.title}</span>
                         </p>
                         <p class="m-0">
-                          <span class="name_artist"> ${data.data[i].artist.name} </span>
+                          <span class="name_artist"> ${data.data[0].artist.name} </span>
                         </p>
                       </div>`
-      }
     })
     .catch((err) => {
       console.log("errore", err)
