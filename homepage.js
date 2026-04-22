@@ -204,7 +204,7 @@ const getLibrary = function (searchValue) {
       console.log(err)
     })
 }
-getLibrary("vasco rossi")
+getLibrary("kanye West")
 // questa è un altra funzione
 inputNavbarValue.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
@@ -221,25 +221,25 @@ inputNavbarValue.addEventListener("keydown", function (event) {
       .then((data) => {
         console.log(data)
         dropdownForSearch.innerHTML =
-          '<li class="list-group-item" value="">Seleziona un brano</li>'
+          '<li class="list-group-item text-white fs-4" value="">Ricerche recenti</li>'
         data.data.slice(0, 5).forEach((tracks) => {
           const elementoLista = document.createElement("li")
           const link = tracks.preview
           const title = tracks.title
-          const name = tracks.name
+          const name = tracks.artist.name
           const img = tracks.album.cover_medium
           console.log(link)
-          elementoLista.classList.add("list-group-item", "p-0")
+          elementoLista.classList.add("list-group-item", "p-2")
           elementoLista.innerHTML = `
-          <div class="card mb-3 h-100" >
-          <div class="row g-0">
-          <div class="col-md-4">
-          <img src="${img}" class="img-fluid rounded-start border border-2"style="max-height:100px;">
+          <div class="card rounded-2 p-0 h-100" >
+          <div class="row g-0 d-flex">
+          <div class="col-4 border-0"style="max-width:100px;">
+          <img src="${img}" class="img-fluid rounded-2 border border-2">
           </div>
-          <div class="col-md-8">
+          <div class="col-8">
           <div class="card-body">
-          <h6 class="card-title">${title}</h6>
-          <p class="card-text">${name}</p>
+          <h6 class="card-title m-0 me-1">${title}</h6>
+          <p class="card-text">• ${name}</p>
           </div>
           </div>
           </div>
