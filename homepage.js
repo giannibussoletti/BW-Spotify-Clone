@@ -1,7 +1,9 @@
 const search = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
 // arrayparolericerca${input.value}
-const albumDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
-const artistDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+const albumDetails =
+  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+const artistDetails =
+  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
 
 const dropdownForSearch = document.getElementById("dropdownForSearch")
 const inputNavbarValue = document.getElementById("inputNavbar")
@@ -28,7 +30,13 @@ const getConsigli = function () {
         const artistaAlbum = track.artist.name
         console.log(titoloAlbum, imgAlbum, artistaAlbum)
         const cardCarosello = document.createElement("div")
-        cardCarosello.classList.add("card", "d-flex", "border-0", "bg-transparent", "flex")
+        cardCarosello.classList.add(
+          "card",
+          "d-flex",
+          "border-0",
+          "bg-transparent",
+          "flex",
+        )
         cardCarosello.innerHTML = `<div class="col m-0 p-2">
         <div class="d-flex align-items-center bg-dark bg-opacity-75 rounded-2 p-2">
         <img class="rounded-start-2"
@@ -248,12 +256,13 @@ inputNavbarValue.addEventListener("keydown", function (event) {
             const bottonePlay = document.getElementById("bottonePlay")
             if (audio.paused) {
               audio.play()
-              bottonePlay.innerHTML = ` <i class="bi bi-play-fill"></i> `
+              bottonePlay.innerHTML = ` <i class="bi bi-pause-fill"></i>
+               `
             } else {
               audio.pause()
               bottonePlay.innerHTML = `
               
-                    <i class="bi bi-pause-fill"></i>
+                    <i class="bi bi-play-fill"></i>
                   
                     `
             }
