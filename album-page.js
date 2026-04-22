@@ -21,7 +21,7 @@ fetch(apiAlbum + albumID)
   .then((data) => {
     // shuffleImg.setAttribute("src", data.artist.picture_small)
 
-    altroDaTitle.innerText = `Altro di ${data.artist.name}`
+    altroDaTitle.innerText = `Altro da ${data.artist.name}`
     const timeArray = (data.duration / 60).toString().split("")
     const dotIndex = timeArray.indexOf(".")
     const min = timeArray.slice(0, dotIndex).join("")
