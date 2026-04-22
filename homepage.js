@@ -21,14 +21,13 @@ const getConsigli = function () {
       }
     })
     .then((data) => {
-      console.log(data)
       data.data.slice(0, 8).forEach((track) => {
         const id = track.id
-        console.log(id)
+
         const titoloAlbum = track.title
         const imgAlbum = track.album.cover_medium
         const artistaAlbum = track.artist.name
-        console.log(titoloAlbum, imgAlbum, artistaAlbum)
+
         const cardCarosello = document.createElement("div")
         cardCarosello.classList.add(
           "card",
@@ -67,14 +66,12 @@ const getAlbum = function () {
       }
     })
     .then((data) => {
-      console.log(data)
       data.data.forEach((track) => {
         const id = track.id
-        console.log(id)
+
         const titoloAlbum = track.title
         const imgAlbum = track.album.cover_medium
         const artistaAlbum = track.artist.name
-        console.log(titoloAlbum, imgAlbum, artistaAlbum)
         const cardCarosello = document.createElement("div")
         cardCarosello.classList.add("card", "col-6", "m-3", "position-relative")
         cardCarosello.innerHTML = `<img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid rounded-1 mt-3">
@@ -83,6 +80,9 @@ const getAlbum = function () {
                        <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
                        </div>`
         carouselPerTe.appendChild(cardCarosello)
+        //
+        //
+        //
       })
     })
     .catch((err) => {
@@ -90,6 +90,38 @@ const getAlbum = function () {
     })
 }
 getAlbum()
+
+const getArtist = function () {
+  fetch(search + "underground rok")
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        throw new Error((response) => response.status)
+      }
+    })
+    .then((artist) => {
+      artist.data.forEach((info) => {
+        const cardArtista = document.createElement("div")
+        cardArtista.classList.add(
+          "card",
+          "col",
+          "m-3",
+          "position-relative",
+          "bg-transparent",
+        )
+        cardArtista.innerHTML += `<img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle mt-3">
+                       <div class="card-body">
+                       <p class="card-text text-center fs-5">${info.artist.name}</p>
+                       
+                       </div>`
+        artistiCarousel.appendChild(cardArtista)
+      })
+    })
+    .catch((err) => console.log(err))
+}
+getArtist()
+
 // funzione di gianni
 for (let i = 0; i < 4; i++) {
   sezioneVideo.innerHTML += `<div class="col p-4">
@@ -165,7 +197,6 @@ const getLibrary = function (searchValue) {
       }
     })
     .then((data) => {
-      console.log(data)
       const appendLibrary = document.getElementById("appendLibrary")
       appendLibrary.innerHTML = ""
 
@@ -198,7 +229,6 @@ getLibrary("kanye West")
 inputNavbarValue.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     getLibrary(inputNavbarValue.value)
-    console.log(inputNavbarValue.value)
     fetch(search + inputNavbarValue.value)
       .then((res) => {
         if (res.ok) {
@@ -217,7 +247,6 @@ inputNavbarValue.addEventListener("keydown", function (event) {
           const title = tracks.title
           const name = tracks.artist.name
           const img = tracks.album.cover_medium
-          console.log(link)
           elementoLista.classList.add("list-group-item", "p-2")
           elementoLista.innerHTML = `
           <div class="card rounded-2 p-0 h-100" >
@@ -307,7 +336,6 @@ const nameArtistsidebar = function (x, y) {
     })
     .then((data) => {
       const primoRisultato = data.data[0]
-      console.log("Dati ricevuti:", primoRisultato)
       //titolo della canzone
       if (nameSong) {
         nameSong.innerText = primoRisultato.title
