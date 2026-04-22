@@ -65,9 +65,9 @@ const getAlbum = function () {
         const artistaAlbum = track.artist.name
         const cardCarosello = document.createElement("div")
         cardCarosello.classList.add("card", "col-6", "m-3", "position-relative")
-        cardCarosello.innerHTML = `<img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid rounded-1 mt-3">
+        cardCarosello.innerHTML = `<a href="./album_page.html?id=${id}"><img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid w-100 rounded-1 mt-3"></a>
                        <div class="card-body">
-                       <p class="card-text fs-5">${artistaAlbum}</p>
+                       <p class="card-text fs-5">${titoloAlbum}</p>
                        <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
                        </div>`
         carouselPerTe.appendChild(cardCarosello)

@@ -28,6 +28,7 @@ fetch(searchWorld)
     for (let i = 0; i < data.data.length; i++) {
       const nomeArtisti = data.data[i].artist.name
       const fotoArtisti = data.data[i].artist.picture_medium
+      const idArtisti = data.data[i].artist.id
 
       cardContainer.classList.add("d-flex")
       const card = document.createElement("div")
@@ -44,8 +45,8 @@ fetch(searchWorld)
 
       card.style.overflow = "clip"
       card.innerHTML = `
-      <div class="d-flex rounded-4 h-100" style="overflow:clip; background-color:${randomColor};">
-      <h3 class="p-3 fw-bold" id="name-singer">${nomeArtisti}</h3>
+      <a class="text-white text-decoration-none" href="./artist_page.html?id=${idArtisti}"><div class="d-flex rounded-4 h-100 position-relative" style="overflow:clip; background-color:${randomColor}; min-height:140px;">
+      <h3 style="z-index:10" class="p-3 fw-bold" id="name-singer">${nomeArtisti}</h3>
                 <img
                   src=${fotoArtisti}
                   class="rounded-4"
@@ -53,11 +54,12 @@ fetch(searchWorld)
                   style="
                     rotate: 30deg;
                     position: absolute;
-              
-                    width:100px;
-                    height:100px;
+                    bottom:-30px;
+                    right:-10px;
+                    width:130px;
+                    height:130px;
                   "
-                /></div>`
+                /></div></a>`
 
       cardContainer.appendChild(card)
     }
@@ -66,11 +68,11 @@ fetch(searchWorld)
     console.log("Errore", err)
   })
 
-document.addEventListener("click", function (e) {
-  const card = e.target.closest(".card-sfoglia")
-  if (card) {
-    const artistName = card.querySelector("#name-singer").innerText
-    window.location.href = `artist_page.html?id=${artistName}`
-    // Nota: se passi il nome, il mio artist_page.js lo gestirà tramite la search
-  }
-})
+// document.addEventListener("click", function (e) {
+//   const card = e.target.closest(".card-sfoglia")
+//   if (card) {
+//     const artistName = card.querySelector("#name-singer").innerText
+//     window.location.href = `artist_page.html?id=${artistName}`
+//     // Nota: se passi il nome, il mio artist_page.js lo gestirà tramite la search
+//   }
+// })
