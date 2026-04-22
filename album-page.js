@@ -1,4 +1,5 @@
 const apiAlbum = "https://striveschool-api.herokuapp.com/api/deezer/album/"
+const apiSearchQuery = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
 
 const urlParameters = new URLSearchParams(location.search)
 const albumID = urlParameters.get("id")
@@ -7,6 +8,7 @@ const infoAlbum = document.getElementById("info-album")
 const tracklist = document.getElementById("tracklist")
 const shuffleImg = document.getElementById("little-img")
 const altroDaTitle = document.getElementById("altro-da")
+const altroDischi = document.getElementById("altri-dischi")
 
 fetch(apiAlbum + albumID)
   .then((response) => {
@@ -17,7 +19,6 @@ fetch(apiAlbum + albumID)
     }
   })
   .then((data) => {
-    console.log(data)
     shuffleImg.setAttribute("src", data.artist.picture_small)
 
     altroDaTitle.innerText = `Altro di ${data.artist.name}`
@@ -28,7 +29,7 @@ fetch(apiAlbum + albumID)
     if (sec.length < 2) {
       sec = sec + "0"
     }
-
+    //Header info album
     infoAlbum.innerHTML = `
     <img src="${data.cover_medium}" class="rounded-3 m-5" alt="foto_album" />
              <div>
@@ -46,10 +47,9 @@ fetch(apiAlbum + albumID)
                  </p>
                </div>
              </div>`
-
+    // Tracklist loop
     data.tracks.data.forEach((track, i) => {
       const timeArray = (track.duration / 60).toString().split("")
-      console.log(timeArray)
       const dotIndex = timeArray.indexOf(".")
       const min = timeArray.slice(0, dotIndex).join("")
       let sec = timeArray.slice(dotIndex + 1, dotIndex + 3).join("")
@@ -70,6 +70,31 @@ fetch(apiAlbum + albumID)
                 </div>
               </div>`
     })
+    //Altro da artista loop
+    fetch(apiSearchQuery + data.artist.name)
+      .then((response) => {
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw new Error(response.status)
+        }
+      })
+      .then((data) => {
+        console.log(data.data[1])
+        data.data.forEach((info) => {
+          altroDischi.innerHTML += `
+    <div class="col">
+        <div class="card bg-transparent border-0 mt-3">
+            <img src="${info.album.cover_medium}" class="card-img-top" alt="foto_album" />
+            <div class="card-body">
+            <p class="card-text fs- m-0">${info.title_short}</p>
+            <p class="card-text text-secondary">${info.album.title}</p>
+        </div>
+    </div>
+        `
+        })
+      })
+      .catch((err) => console.log(err))
   })
   .catch((err) => console.log(err))
 
