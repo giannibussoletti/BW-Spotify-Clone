@@ -1,11 +1,10 @@
-const query = "rap"
+const query = "rock"
 const searchWorld = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`
 // // arrayparolericerca${input.value}
 // const albumDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
 // const artistDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
 
 const cardSfoglia = document.querySelectorAll(".card-sfoglia")
-console.log(cardSfoglia)
 
 const cardContainer = document.getElementById("card-container")
 // funzione estrazione random color
@@ -30,9 +29,6 @@ fetch(searchWorld)
       const nomeArtisti = data.data[i].artist.name
       const fotoArtisti = data.data[i].artist.picture_medium
 
-      console.log(nomeArtisti)
-      console.log(fotoArtisti)
-
       cardContainer.classList.add("d-flex")
       const card = document.createElement("div")
       const randomIndex = Math.floor(Math.random() * colors.length)
@@ -52,13 +48,14 @@ fetch(searchWorld)
       <h3 class="p-3 fw-bold" id="name-singer">${nomeArtisti}</h3>
                 <img
                   src=${fotoArtisti}
-                  class="rounded-4 w-50"
+                  class="rounded-4"
                   alt="foto_artista"
                   style="
                     rotate: 30deg;
-                    position: relative;
-                    top: 32px;
-                    right: -10px;
+                    position: absolute;
+              
+                    width:100px;
+                    height:100px;
                   "
                 /></div>`
 
@@ -69,12 +66,11 @@ fetch(searchWorld)
     console.log("Errore", err)
   })
 
-  
 document.addEventListener("click", function (e) {
-  const card = e.target.closest(".card-sfoglia");
+  const card = e.target.closest(".card-sfoglia")
   if (card) {
-    const artistName = card.querySelector("#name-singer").innerText;
-    window.location.href = `artist_page.html?id=${artistName}`; 
+    const artistName = card.querySelector("#name-singer").innerText
+    window.location.href = `artist_page.html?id=${artistName}`
     // Nota: se passi il nome, il mio artist_page.js lo gestirà tramite la search
   }
-});
+})
