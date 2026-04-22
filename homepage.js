@@ -10,7 +10,7 @@ const audio = document.getElementById("audio")
 // Inject Consigliati
 const consigliati = document.getElementById("consigliati")
 const getConsigli = function () {
-  fetch(search + "rihanna")
+  fetch(search + "Childish Gambino")
     .then((res) => {
       if (res.ok) {
         return res.json()
@@ -34,7 +34,7 @@ const getConsigli = function () {
         <img class="rounded-start-2"
         style="height: 50px; width: 50px"
         src="${imgAlbum}" />
-        <p class="m-0 ms-3 fw-bold">${titoloAlbum}</p>
+        <p class="m-0 ms-3 fw-bold"><a class="text-decoration-none text-white" href="./album_page.html?id=${track.album.id}">${titoloAlbum}</a></p>
         </div>
         </div>`
         consigliati.appendChild(cardCarosello)
@@ -165,18 +165,17 @@ const getLibrary = function (searchValue) {
         const artistaAlbum = track.artist.name
         const cardLibrary = document.createElement("div")
         cardLibrary.classList.add("col-12", "d-flex", "m-2")
-        cardLibrary.innerHTML = ` <a target="_blank" href="./album_page.html?id=${data.data[i].album.id}"><img
+        cardLibrary.innerHTML = ` <a class="w-25 me-1 text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}"><img
                 src="${imgAlbum}"
                 alt="Preferiti Spotify"
-               
-                class="img-fluid w-25 rounded-1 me-1" />
+                class="img-fluid rounded-1 me-1" /></a>
               <div class="d-flex flex-column">
-                <h6>${titoloAlbum}</h6>
+                <h6><a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${titoloAlbum}</a></h6>
                 <div class="d-flex">
                   <p>Album</p>
-                  <p class="ms-1">• ${artistaAlbum}</p>
+                  <p class="ms-1">• <a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${artistaAlbum}</a></p>
                 </div>
-              </div><a>`
+              </div>`
         appendLibrary.appendChild(cardLibrary)
       })
     })

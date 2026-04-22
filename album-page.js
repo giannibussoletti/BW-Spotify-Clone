@@ -80,12 +80,12 @@ fetch(apiAlbum + albumID)
         }
       })
       .then((data) => {
-        console.log(data.data[1])
         data.data.forEach((info) => {
+          console.log(info)
           altroDischi.innerHTML += `
     <div class="col">
         <div class="card bg-transparent border-0 mt-3">
-            <img src="${info.album.cover_medium}" class="card-img-top" alt="foto_album" />
+            <a href="./album_page.html?id=${info.album.id}"><img src="${info.album.cover_medium}" class="card-img-top" alt="foto_album" /></a>
             <div class="card-body">
             <p class="card-text fs- m-0">${info.title_short}</p>
             <p class="card-text text-secondary">${info.album.title}</p>
