@@ -32,7 +32,7 @@ const initArtistPage = function () {
 
       // numero fan nel banner
       const fanCount = document.getElementById("fan-count")
-      if (fanCount) fanCount.innerText = `${artist.nb_fan.toLocaleString()} ascoltatori mensili`
+      if (fanCount) fanCount.innerText = `${artist.nb_fan.toLocaleString()} `
 
       // Popolamento la sezione INFORMAZIONI
       const infoFanCount = document.getElementById("info-fan-count")

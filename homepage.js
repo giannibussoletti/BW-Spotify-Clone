@@ -59,13 +59,13 @@ const getAlbum = function () {
     .then((data) => {
       data.data.forEach((track) => {
         const id = track.id
-
+        console.log(track)
         const titoloAlbum = track.title
         const imgAlbum = track.album.cover_medium
         const artistaAlbum = track.artist.name
         const cardCarosello = document.createElement("div")
         cardCarosello.classList.add("card", "col-6", "m-3", "position-relative")
-        cardCarosello.innerHTML = `<a href="./album_page.html?id=${id}"><img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid w-100 rounded-1 mt-3"></a>
+        cardCarosello.innerHTML = `<a href="./album_page.html?id=${track.album.id}"><img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid w-100 rounded-1 mt-3"></a>
                        <div class="card-body">
                        <p class="card-text fs-5">${titoloAlbum}</p>
                        <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
