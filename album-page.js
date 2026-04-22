@@ -87,8 +87,8 @@ fetch(apiAlbum + albumID)
         <div class="card bg-transparent border-0 mt-3">
             <a href="./album_page.html?id=${info.album.id}"><img src="${info.album.cover_medium}" class="card-img-top" alt="foto_album" /></a>
             <div class="card-body">
-            <p class="card-text fs- m-0">${info.title_short}</p>
-            <p class="card-text text-secondary">${info.album.title}</p>
+            <p class="card-text fs- m-0"><a class="text-white text-decoration-none" href="./album_page.html?id=${info.album.id}">${info.title_short}</a></p>
+            <p class="card-text"><a class="text-secondary text-decoration-none" href="./album_page.html?id=${info.album.id}">${info.album.title}</a></p>
         </div>
     </div>
         `
