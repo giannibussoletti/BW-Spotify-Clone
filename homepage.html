@@ -283,10 +283,7 @@
     <main class="position-relative">
       <div class="container-fluid m-0 position-absolute" style="top: 68px">
         <div class="row">
-          <div
-            class="col-2 indipendent-scroll d-none d-lg-block"
-            id="sidebar_start"
-          >
+          <div class="col-2 indipendent-scroll d-none d-lg-block">
             <div
               class="col-12 d-flex justify-content-between align-items-center my-3"
             >
@@ -295,7 +292,7 @@
               </div>
               <div>
                 <button
-                  class="btn bg-secondary bg-opacity-50 btn-"
+                  class="btn bg-secondary bg-opacity-50"
                   style="
                     min-width: 40px;
                     height: 40px;
@@ -306,10 +303,7 @@
                 >
                   <i class="bi bi-plus-lg fqw"></i>
                 </button>
-                <i
-                  class="bi bi-arrows-angle-expand m-2"
-                  id="expand_btn_start"
-                ></i>
+                <i class="bi bi-arrows-angle-expand m-2"></i>
               </div>
             </div>
             <div class="col-12 my-3 d-flex align-items-center">
@@ -321,7 +315,7 @@
                     padding-top: 8px;
                     border-radius: 50px;
                   "
-                  class="btn bg-secondary bg-opacity-50 arrow-btn"
+                  class="btn bg-secondary bg-opacity-50"
                   onclick="scrollLeftBtn()"
                 >
                   <i class="bi bi-chevron-compact-left"></i>
@@ -360,7 +354,7 @@
                     padding-top: 8px;
                     border-radius: 50px;
                   "
-                  class="btn bg-secondary bg-opacity-50 arrow-btn"
+                  class="btn bg-secondary bg-opacity-50"
                   onclick="scrollRightBtn()"
                 >
                   <i class="bi bi-chevron-compact-right"></i>
@@ -393,9 +387,8 @@
             </div>
             <div id="appendLibrary"></div>
           </div>
-          <!-- parte centrale -->
           <div
-            id="central-part"
+            style="margin-top: 68px"
             class="col-12 col-lg-8 indipendent-scroll main-page"
           >
             <section>
@@ -404,40 +397,22 @@
                 <div class="container-fluid">
                   <!-- Bottoni in alto -->
                   <div class="row mt-3 mb-4">
-                    <div class="col-12 d-flex justify-content-between">
-                      <div class="d-flex gap-3">
-                        <a
-                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                          href="#"
-                          >Tutto</a
-                        >
-                        <a
-                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                          href="#"
-                          >Musica</a
-                        >
-                        <a
-                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                          href="#"
-                          >Podcast</a
-                        >
-                      </div>
-                      <div id="space_show_btn">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          class="bi bi-chevron-bar-right"
-                          viewBox="0 0 16 16"
-                          id="full_hidden_btn"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M4.146 3.646a.5.5 0 0 0 0 .708L7.793 8l-3.647 3.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0M11.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5"
-                          />
-                        </svg>
-                      </div>
+                    <div class="col-12 d-flex gap-3">
+                      <a
+                        class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                        href="#"
+                        >Tutto</a
+                      >
+                      <a
+                        class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                        href="#"
+                        >Musica</a
+                      >
+                      <a
+                        class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                        href="#"
+                        >Podcast</a
+                      >
                     </div>
                   </div>
                 </div>
@@ -541,7 +516,6 @@
                 ></div>
               </div>
             </section>
-            <!-- inizio footer -->
             <section style="margin-bottom: 15em" class="footer-mainpage">
               <div class="container">
                 <div class="row row-cols-2 row-cols-lg-5">
@@ -625,31 +599,39 @@
               <hr />
               <div class="d-flex justify-content-between">
                 <div class="d-flex">
-                  <p class="mb-0 me-3 last_footer">Informazioni legali</p>
-                  <p class="mb-0 me-3 last_footer">
-                    Sicurezza e Centro sulla privacy
-                  </p>
-                  <p class="mb-0 me-3 last_footer">Informativa sulla privacy</p>
-                  <p class="mb-0 me-3 last_footer">Impostazioni cookie</p>
-                  <p class="mb-0 me-3 last_footer">Info annunci</p>
-                  <p class="mb-0 me-3 last_footer">Accessibilità</p>
+                  <p class="mb-0 me-3">Informazioni legali</p>
+                  <p class="mb-0 me-3">Sicurezza e Centro sulla privacy</p>
+                  <p class="mb-0 me-3">Informativa sulla privacy</p>
+                  <p class="mb-0 me-3">Impostazioni cookie</p>
+                  <p class="mb-0 me-3">Info annunci</p>
+                  <p class="mb-0 me-3">Accessibilità</p>
                 </div>
-                <p class="last_footer">&copy; 2026 Spotify AB</p>
+                <p>&copy; 2026 Spotify AB</p>
               </div>
             </section>
-            <!-- fine footer -->
           </div>
-          <!-- fine parte centrale -->
           <!-- inizio sidebar end   -->
-          <div
-            class="col-2 ps-3 indipendent-scroll end-0 d-none d-lg-block sidebar_end"
-            id="sidebar_end"
-          >
+          <div class="col-2 ps-3 indipendent-scroll end-0 d-none d-lg-block">
             <div
               class="d-flex justify-content-between position-sticky z-2 py-3 w-100 bg-black top-0"
             >
               <!-- icone/testo start -->
               <div class="d-flex align-items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-layout-sidebar-inset me-3"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M14 2a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2z"
+                  />
+                  <path
+                    d="M3 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"
+                  />
+                </svg>
                 <h5 class="m-0">
                   Radio di <span class="name_artist"> Bad Bunny </span>
                 </h5>
@@ -661,7 +643,7 @@
                 <div>
                   <div class="dropdown">
                     <button
-                      class="btn p-0 me-0 hidden_element"
+                      class="btn p-0 me-0"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
@@ -940,11 +922,10 @@
 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  id="expand_btn_end"
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-arrows-angle-expand me-3 hidden_element"
+                  class="bi bi-arrows-angle-expand me-3"
                   viewBox="0 0 16 16"
                 >
                   <path
@@ -955,7 +936,7 @@
               </div>
               <!--fine icona/icona end -->
             </div>
-            <div class="position-relative foto_show_el">
+            <div class="position-relative">
               <!-- inizio video/foto -->
               <img
                 src="https://tse2.mm.bing.net/th/id/OIP.bKjCcnviDZVuCG8L0BC9TgHaJT?rs=1&pid=ImgDetMain&o=7&rm=3"
@@ -974,7 +955,7 @@
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-arrows-angle-expand me-3 foto_hidden_el"
+                  class="bi bi-arrows-angle-expand me-3"
                   viewBox="0 0 16 16"
                 >
                   <path
@@ -989,7 +970,7 @@
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-fullscreen me-3 foto_hidden_el"
+                  class="bi bi-fullscreen me-3"
                   viewBox="0 0 16 16"
                 >
                   <path
@@ -1003,7 +984,7 @@
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-pip me-3 foto_hidden_el"
+                  class="bi bi-pip me-3"
                   viewBox="0 0 16 16"
                 >
                   <path
@@ -1047,13 +1028,13 @@
               </div>
               <!-- icona plus/share -->
               <!-- share -->
-              <div class="d-flex">
+              <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-box-arrow-up me-2 hidden_element"
+                  class="bi bi-box-arrow-up me-3"
                   viewBox="0 0 16 16"
                 >
                   <path
@@ -1071,7 +1052,7 @@
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-plus-circle"
+                  class="bi bi-plus-circle me-3"
                   viewBox="0 0 16 16"
                 >
                   <path
