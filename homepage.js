@@ -243,6 +243,14 @@ inputNavbarValue.addEventListener("keydown", function (event) {
             audio.play();
             dropdownForSearch.innerHTML = "";
           });
+          const bottonePlay = document.getElementById("bottonePlay");
+          bottonePlay.addEventListener("click", function () {
+            if (audio.paused) {
+              audio.play();
+            } else {
+              audio.pause();
+            }
+          });
         });
       })
       .catch((err) => {
