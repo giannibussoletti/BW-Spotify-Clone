@@ -305,21 +305,22 @@ inputNavbarValue.addEventListener("keydown", function (event) {
                 </div>
               </div>`
           })
-          bottonePlay.addEventListener("click", function () {
-            const bottonePlay = document.getElementById("bottonePlay")
-            if (audio.paused) {
-              audio.play()
-              bottonePlay.innerHTML = ` <i class="bi bi-play-fill"></i> `
-            } else {
-              audio.pause()
-              bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`
-            }
-          })
         })
       })
       .catch((err) => {
         console.log(err)
       })
+  }
+})
+
+bottonePlay.addEventListener("click", function () {
+  const bottonePlay = document.getElementById("bottonePlay")
+  if (audio.paused) {
+    audio.play()
+    bottonePlay.innerHTML = ` <i class="bi bi-play-fill"></i> `
+  } else {
+    audio.pause()
+    bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`
   }
 })
 
