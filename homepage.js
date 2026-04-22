@@ -440,3 +440,44 @@ const nameArtistsidebar = function (x, y) {
     })
     .catch((err) => console.error("Errore nel recupero dati:", err))
 }
+
+const expandBtnEnd = document.getElementById("expand_btn_end")
+const sideBarEnd = document.getElementById("sidebar_end")
+
+expandBtnEnd.addEventListener("click", function () {
+  sideBarEnd.classList.toggle("col-6")
+  sideBarEnd.classList.toggle("bg-black")
+  videoSong.classList.add("w-25")
+})
+
+const expandBtnStart = document.getElementById("expand_btn_start")
+const sideBarStart = document.getElementById("sidebar_start")
+const arrowBtn = document.querySelectorAll(".arrow-btn")
+
+expandBtnStart.addEventListener("click", function () {
+  sideBarStart.classList.toggle("z-3")
+  sideBarStart.classList.toggle("bg-black")
+  sideBarStart.classList.toggle("col-6")
+  arrowBtn.forEach((element) => {
+    element.classList.toggle("d-none")
+  })
+})
+
+const fullHiddenBtn = document.getElementById("full_hidden_btn")
+const centralPart = document.getElementById("central-part")
+const spaceShowBtn = document.getElementById("space_show_btn")
+
+fullHiddenBtn.addEventListener("click", function () {
+  sideBarEnd.classList.toggle("collapsed")
+  if (centralPart.classList.contains("col-lg-8")) {
+    centralPart.classList.replace("col-lg-8", "col-lg-10")
+    centralPart.classList.replace("indipendent-scroll", "indipendent-scroll-2")
+    centralPart.classList.replace("main-page", "page")
+  } else {
+    centralPart.classList.replace("col-lg-10", "col-lg-8")
+    centralPart.classList.replace("indipendent-scroll-2", "indipendent-scroll")
+    centralPart.classList.replace("page", "main-page")
+  }
+
+  spaceShowBtn.appendChild(newBtnSpace)
+})
