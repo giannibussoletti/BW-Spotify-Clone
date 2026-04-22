@@ -22,6 +22,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
     />
+    <link rel="stylesheet" href="homepage.css" />
   </head>
 
   <body>
@@ -621,18 +622,25 @@
               <p class="text-secondary fs-5 fw-bold mt-3 ms-3">Mostra altro</p>
             </div>
             <!-- card scoperto in -->
-            <div>
-              <div class="card bg-transparent border-0 w-25 mt-3">
-                <img
-                  src="https://placecats.com/200/200"
-                  class="card-img-top rounded-circle"
-                  alt="foto_album"
-                />
-                <div class="card-body">
-                  <p class="card-text fs-3 m-0">nome album</p>
-                  <p class="card-text text-secondary">anno album</p>
-                </div>
-              </div>
+            <div class="row position-relative m-0">
+              <div
+                class="p-0 smooth-carousel m-0 row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-5 flex-nowrap overflow-auto hiding-bar"
+                id="artisti-carousel"
+              ></div>
+              <span
+                onclick="rightMovement(1)"
+                style="width: 15%"
+                class="end-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-right"
+              >
+                <!-- <i class="bi bi-arrow-right-circle-fill fs-3"></i> -->
+              </span>
+              <span
+                onclick="leftMovement(1)"
+                style="width: 15%"
+                class="start-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-left"
+              >
+                <!-- <i class="bi bi-arrow-left-circle-fill fs-3"></i> -->
+              </span>
             </div>
             <!-- sezione playlist dell'artista -->
             <!-- sezione compare in -->
@@ -1515,7 +1523,7 @@
     ></script>
     <audio id="audio-player" hidden></audio>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script src="homepage.js"></script>
+    <script src="./homepage.js"></script>
     <script src="artist_page.js"></script>
   </body>
 </html>

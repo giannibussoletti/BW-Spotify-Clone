@@ -113,7 +113,7 @@ const getArtist = function () {
         cardArtista.innerHTML += `<img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle mt-3">
                        <div class="card-body">
                        <p class="card-text text-center fs-5">${info.artist.name}</p>
-                       
+
                        </div>`
         artistiCarousel.appendChild(cardArtista)
       })
@@ -164,6 +164,7 @@ const rightMovement = function (event) {
     artistiCarousel.scrollBy(artistiCarousel.offsetWidth / 2, 0)
   }
 }
+window.rightMovement = rightMovement
 const leftMovement = function (event) {
   if (event === 0) {
     carouselPerTe.scrollBy(-consigliati.offsetWidth / 2, 0)
@@ -171,6 +172,7 @@ const leftMovement = function (event) {
     artistiCarousel.scrollBy(-artistiCarousel.offsetWidth / 2, 0)
   }
 }
+window.leftMovement = leftMovement
 // funzione di movimento carosello
 function scrollLeftBtn() {
   document.getElementById("scroll").scrollBy({
@@ -225,6 +227,7 @@ const getLibrary = function (searchValue) {
     })
 }
 getLibrary("kanye West")
+
 // questa è un altra funzione
 inputNavbarValue.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
