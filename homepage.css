@@ -194,3 +194,9 @@ background: linear-gradient(135deg, #3b0af5, #8e8cfb, #c4efd9);
 .list-group-item, .card{
   border:transparent;
 }
+nav{
+  height: 10%;
+}
+#containerNavbar{
+  height: 100%
+  }
