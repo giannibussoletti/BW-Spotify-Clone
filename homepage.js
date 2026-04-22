@@ -96,7 +96,7 @@ const getArtist = function () {
       artist.data.forEach((info) => {
         const cardArtista = document.createElement("div")
         cardArtista.classList.add("card", "col", "m-3", "position-relative", "bg-transparent")
-        cardArtista.innerHTML += `<a href="./artist_page.html?id=${info.artist.id}"><img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle mt-3"></a>
+        cardArtista.innerHTML += `<a href="./artist_page.html?id=${info.artist.id}"><img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle mt-3 w-100"></a>
                        <div class="card-body">
                        <p class="card-text text-center fs-5">${info.artist.name}</p>
                        
@@ -233,7 +233,7 @@ const getLibrary = function (searchValue) {
                 <h6><a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${titoloAlbum}</a></h6>
                 <div class="d-flex">
                   <p>Album</p>
-                  <p class="ms-1">• <a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${artistaAlbum}</a></p>
+                  <p class="ms-1">• <a class="text-decoration-none text-white" target="_blank" href="./artist_page.html?id=${track.artist.id}">${artistaAlbum}</a></p>
                 </div>
               </div>`
         appendLibrary.appendChild(cardLibrary)
