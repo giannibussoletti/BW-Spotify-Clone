@@ -80,7 +80,7 @@ fetch(apiAlbum + albumID)
         }
       })
       .then((data) => {
-        data.data.forEach((info) => {
+        data.data.slice(0, 10).forEach((info) => {
           console.log(info)
           altroDischi.innerHTML += `
     <div class="col">
