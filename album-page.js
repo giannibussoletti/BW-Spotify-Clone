@@ -42,7 +42,7 @@ fetch(apiAlbum + albumID)
                    class="rounded-circle me-3"
                    alt="foto_artista" />
                  <p class="fw-bold m-0">
-                   ${data.artist.name} • ${data.release_date.slice(0, 4)} • <span> ${data.nb_tracks} </span> brani, <span> ${min} </span> min
+                   <a class="text-white text-decoration-none" href="./artist_page.html?id=${data.artist.id}">${data.artist.name}</a> • ${data.release_date.slice(0, 4)} • <span> ${data.nb_tracks} </span> brani, <span> ${min} </span> min
                    <span> ${sec} </span> sec.
                  </p>
                </div>
