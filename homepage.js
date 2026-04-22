@@ -112,7 +112,7 @@ for (let i = 0; i < 4; i++) {
             </div>
           </div>`
 }
-
+// comandi Caroselli creato per & Artisti
 const rightMovement = function (event) {
   if (event === 0) {
     carouselPerTe.scrollBy(consigliati.offsetWidth / 2, 0)
