@@ -108,24 +108,40 @@ const getArtist = function () {
 getArtist()
 
 // funzione di gianni
-for (let i = 0; i < 4; i++) {
-  sezioneVideo.innerHTML += `<div class="video-autoplay col p-4">
-            <p class="mb-2 p-0 text-secondary">Per i fan di rancore</p>
+// preset object per video
+const videoArrayObj = [
+  {
+    name: "Rancore",
+    video: "./assets/video/rancore.mp4",
+    image:
+      "https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/5DkmrXKeWgDS86KKEw45o6/it",
+  },
+  {
+    name: "Tony Pitony",
+    video: "./assets/video/tonypitony.mp4",
+    image:
+      "https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/07yfI2D37Ir0pGQ8huDd4j/it",
+  },
+]
+
+videoArrayObj.forEach((video) => {
+  sezioneVideo.innerHTML += `<div class="col p-4">
+            <p class="mb-2 p-0 text-secondary">Per i fan di ${video.name}</p>
 
             <div class="row position-relative rounded-2 m-0">
               <video class="rounded-2 p-0">
-                <source src="./output.mp4" type="video/mp4" />
+                <source src="${video.video}" type="video/mp4" />
               </video>
               <div
                 class="rounded-top-2 row m-0 position-absolute video-top align-items-center pt-3 pb-5">
                 <div class="col">
                   <img
                     class="img-fluid"
-                    src="https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/5DkmrXKeWgDS86KKEw45o6/it"
+                    src="${video.image}"
                     alt="" />
                 </div>
                 <div class="col-9">
-                  <h3 class="m-0 fw-bold">This is Rancore</h3>
+                  <h3 class="m-0 fw-bold">This is ${video.name}</h3>
                   <p style="font-size: 0.8rem" class="m-0">playlist - spotify</p>
                 </div>
               </div>
@@ -134,17 +150,16 @@ for (let i = 0; i < 4; i++) {
                 <div class="col rounded-bottom-2">
                   <p class="m-0"></p>
                   <p style="font-size: 0.8rem" class="my-5 pt-5 pb-3">
-                    This is Rancore. Tutti i brani in un'unica playlist.
+                    This is ${video.name}. Tutti i brani in un'unica playlist.
                   </p>
                 </div>
               </div>
             </div>
           </div>`
-}
+})
 
 const videoAutoplay = document.querySelectorAll("video")
 videoAutoplay.forEach((video) => {
-  console.log(video)
   video.addEventListener("mouseenter", () => {
     video.play()
   })
