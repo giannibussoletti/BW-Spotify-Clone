@@ -97,20 +97,3 @@ fetch(apiAlbum + albumID)
       .catch((err) => console.log(err))
   })
   .catch((err) => console.log(err))
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
