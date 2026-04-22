@@ -165,15 +165,28 @@ const getLibrary = function (searchValue) {
       }
     })
     .then((data) => {
+      console.log(data)
       const appendLibrary = document.getElementById("appendLibrary")
       appendLibrary.innerHTML = ""
+
       data.data.forEach((track, i) => {
         const titoloAlbum = track.title
         const imgAlbum = track.album.cover_medium
         const artistaAlbum = track.artist.name
+
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
         const cardLibrary = document.createElement("div")
-        cardLibrary.classList.add("col-12", "d-flex", "m-2")
-        cardLibrary.innerHTML = ` <a class="w-25 me-1 text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}"><img
+        cardLibrary.classList.add("col-12", "d-flex", "m-2", "flex-wrap")
+        cardLibrary.innerHTML = ` <a class="text-decoration-none text-white w-25 m-1" target="_blank" href="./album_page.html?id=${data.data[i].album.id}"><img
                 src="${imgAlbum}"
                 alt="Preferiti Spotify"
                 class="img-fluid rounded-1 me-1" /></a>
@@ -267,44 +280,89 @@ inputNavbarValue.addEventListener("keydown", function (event) {
 const nomeArtista = document.querySelectorAll(".name_artist")
 const videoSong = document.getElementById("video_song")
 const cardCorrelati = document.getElementById("card_correlati")
+const name_song = document.getElementById("name_song")
+// const nameArtistsidebar = function (x, y) {
+//   fetch(search + x)
+//     .then((response) => {
+//       if (response.ok) {
+//         return response.json();
+//       } else {
+//         throw new Error("errore" + response.status);
+//       }
+//     })
+//     .then((data) => {
+//       const primoRisultato = data.data[0];
 
+//       // 1. Aggiorna i nomi degli artisti nella lista/sidebar esistente
+//       nomeArtista.forEach((el, index) => {
+//         if (data.data[index]) {
+//           el.innerText = data.data[index].artist.name;
+//         }
+//       });
+
+//       // 2. Aggiorna il video
+//       if (videoSong) videoSong.src = y;
+
+//       // 3. Aggiorna la Card dei correlati (usando il primo risultato)
+//       cardCorrelati.innerHTML = `
+//       <img src="${primoRisultato.album.cover_medium}" class="card-img-top" alt="video_correlati" />
+//       <div class="card-body">
+//         <p class="card-text">
+//           <span class="mt-2">${primoRisultato.album.title}</span>
+//         </p>
+//         <p class="m-0">
+//           <span class="name_artist">${primoRisultato.artist.name}</span>
+//         </p>
+//       </div>`;
+
+//       // 4. Aggiorna il titolo della canzone
+//       // Assicurati che l'elemento 'name_song' non sia dentro 'cardCorrelati'
+//       // altrimenti verrà rimosso quando sovrascrivi innerHTML sopra.
+//       if (name_song) {
+//         name_song.innerHTML = `<h3>${primoRisultato.title}</h3>`;
+//       }
+//     })
+//     .catch((err) => {
+//       console.log("errore", err);
+//     });
+// };
 const nameArtistsidebar = function (x, y) {
   fetch(search + x)
     .then((response) => {
-      if (response.ok) {
-        return response.json()
-      } else {
-        throw new Error("errore" + response.status)
-      }
+      if (!response.ok) throw new Error("Errore " + response.status)
+      return response.json()
     })
     .then((data) => {
-      console.log(data)
-      for (let i = 0; i < data.data.length; i++) {
-        if (nomeArtista[i]) {
-          nomeArtista[i].innerText = data.data[i].artist.name
-          console.log(data.data[i].artist.name)
-        }
+      const primoRisultato = data.data[0]
+      console.log("Dati ricevuti:", primoRisultato)
+      //titolo della canzone
+      const titleElem = document.getElementById("name_song")
+      if (titleElem) {
+        titleElem.innerText = primoRisultato.title
       }
-      for (let i = 0; i < data.data.length; i++) {
+      //nomi degli artisti
+      const tuttiGliArtisti = document.querySelectorAll(".name_artist")
+      tuttiGliArtisti.forEach((span) => {
+        span.innerText = primoRisultato.artist.name
+      })
+
+      //video
+      if (videoSong) {
         videoSong.src = y
       }
-      //
-      //
-      cardCorrelati.innerHTML = `<img
-                        src=${data.data[0].album.cover_medium}
-                        class="card-img-top"
-                        alt="video_correlati"
-                      />
-                      <div class="card-body">
-                        <p class="card-text" id="song_title">
-                          <span class="mt-2">${data.data[0].album.title}</span>
-                        </p>
-                        <p class="m-0">
-                          <span class="name_artist"> ${data.data[0].artist.name} </span>
-                        </p>
-                      </div>`
+      //card dei correlati
+      if (cardCorrelati) {
+        cardCorrelati.innerHTML = `
+          <img src="${primoRisultato.album.cover_medium}" class="card-img-top" alt="video_correlati" />
+          <div class="card-body">
+            <p class="card-text">
+              <span class="mt-2">${primoRisultato.album.title}</span>
+            </p>
+            <p class="m-0">
+              <span class="name_artist">${primoRisultato.artist.name}</span>
+            </p>
+          </div>`
+      }
     })
-    .catch((err) => {
-      console.log("errore", err)
-    })
+    .catch((err) => console.error("Errore nel recupero dati:", err))
 }
