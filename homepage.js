@@ -152,6 +152,9 @@ function scrollRightBtn() {
     behavior: "smooth",
   })
 }
+
+// mettete dei puttana di commenti
+
 const getLibrary = function (searchValue) {
   fetch(search + searchValue)
     .then((res) => {
@@ -163,7 +166,6 @@ const getLibrary = function (searchValue) {
     })
     .then((data) => {
       console.log(data)
-
       const appendLibrary = document.getElementById("appendLibrary")
       appendLibrary.innerHTML = ""
 
@@ -172,6 +174,16 @@ const getLibrary = function (searchValue) {
         const imgAlbum = track.album.cover_medium
         const artistaAlbum = track.artist.name
 
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
         const cardLibrary = document.createElement("div")
         cardLibrary.classList.add("col-12", "d-flex", "m-2", "flex-wrap")
         cardLibrary.innerHTML = ` <img
@@ -193,6 +205,7 @@ const getLibrary = function (searchValue) {
     })
 }
 getLibrary("vasco rossi")
+// questa è un altra funzione
 inputNavbarValue.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     getLibrary(inputNavbarValue.value)
@@ -234,16 +247,23 @@ inputNavbarValue.addEventListener("keydown", function (event) {
           `
           dropdownForSearch.appendChild(elementoLista)
           elementoLista.addEventListener("click", function (event) {
+            nameArtistsidebar(inputNavbarValue.value, img)
             audio.src = link
             audio.play()
             dropdownForSearch.innerHTML = ""
           })
-          const bottonePlay = document.getElementById("bottonePlay")
           bottonePlay.addEventListener("click", function () {
+            const bottonePlay = document.getElementById("bottonePlay")
             if (audio.paused) {
               audio.play()
+              bottonePlay.innerHTML = ` <i class="bi bi-play-fill"></i> `
             } else {
               audio.pause()
+              bottonePlay.innerHTML = `
+              
+                    <i class="bi bi-pause-fill"></i>
+                  
+                    `
             }
           })
         })
@@ -253,9 +273,52 @@ inputNavbarValue.addEventListener("keydown", function (event) {
       })
   }
 })
-// se cancello la ricerca non sparisce il banner
 
-const bottonePlay = document.getElementById("bottonePlay")
-bottonePlay.addEventListener("click", function () {
-  audio.pause()
-})
+// funzione del buon roberto NON TOCCARE
+
+const nomeArtista = document.querySelectorAll(".name_artist")
+const videoSong = document.getElementById("video_song")
+const cardCorrelati = document.querySelectorAll(".card_correlati")
+
+const nameArtistsidebar = function (x, y) {
+  fetch(search + x)
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        throw new Error("errore" + response.status)
+      }
+    })
+    .then((data) => {
+      console.log(data)
+      for (let i = 0; i < data.data.length; i++) {
+        if (nomeArtista[i]) {
+          nomeArtista[i].innerText = data.data[i].artist.name
+          console.log(data.data[i].artist.name)
+        }
+      }
+      for (let i = 0; i < data.data.length; i++) {
+        videoSong.src = y
+      }
+      //
+      //
+      for (let i = 0; i < data.data.length; i++) {
+        cardCorrelati.innerHTML = `<img
+                        src=${data.data[i].album.cover_medium}
+                        class="card-img-top"
+                        alt="video_correlati"
+                      />
+                      <div class="card-body">
+                        <p class="card-text" id="song_title">
+                          <span class="mt-2">${data.data[i].album.title}</span>
+                        </p>
+                        <p class="m-0">
+                          <span class="name_artist"> ${data.data[i].artist.name} </span>
+                        </p>
+                      </div>`
+      }
+    })
+    .catch((err) => {
+      console.log("errore", err)
+    })
+}
