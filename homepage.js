@@ -1,17 +1,14 @@
 const search = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
+// arrayparolericerca${input.value}
 const albumDetails =
   "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+const artistDetails =
+  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
 
-// costanti
 const dropdownForSearch = document.getElementById("dropdownForSearch")
 const inputNavbarValue = document.getElementById("inputNavbar")
 const audio = document.getElementById("audio")
-const progressBar = document.getElementById("range3")
-const currentTimeLabel = progressBar.previousElementSibling
-const durationLabel = progressBar.nextElementSibling
-const bottonePlay = document.getElementById("bottonePlay")
-const volumeBar = document.getElementById("volumeBar")
-const volumeIcon = document.getElementById("volumeIcon")
+
 // Inject Consigliati
 const consigliati = document.getElementById("consigliati")
 const getConsigli = function () {
@@ -71,15 +68,15 @@ const getAlbum = function () {
     .then((data) => {
       data.data.forEach((track) => {
         const id = track.id
-        console.log(track)
+
         const titoloAlbum = track.title
         const imgAlbum = track.album.cover_medium
         const artistaAlbum = track.artist.name
         const cardCarosello = document.createElement("div")
         cardCarosello.classList.add("card", "col-6", "m-3", "position-relative")
-        cardCarosello.innerHTML = `<a href="./album_page.html?id=${track.album.id}"><img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid w-100 rounded-1 mt-3"></a>
+        cardCarosello.innerHTML = `<img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid rounded-1 mt-3">
                        <div class="card-body">
-                       <p class="card-text fs-5">${titoloAlbum}</p>
+                       <p class="card-text fs-5">${artistaAlbum}</p>
                        <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
                        </div>`
         carouselPerTe.appendChild(cardCarosello)
@@ -93,7 +90,7 @@ const getAlbum = function () {
     })
 }
 getAlbum()
-//
+
 const getArtist = function () {
   fetch(search + "underground rok")
     .then((response) => {
@@ -104,7 +101,6 @@ const getArtist = function () {
       }
     })
     .then((artist) => {
-      console.log(artist.data)
       artist.data.forEach((info) => {
         const cardArtista = document.createElement("div")
         cardArtista.classList.add(
@@ -114,10 +110,10 @@ const getArtist = function () {
           "position-relative",
           "bg-transparent",
         )
-        cardArtista.innerHTML += `<a href="./artist_page.html?id=${info.artist.id}"><img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle mt-3"></a>
+        cardArtista.innerHTML += `<img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle mt-3">
                        <div class="card-body">
                        <p class="card-text text-center fs-5">${info.artist.name}</p>
-                       
+
                        </div>`
         artistiCarousel.appendChild(cardArtista)
       })
@@ -125,6 +121,7 @@ const getArtist = function () {
     .catch((err) => console.log(err))
 }
 getArtist()
+
 // funzione di gianni
 // preset object per video
 const videoArrayObj = [
@@ -139,12 +136,6 @@ const videoArrayObj = [
     video: "./assets/video/tonypitony.mp4",
     image:
       "https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/07yfI2D37Ir0pGQ8huDd4j/it",
-  },
-  {
-    name: "blink-182",
-    video: "./assets/video/blink.mp4",
-    image:
-      "https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/6FBDaR13swtiWwGhX1WQsP/it",
   },
 ]
 
@@ -200,6 +191,7 @@ const rightMovement = function (event) {
     artistiCarousel.scrollBy(artistiCarousel.offsetWidth / 2, 0)
   }
 }
+window.rightMovement = rightMovement
 const leftMovement = function (event) {
   if (event === 0) {
     carouselPerTe.scrollBy(-consigliati.offsetWidth / 2, 0)
@@ -207,6 +199,7 @@ const leftMovement = function (event) {
     artistiCarousel.scrollBy(-artistiCarousel.offsetWidth / 2, 0)
   }
 }
+window.leftMovement = leftMovement
 // funzione di movimento carosello
 function scrollLeftBtn() {
   document.getElementById("scroll").scrollBy({
@@ -222,7 +215,7 @@ function scrollRightBtn() {
 }
 
 // mettete dei puttana di commenti
-// sempre cosi dolce sto ragazzo
+
 const getLibrary = function (searchValue) {
   fetch(search + searchValue)
     .then((res) => {
@@ -261,11 +254,11 @@ const getLibrary = function (searchValue) {
     })
 }
 getLibrary("kanye West")
+
 // questa è un altra funzione
 inputNavbarValue.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     getLibrary(inputNavbarValue.value)
-
     fetch(search + inputNavbarValue.value)
       .then((res) => {
         if (res.ok) {
@@ -278,13 +271,12 @@ inputNavbarValue.addEventListener("keydown", function (event) {
         console.log(data)
         dropdownForSearch.innerHTML =
           '<li class="list-group-item text-white fs-4" value="">Ricerche recenti</li>'
-        data.data.slice(0, 5).forEach((tracks) => {
+        data.data.slice(0, 5).forEach((tracks, i) => {
           const elementoLista = document.createElement("li")
           const link = tracks.preview
           const title = tracks.title
           const name = tracks.artist.name
           const img = tracks.album.cover_medium
-
           elementoLista.classList.add("list-group-item", "p-2")
           elementoLista.innerHTML = `
           <div class="card rounded-2 p-0 h-100" >
@@ -309,7 +301,6 @@ inputNavbarValue.addEventListener("keydown", function (event) {
             nameArtistsidebar(inputNavbarValue.value, img)
             audio.src = link
             audio.play()
-            bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`
             dropdownForSearch.innerHTML = ""
             const branoInEsecuzione = document.getElementById(
               "brano-in-esecuzione",
@@ -330,6 +321,28 @@ inputNavbarValue.addEventListener("keydown", function (event) {
                 </div>
               </div>`
           })
+          // bottonePlay.addEventListener("click", function () {
+          //   const bottonePlay = document.getElementById("bottonePlay")
+          //   if (audio.paused) {
+          //     audio.play()
+          //     bottonePlay.innerHTML = ` <i class="bi bi-play-fill"></i> `
+          //   } else {
+          //     audio.pause()
+          //     bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`
+          //   }
+          // })
+          const bottonePlay = document.querySelectorAll(".bottonePlay")
+          bottonePlay.forEach((element) => {
+            element.addEventListener("click", function () {
+              if (audio.paused) {
+                audio.play()
+                element.innerHTML = ` <i class="bi bi-play-fill"></i> `
+              } else {
+                audio.pause()
+                element.innerHTML = `<i class="bi bi-pause-fill"></i>`
+              }
+            })
+          })
         })
       })
       .catch((err) => {
@@ -337,61 +350,7 @@ inputNavbarValue.addEventListener("keydown", function (event) {
       })
   }
 })
-//funzione del play
-bottonePlay.addEventListener("click", function () {
-  if (audio.paused) {
-    audio.play()
-    this.innerHTML = ` <i class="bi bi-pause-fill"></i> `
-  } else {
-    audio.pause()
-    this.innerHTML = `<i class="bi bi-play-fill"></i>`
-  }
-})
-audio.addEventListener("loadedmetadata", function () {
-  progressBar.max = Math.floor(audio.duration)
-  durationLabel.innerText = formatTime(audio.duration)
-})
-audio.addEventListener("timeupdate", function () {
-  progressBar.value = Math.floor(audio.currentTime)
-  currentTimeLabel.innerText = formatTime(audio.currentTime)
-})
-progressBar.addEventListener("input", function () {
-  audio.currentTime = progressBar.value
-})
-function formatTime(time) {
-  if (isNaN(time)) return "0:00"
-  const minutes = Math.floor(time / 60)
-  const seconds = Math.floor(time % 60)
-  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`
-}
-//funzione volume
-volumeBar.addEventListener("input", function () {
-  const value = this.value
-  audio.volume = value
-  const icon = volumeIcon.querySelector("i")
-  if (value == 0) {
-    icon.className = "bi bi-volume-mute"
-  } else if (value < 0.5) {
-    icon.className = "bi bi-volume-down"
-  } else {
-    icon.className = "bi bi-volume-up"
-  }
-})
-let lastVolume = 1
-volumeIcon.addEventListener("click", function () {
-  const icon = this.querySelector("i")
 
-  if (audio.volume > 0) {
-    lastVolume = audio.volume
-    audio.volume = 0
-    volumeBar.value = 0
-    icon.className = "bi bi-volume-mute"
-  } else {
-    audio.volume = lastVolume
-    volumeBar.value = lastVolume
-    icon.className = lastVolume < 0.5 ? "bi bi-volume-down" : "bi bi-volume-up"
-  }
-})
 // funzione del buon roberto NON TOCCARE
 
 const nomeArtista = document.querySelectorAll(".name_artist")
@@ -407,7 +366,6 @@ const nameArtistsidebar = function (x, y) {
     })
     .then((data) => {
       const primoRisultato = data.data[0]
-
       //titolo della canzone
       if (nameSong) {
         nameSong.innerText = primoRisultato.title

@@ -12,7 +12,36 @@ const artistName = document.getElementById("artist-name")
 const tracklistContainer = document.getElementById("tracklist-container")
 const albumsContainer = document.getElementById("albums-container")
 const featuringContainer = document.getElementById("featuring-container")
-const audio = document.getElementById("audio-player")
+const audioArt = document.getElementById("audio-player")
+
+/**
+ * Funzione per creare la griglia degli album
+ */
+const populateAlbums = function (albums) {
+  if (!albumsContainer) return
+  albumsContainer.innerHTML = ""
+
+  albums.forEach((album) => {
+    const col = document.createElement("div")
+    col.classList.add("col-6", "col-md-4", "col-lg-2", "mb-4")
+
+    col.innerHTML = `
+      <div class="card bg-transparent border-0 h-100 album-card" style="cursor: pointer;">
+        <img src="${album.cover_medium}" class="card-img-top rounded shadow mb-2" alt="${album.title}">
+        <div class="card-body p-0">
+          <p class="m-0 fw-bold text-white text-truncate small">${album.title}</p>
+          <p class="m-0 text-secondary x-small">${new Date(album.release_date).getFullYear()} • Album</p>
+        </div>
+      </div>
+    `
+
+    col.onclick = () => {
+      window.location.href = `album_page.html?id=${album.id}`
+    }
+
+    albumsContainer.appendChild(col)
+  })
+}
 
 /**
  * Funzione principale che inizializza la pagina
@@ -34,7 +63,8 @@ const initArtistPage = function () {
 
       // numero fan nel banner
       const fanCount = document.getElementById("fan-count")
-      if (fanCount) fanCount.innerText = `${artist.nb_fan.toLocaleString()} `
+      if (fanCount)
+        fanCount.innerText = `${artist.nb_fan.toLocaleString()} ascoltatori mensili`
 
       // Popolamento la sezione INFORMAZIONI
       const infoFanCount = document.getElementById("info-fan-count")
@@ -112,12 +142,14 @@ const initArtistPage = function () {
     .then((res) => res.json())
     .then((searchData) => {
       populateTracklist(searchData.data)
+
       // TERZA FETCH: Album (Discografia)
       return fetch(artistApi + artistId + "/albums")
     })
     .then((res) => res.json())
     .then((albumsData) => {
-      populateAlbums(albumsData.data.slice(0, 10))
+      console.log(albumsData.data)
+      populateAlbums(albumsData.data)
       // QUARTA FETCH: Album con l'artista
       return fetch(artistApi + artistId + "/related")
     })
@@ -160,8 +192,8 @@ const populateTracklist = function (tracks) {
         <img src="${track.album.cover_small}" class="rounded shadow-sm" alt="cover" style="width: 40px">
       </div>
       <div class="col-6">
-        <p class="m-0 fs-5 fw-bold text-white text-truncate small">${track.title}</p>
-        <p class="m-0 fs-6 x-small text-secondary">${track.artist.name}</p>
+        <p class="m-0 fw-bold text-white text-truncate small">${track.title}</p>
+        <p class="m-0 x-small text-secondary">${track.artist.name}</p>
       </div>
       <div class="col-2 text-secondary small d-none d-md-block text-truncate">
         ${track.rank.toLocaleString()}
@@ -176,35 +208,6 @@ const populateTracklist = function (tracks) {
     })
 
     tracklistContainer.appendChild(row)
-  })
-}
-
-/**
- * Funzione per creare la griglia degli album
- */
-const populateAlbums = function (albums) {
-  if (!albumsContainer) return
-  albumsContainer.innerHTML = ""
-
-  albums.forEach((album) => {
-    const col = document.createElement("div")
-    col.classList.add("col-6", "col-md-4", "col-lg-2", "mb-4")
-
-    col.innerHTML = `
-      <div class="card bg-transparent border-0 h-100 album-card" style="cursor: pointer;">
-        <img src="${album.cover_medium}" class="card-img-top rounded shadow mb-2" alt="${album.title}">
-        <div class="card-body p-0">
-          <p class="m-0 fw-bold text-white text-truncate small">${album.title}</p>
-          <p class="m-0 text-secondary x-small">${new Date(album.release_date).getFullYear()} • Album</p>
-        </div>
-      </div>
-    `
-
-    col.onclick = () => {
-      window.location.href = `album_page.html?id=${album.id}`
-    }
-
-    albumsContainer.appendChild(col)
   })
 }
 
@@ -248,9 +251,9 @@ const updateFooterPlayer = function (track) {
   if (footerTitle) footerTitle.innerText = track.title
   if (footerArtist) footerArtist.innerText = track.artist.name
 
-  if (audio) {
-    audio.src = track.preview
-    audio
+  if (audioArt) {
+    audioArt.src = track.preview
+    audioArt
       .play()
       .catch((e) => console.log("Riproduzione interrotta o non disponibile"))
     if (masterPlay) masterPlay.innerHTML = '<i class="bi bi-pause-fill"></i>'
