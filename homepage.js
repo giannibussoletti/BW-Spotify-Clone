@@ -109,7 +109,7 @@ getArtist()
 
 // funzione di gianni
 for (let i = 0; i < 4; i++) {
-  sezioneVideo.innerHTML += `<div class="col p-4">
+  sezioneVideo.innerHTML += `<div class="video-autoplay col p-4">
             <p class="mb-2 p-0 text-secondary">Per i fan di rancore</p>
 
             <div class="row position-relative rounded-2 m-0">
@@ -141,6 +141,18 @@ for (let i = 0; i < 4; i++) {
             </div>
           </div>`
 }
+
+const videoAutoplay = document.querySelectorAll("video")
+videoAutoplay.forEach((video) => {
+  console.log(video)
+  video.addEventListener("mouseenter", () => {
+    video.play()
+  })
+  video.addEventListener("mouseleave", () => {
+    video.pause()
+  })
+})
+
 // comandi Caroselli creato per & Artisti
 const rightMovement = function (event) {
   if (event === 0) {
