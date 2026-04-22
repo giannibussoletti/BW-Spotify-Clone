@@ -68,3 +68,13 @@ fetch(searchWorld)
   .catch((err) => {
     console.log("Errore", err)
   })
+
+  
+document.addEventListener("click", function (e) {
+  const card = e.target.closest(".card-sfoglia");
+  if (card) {
+    const artistName = card.querySelector("#name-singer").innerText;
+    window.location.href = `artist_page.html?id=${artistName}`; 
+    // Nota: se passi il nome, il mio artist_page.js lo gestirà tramite la search
+  }
+});

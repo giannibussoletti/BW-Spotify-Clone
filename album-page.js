@@ -19,9 +19,9 @@ fetch(apiAlbum + albumID)
     }
   })
   .then((data) => {
-    shuffleImg.setAttribute("src", data.artist.picture_small)
+    // shuffleImg.setAttribute("src", data.artist.picture_small)
 
-    altroDaTitle.innerText = `Altro di ${data.artist.name}`
+    altroDaTitle.innerText = `Altro da ${data.artist.name}`
     const timeArray = (data.duration / 60).toString().split("")
     const dotIndex = timeArray.indexOf(".")
     const min = timeArray.slice(0, dotIndex).join("")
@@ -57,12 +57,12 @@ fetch(apiAlbum + albumID)
         sec = sec + "0"
       }
 
-      tracklist.innerHTML += `<div class="row align-items-center">
+      tracklist.innerHTML += `<div class="row align-items-center mb-2">
                 <div class="col-1 text-center fs-5">${i + 1}</div>
                 <div class="col-10">
                   <div class="d-flex flex-column">
-                    <p class="fw-bold mb-1 fs-3">${track.title_short}</p>
-                    <p class="text-secondary fs-5 mb-0">${track.artist.name}</p>
+                    <p class="fw-bold mb-1 fs-5">${track.title_short}</p>
+                    <p class="text-secondary fs-6 mb-0">${track.artist.name}</p>
                   </div>
                 </div>
                 <div class="col-1 m-0">
@@ -80,14 +80,14 @@ fetch(apiAlbum + albumID)
         }
       })
       .then((data) => {
-        data.data.forEach((info) => {
+        data.data.slice(0, 10).forEach((info) => {
           console.log(info)
           altroDischi.innerHTML += `
     <div class="col">
         <div class="card bg-transparent border-0 mt-3">
             <a href="./album_page.html?id=${info.album.id}"><img src="${info.album.cover_medium}" class="card-img-top" alt="foto_album" /></a>
             <div class="card-body">
-            <p class="card-text fs- m-0"><a class="text-white text-decoration-none" href="./album_page.html?id=${info.album.id}">${info.title_short}</a></p>
+            <p class="card-text m-0"><a class="text-white text-decoration-none" href="./album_page.html?id=${info.album.id}">${info.title_short}</a></p>
             <p class="card-text"><a class="text-secondary text-decoration-none" href="./album_page.html?id=${info.album.id}">${info.album.title}</a></p>
         </div>
     </div>

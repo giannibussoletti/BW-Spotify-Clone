@@ -229,18 +229,32 @@
     <main class="position-relative">
       <div class="container-fluid m-0 position-absolute" style="top: 68px">
         <div class="row">
-          <div class="col-2 indipendent-scroll">
-            <div class="col-12 d-flex justify-content-between m-3">
-              <div><h5>La tua libreria</h5></div>
+          <div class="col-2 indipendent-scroll d-none d-lg-block">
+            <div class="col-12 d-flex justify-content-between align-items-center my-3">
               <div>
-                <button class="btn btn-secondary rounded-circle text-light">
-                  <i class="bi bi-plus-lg"></i></button
-                ><i class="bi bi-arrows-angle-expand m-2"></i>
+                <h6 class="fw-bolder text-white m-0">La tua libreria</h6>
+              </div>
+              <div>
+                <button
+                  class="btn bg-secondary bg-opacity-50"
+                  style="
+                    min-width: 40px;
+                    height: 40px;
+                    padding-top: 8px;
+                    border-radius: 50px;
+                    scale: 0.8;
+                  ">
+                  <i class="bi bi-plus-lg fqw"></i>
+                </button>
+                <i class="bi bi-arrows-angle-expand m-2"></i>
               </div>
             </div>
-            <div class="col-12 m-2 d-flex align-items-center">
+            <div class="col-12 my-3 d-flex align-items-center">
               <div class="d-flex align-items-center w-100 bg-transparent">
-                <button class="btn btn-secondary rounded-circle" onclick="scrollLeftBtn()">
+                <button
+                  style="min-width: 40px; height: 40px; padding-top: 8px; border-radius: 50px"
+                  class="btn bg-secondary bg-opacity-50"
+                  onclick="scrollLeftBtn()">
                   <i class="bi bi-chevron-compact-left"></i>
                 </button>
                 <div class="scroll-container flex-grow-1" id="scroll">
@@ -261,7 +275,10 @@
                     Podcast
                   </button>
                 </div>
-                <button class="btn btn-secondary rounded-circle shadow" onclick="scrollRightBtn()">
+                <button
+                  style="min-width: 40px; height: 40px; padding-top: 8px; border-radius: 50px"
+                  class="btn bg-secondary bg-opacity-50"
+                  onclick="scrollRightBtn()">
                   <i class="bi bi-chevron-compact-right"></i>
                 </button>
               </div>
@@ -275,12 +292,15 @@
                 <i class="bi bi-list-ul ms-1"></i>
               </div>
             </div>
-            <div class="col-12 d-flex m-2">
-              <img
-                src="https://www.placecats.com/100/100"
-                alt="Preferiti Spotify"
-                class="img-fluid w-25 rounded-1 me-1" />
-              <div class="d-flex flex-column">
+            <div class="col-12 d-flex flex-wrap my-2">
+              <!-- da sistemare -->
+              <div
+                class="text-white rounded-2 p-1 d-flex justify-content-center align-content-center"
+                id="gradientheart"
+                style="width: 90px; height: 90px">
+                <i class="bi bi-heart-fill h-100"></i>
+              </div>
+              <div class="d-flex flex-column ms-2">
                 <h6 class="text-success">Brani che ti piacciono</h6>
                 <div class="d-flex">
                   <i class="bi bi-pin-angle-fill text-success me-3"></i>
@@ -289,19 +309,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 d-flex m-2">
-              <img
-                src="https://www.placecats.com/100/100"
-                alt="Preferiti Spotify"
-                class="img-fluid w-25 rounded-1 me-1" />
-              <div class="d-flex flex-column">
-                <h6>Donne ricche</h6>
-                <div class="d-flex">
-                  <p>Album</p>
-                  <p class="ms-1">• Tony Pitoni</p>
-                </div>
-              </div>
-            </div>
+            <div id="appendLibrary"></div>
           </div>
           <div style="margin-top: 68px" class="col-8 indipendent-scroll main-page">
             <div id="info-album" class="bg-gradient d-flex align-items-center"></div>
@@ -315,16 +323,17 @@
                   ><i class="bi bi-play-fill"></i
                 ></a>
                 <!-- img -->
-                <img
+                <!-- <img
                   id="little-img"
                   src="..."
                   alt=" foto_short"
-                  class="rounded-3 me-3 border border-2 border-light" />
+                  class="rounded-3 me-3 border border-2 border-light"
+                /> -->
                 <!-- shuffle -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="50"
-                  height="50"
+                  width="35"
+                  height="35"
                   fill="currentColor"
                   class="bi bi-shuffle me-3 text-secondary"
                   viewBox="0 0 16 16">
@@ -337,8 +346,8 @@
                 <!-- plus -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="50"
-                  height="50"
+                  width="35"
+                  height="35"
                   fill="currentColor"
                   class="bi bi-plus-circle me-3 text-secondary"
                   viewBox="0 0 16 16">
@@ -349,8 +358,8 @@
                 <!-- arrow -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="50"
-                  height="50"
+                  width="35"
+                  height="35"
                   fill="currentColor"
                   class="bi bi-arrow-down-circle me-3 text-secondary"
                   viewBox="0 0 16 16">
@@ -361,8 +370,8 @@
                 <!-- dots -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="50"
-                  height="50"
+                  width="35"
+                  height="35"
                   fill="currentColor"
                   class="bi bi-three-dots me-3 text-secondary"
                   viewBox="0 0 16 16">
@@ -431,7 +440,7 @@
             <!-- fine lista canzoni/tempo -->
             <!-- album list/card -->
             <div class="d-flex justify-content-between align-items-center">
-              <h5 id="altro-da" class="mb-0 mt-4 fw-bold fs-3">Altro di...</h5>
+              <h5 id="altro-da" class="mb-0 mt-4 fw-bold fs-3">Altro da...</h5>
               <p class="mb-0 mt-4">
                 <a href="#" class="mb-0 text-secondary text-decoration-none fw-bold"
                   >Vedi discografia</a
@@ -440,7 +449,7 @@
             </div>
             <!-- card altro -->
             <div
-              class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-5"
+              class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5"
               id="altri-dischi"></div>
             <!-- fine card altro -->
             <!--fine album  list/card -->
