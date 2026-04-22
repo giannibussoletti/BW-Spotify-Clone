@@ -12,7 +12,7 @@ const audio = document.getElementById("audio");
 // Inject Consigliati
 const consigliati = document.getElementById("consigliati");
 const getConsigli = function () {
-  fetch(search + "rihanna")
+  fetch(search + "Childish Gambino")
     .then((res) => {
       if (res.ok) {
         return res.json();
@@ -42,7 +42,7 @@ const getConsigli = function () {
         <img class="rounded-start-2"
         style="height: 50px; width: 50px"
         src="${imgAlbum}" />
-        <p class="m-0 ms-3 fw-bold">${titoloAlbum}</p>
+        <p class="m-0 ms-3 fw-bold"><a class="text-decoration-none text-white" href="./album_page.html?id=${track.album.id}">${titoloAlbum}</a></p>
         </div>
         </div>`;
         consigliati.appendChild(cardCarosello);
@@ -129,7 +129,7 @@ for (let i = 0; i < 4; i++) {
             </div>
           </div>`;
 }
-
+// comandi Caroselli creato per & Artisti
 const rightMovement = function (event) {
   if (event === 0) {
     carouselPerTe.scrollBy(consigliati.offsetWidth / 2, 0);
@@ -194,12 +194,12 @@ const getLibrary = function (searchValue) {
         cardLibrary.innerHTML = ` <img
                 src="${imgAlbum}"
                 alt="Preferiti Spotify"
-                class="img-fluid w-25 rounded-1 me-1" />
+                class="img-fluid rounded-1 me-1" /></a>
               <div class="d-flex flex-column">
-                <h6>${titoloAlbum}</h6>
+                <h6><a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${titoloAlbum}</a></h6>
                 <div class="d-flex">
                   <p>Album</p>
-                  <p class="ms-1">• ${artistaAlbum}</p>
+                  <p class="ms-1">• <a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${artistaAlbum}</a></p>
                 </div>
               </div>`;
         appendLibrary.appendChild(cardLibrary);
