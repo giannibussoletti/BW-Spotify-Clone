@@ -1,42 +1,32 @@
-const search = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
+const search = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
 // arrayparolericerca${input.value}
-const albumDetails =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";
-const artistDetails =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062";
+const albumDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
 
-const dropdownForSearch = document.getElementById("dropdownForSearch");
-const inputNavbarValue = document.getElementById("inputNavbar");
-const audio = document.getElementById("audio");
+const dropdownForSearch = document.getElementById("dropdownForSearch")
+const inputNavbarValue = document.getElementById("inputNavbar")
+const audio = document.getElementById("audio")
 
 // Inject Consigliati
-const consigliati = document.getElementById("consigliati");
+const consigliati = document.getElementById("consigliati")
 const getConsigli = function () {
   fetch(search + "Childish Gambino")
     .then((res) => {
       if (res.ok) {
-        return res.json();
+        return res.json()
       } else {
-        throw new Error(res.status);
+        throw new Error(res.status)
       }
     })
     .then((data) => {
-      console.log(data);
       data.data.slice(0, 8).forEach((track) => {
-        const id = track.id;
-        console.log(id);
-        const titoloAlbum = track.title;
-        const imgAlbum = track.album.cover_medium;
-        const artistaAlbum = track.artist.name;
-        console.log(titoloAlbum, imgAlbum, artistaAlbum);
-        const cardCarosello = document.createElement("div");
-        cardCarosello.classList.add(
-          "card",
-          "d-flex",
-          "border-0",
-          "bg-transparent",
-          "flex",
-        );
+        const id = track.id
+
+        const titoloAlbum = track.title
+        const imgAlbum = track.album.cover_medium
+        const artistaAlbum = track.artist.name
+
+        const cardCarosello = document.createElement("div")
+        cardCarosello.classList.add("card", "d-flex", "border-0", "bg-transparent", "flex")
         cardCarosello.innerHTML = `<div class="col m-0 p-2">
         <div class="d-flex align-items-center bg-dark bg-opacity-75 rounded-2 p-2">
         <img class="rounded-start-2"
@@ -44,57 +34,79 @@ const getConsigli = function () {
         src="${imgAlbum}" />
         <p class="m-0 ms-3 fw-bold"><a class="text-decoration-none text-white" href="./album_page.html?id=${track.album.id}">${titoloAlbum}</a></p>
         </div>
-        </div>`;
-        consigliati.appendChild(cardCarosello);
-      });
+        </div>`
+        consigliati.appendChild(cardCarosello)
+      })
     })
     .catch((err) => {
-      console.log(err);
-    });
-};
-getConsigli();
+      console.log(err)
+    })
+}
+getConsigli()
 // Inject carosello
-const artistiCarousel = document.getElementById("artisti-carousel");
-const sezioneVideo = document.getElementById("video-row");
-const carouselPerTe = document.getElementById("per-te-carousel");
+const artistiCarousel = document.getElementById("artisti-carousel")
+const sezioneVideo = document.getElementById("video-row")
+const carouselPerTe = document.getElementById("per-te-carousel")
 const getAlbum = function () {
   fetch(search + "rock")
     .then((res) => {
       if (res.ok) {
-        return res.json();
+        return res.json()
       } else {
-        throw new Error(res.status);
+        throw new Error(res.status)
       }
     })
     .then((data) => {
-      console.log(data);
       data.data.forEach((track) => {
-        const id = track.id;
-        console.log(id);
-        const titoloAlbum = track.title;
-        const imgAlbum = track.album.cover_medium;
-        const artistaAlbum = track.artist.name;
-        console.log(titoloAlbum, imgAlbum, artistaAlbum);
-        const cardCarosello = document.createElement("div");
-        cardCarosello.classList.add(
-          "card",
-          "col-6",
-          "m-3",
-          "position-relative",
-        );
+        const id = track.id
+
+        const titoloAlbum = track.title
+        const imgAlbum = track.album.cover_medium
+        const artistaAlbum = track.artist.name
+        const cardCarosello = document.createElement("div")
+        cardCarosello.classList.add("card", "col-6", "m-3", "position-relative")
         cardCarosello.innerHTML = `<img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid rounded-1 mt-3">
                        <div class="card-body">
                        <p class="card-text fs-5">${artistaAlbum}</p>
                        <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
-                       </div>`;
-        carouselPerTe.appendChild(cardCarosello);
-      });
+                       </div>`
+        carouselPerTe.appendChild(cardCarosello)
+        //
+        //
+        //
+      })
     })
     .catch((err) => {
-      console.log(err);
-    });
-};
-getAlbum();
+      console.log(err)
+    })
+}
+getAlbum()
+
+const getArtist = function () {
+  fetch(search + "underground rok")
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        throw new Error((response) => response.status)
+      }
+    })
+    .then((artist) => {
+      artist.data.forEach((info) => {
+        const cardArtista = document.createElement("div")
+        cardArtista.classList.add("card", "col", "m-3", "position-relative", "bg-transparent")
+        cardArtista.innerHTML += `<img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle mt-3">
+                       <div class="card-body">
+                       <p class="card-text text-center fs-5">${info.artist.name}</p>
+                       
+                       </div>`
+        artistiCarousel.appendChild(cardArtista)
+      })
+    })
+    .catch((err) => console.log(err))
+}
+getArtist()
+
 // funzione di gianni
 for (let i = 0; i < 4; i++) {
   sezioneVideo.innerHTML += `<div class="col p-4">
@@ -127,35 +139,35 @@ for (let i = 0; i < 4; i++) {
                 </div>
               </div>
             </div>
-          </div>`;
+          </div>`
 }
 // comandi Caroselli creato per & Artisti
 const rightMovement = function (event) {
   if (event === 0) {
-    carouselPerTe.scrollBy(consigliati.offsetWidth / 2, 0);
+    carouselPerTe.scrollBy(consigliati.offsetWidth / 2, 0)
   } else if (event === 1) {
-    artistiCarousel.scrollBy(artistiCarousel.offsetWidth / 2, 0);
+    artistiCarousel.scrollBy(artistiCarousel.offsetWidth / 2, 0)
   }
-};
+}
 const leftMovement = function (event) {
   if (event === 0) {
-    carouselPerTe.scrollBy(-consigliati.offsetWidth / 2, 0);
+    carouselPerTe.scrollBy(-consigliati.offsetWidth / 2, 0)
   } else if (event === 1) {
-    artistiCarousel.scrollBy(-artistiCarousel.offsetWidth / 2, 0);
+    artistiCarousel.scrollBy(-artistiCarousel.offsetWidth / 2, 0)
   }
-};
+}
 // funzione di movimento carosello
 function scrollLeftBtn() {
   document.getElementById("scroll").scrollBy({
     left: -200,
     behavior: "smooth",
-  });
+  })
 }
 function scrollRightBtn() {
   document.getElementById("scroll").scrollBy({
     left: 200,
     behavior: "smooth",
-  });
+  })
 }
 
 // mettete dei puttana di commenti
@@ -164,22 +176,21 @@ const getLibrary = function (searchValue) {
   fetch(search + searchValue)
     .then((res) => {
       if (res.ok) {
-        return res.json();
+        return res.json()
       } else {
-        throw new Error(res.status);
+        throw new Error(res.status)
       }
     })
     .then((data) => {
-      console.log(data);
-      const appendLibrary = document.getElementById("appendLibrary");
-      appendLibrary.innerHTML = "";
+      const appendLibrary = document.getElementById("appendLibrary")
+      appendLibrary.innerHTML = ""
 
       data.data.forEach((track, i) => {
-        const titoloAlbum = track.title;
-        const imgAlbum = track.album.cover_medium;
-        const artistaAlbum = track.artist.name;
-        const cardLibrary = document.createElement("div");
-        cardLibrary.classList.add("col-12", "d-flex", "m-2", "flex-wrap");
+        const titoloAlbum = track.title
+        const imgAlbum = track.album.cover_medium
+        const artistaAlbum = track.artist.name
+        const cardLibrary = document.createElement("div")
+        cardLibrary.classList.add("col-12", "d-flex", "m-2", "flex-wrap")
         cardLibrary.innerHTML = ` <a class="text-decoration-none text-white w-25 m-1" target="_blank" href="./album_page.html?id=${data.data[i].album.id}"><img
                 src="${imgAlbum}"
                 alt="Preferiti Spotify"
@@ -190,40 +201,39 @@ const getLibrary = function (searchValue) {
                   <p>Album</p>
                   <p class="ms-1">• <a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${artistaAlbum}</a></p>
                 </div>
-              </div>`;
-        appendLibrary.appendChild(cardLibrary);
-      });
+              </div>`
+        appendLibrary.appendChild(cardLibrary)
+      })
     })
     .catch((err) => {
-      console.log(err);
-    });
-};
-getLibrary("kanye West");
+      console.log(err)
+    })
+}
+getLibrary("kanye West")
 // questa è un altra funzione
 inputNavbarValue.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    getLibrary(inputNavbarValue.value);
-    console.log(inputNavbarValue.value);
+    getLibrary(inputNavbarValue.value)
+
     fetch(search + inputNavbarValue.value)
       .then((res) => {
         if (res.ok) {
-          return res.json();
+          return res.json()
         } else {
-          throw new Error(res.status);
+          throw new Error(res.status)
         }
       })
       .then((data) => {
-        console.log(data);
         dropdownForSearch.innerHTML =
-          '<li class="list-group-item text-white fs-4" value="">Ricerche recenti</li>';
+          '<li class="list-group-item text-white fs-4" value="">Ricerche recenti</li>'
         data.data.slice(0, 5).forEach((tracks) => {
-          const elementoLista = document.createElement("li");
-          const link = tracks.preview;
-          const title = tracks.title;
-          const name = tracks.artist.name;
-          const img = tracks.album.cover_medium;
-          console.log(link);
-          elementoLista.classList.add("list-group-item", "p-2");
+          const elementoLista = document.createElement("li")
+          const link = tracks.preview
+          const title = tracks.title
+          const name = tracks.artist.name
+          const img = tracks.album.cover_medium
+
+          elementoLista.classList.add("list-group-item", "p-2")
           elementoLista.innerHTML = `
           <div class="card rounded-2 p-0 h-100" >
           <div class="row g-0 d-flex">
@@ -238,17 +248,15 @@ inputNavbarValue.addEventListener("keydown", function (event) {
           </div>
           </div>
           </div>
-          `;
-          dropdownForSearch.appendChild(elementoLista);
+          `
+          dropdownForSearch.appendChild(elementoLista)
           elementoLista.addEventListener("click", function (event) {
-            nameArtistsidebar(inputNavbarValue.value, img);
-            audio.src = link;
-            audio.play();
-            dropdownForSearch.innerHTML = "";
-            const branoInEsecuzione = document.getElementById(
-              "brano-in-esecuzione",
-            );
-            branoInEsecuzione.innerHTML = "";
+            nameArtistsidebar(inputNavbarValue.value, img)
+            audio.src = link
+            audio.play()
+            dropdownForSearch.innerHTML = ""
+            const branoInEsecuzione = document.getElementById("brano-in-esecuzione")
+            branoInEsecuzione.innerHTML = ""
             branoInEsecuzione.innerHTML = `<div class="d-flex">
                 <img
                   style="width: 80px; height: auto;"
@@ -262,55 +270,55 @@ inputNavbarValue.addEventListener("keydown", function (event) {
                 <div class="d-flex align-items-center ms-3">
                   <i class="bi bi-check-circle-fill text-success"></i>
                 </div>
-              </div>`;
-          });
+              </div>`
+          })
           bottonePlay.addEventListener("click", function () {
-            const bottonePlay = document.getElementById("bottonePlay");
+            const bottonePlay = document.getElementById("bottonePlay")
             if (audio.paused) {
-              audio.play();
-              bottonePlay.innerHTML = ` <i class="bi bi-play-fill"></i> `;
+              audio.play()
+              bottonePlay.innerHTML = ` <i class="bi bi-play-fill"></i> `
             } else {
-              audio.pause();
-              bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`;
+              audio.pause()
+              bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`
             }
-          });
-        });
+          })
+        })
       })
       .catch((err) => {
-        console.log(err);
-      });
+        console.log(err)
+      })
   }
-});
+})
 
 // funzione del buon roberto NON TOCCARE
 
-const nomeArtista = document.querySelectorAll(".name_artist");
-const videoSong = document.getElementById("video_song");
-const cardCorrelati = document.querySelectorAll(".card-video-correlati");
-const nameSong = document.getElementById("name_song");
-const infoArtista = document.getElementById("info_artista");
+const nomeArtista = document.querySelectorAll(".name_artist")
+const videoSong = document.getElementById("video_song")
+const cardCorrelati = document.querySelectorAll(".card-video-correlati")
+const nameSong = document.getElementById("name_song")
+const infoArtista = document.getElementById("info_artista")
 const nameArtistsidebar = function (x, y) {
   fetch(search + x)
     .then((response) => {
-      if (!response.ok) throw new Error("Errore " + response.status);
-      return response.json();
+      if (!response.ok) throw new Error("Errore " + response.status)
+      return response.json()
     })
     .then((data) => {
-      const primoRisultato = data.data[0];
-      console.log("Dati ricevuti:", primoRisultato);
+      const primoRisultato = data.data[0]
+
       //titolo della canzone
       if (nameSong) {
-        nameSong.innerText = primoRisultato.title;
+        nameSong.innerText = primoRisultato.title
       }
       //nomi degli artisti
-      const tuttiGliArtisti = document.querySelectorAll(".name_artist");
+      const tuttiGliArtisti = document.querySelectorAll(".name_artist")
       tuttiGliArtisti.forEach((span) => {
-        span.innerText = primoRisultato.artist.name;
-      });
+        span.innerText = primoRisultato.artist.name
+      })
 
       //video
       if (videoSong) {
-        videoSong.src = y;
+        videoSong.src = y
       }
       //card dei correlati
       cardCorrelati.forEach((element, i) => {
@@ -323,10 +331,10 @@ const nameArtistsidebar = function (x, y) {
             <p class="m-0">
               <span class="name_artist">${data.data[i].artist.name}</span>
             </p>
-          </div>`;
-      });
+          </div>`
+      })
       //info artista
-      infoArtista.src = y;
+      infoArtista.src = y
     })
-    .catch((err) => console.error("Errore nel recupero dati:", err));
-};
+    .catch((err) => console.error("Errore nel recupero dati:", err))
+}
