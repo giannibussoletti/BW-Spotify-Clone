@@ -122,6 +122,12 @@ const videoArrayObj = [
     image:
       "https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/07yfI2D37Ir0pGQ8huDd4j/it",
   },
+  {
+    name: "blink-182",
+    video: "./assets/video/blink.mp4",
+    image:
+      "https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/6FBDaR13swtiWwGhX1WQsP/it",
+  },
 ]
 
 videoArrayObj.forEach((video) => {
