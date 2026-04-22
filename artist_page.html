@@ -32,12 +32,20 @@
           class="container-fluid d-flex align-items-center justify-content-between p-0 flex-nowrap"
         >
           <div class="btn-arrows d-none d-md-flex gap-2">
-            <button class="btn p-0 text-secondary border-0">
-              <i class="bi bi-chevron-left fs-4"></i>
-            </button>
-            <button class="btn p-0 text-secondary border-0">
-              <i class="bi bi-chevron-right fs-4"></i>
-            </button>
+            <a href="homepage.html" class="text-light">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                class="bi bi-spotify"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.669 11.538a.5.5 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686m.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858m.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288"
+                />
+              </svg>
+            </a>
           </div>
 
           <div
@@ -271,7 +279,9 @@
             <div class="col-12 d-flex justify-content-between m-3">
               <div><h5>La tua libreria</h5></div>
               <div>
-                <button class="btn btn-secondary rounded-circle text-light">
+                <button
+                  class="btn btn bg-secondary bg-opacity-50 rounded-circle rounded-circle text-light"
+                >
                   <i class="bi bi-plus-lg"></i></button
                 ><i class="bi bi-arrows-angle-expand m-2"></i>
               </div>
@@ -279,7 +289,7 @@
             <div class="col-12 m-2 d-flex align-items-center">
               <div class="d-flex align-items-center w-100 bg-transparent">
                 <button
-                  class="btn btn-secondary rounded-circle"
+                  class="btn btn bg-secondary bg-opacity-50 rounded-circle rounded-circle"
                   onclick="scrollLeftBtn()"
                 >
                   <i class="bi bi-chevron-compact-left"></i>
@@ -307,7 +317,7 @@
                   </button>
                 </div>
                 <button
-                  class="btn btn-secondary rounded-circle shadow"
+                  class="btn btn bg-secondary bg-opacity-50 rounded-circle rounded-circle shadow"
                   onclick="scrollRightBtn()"
                 >
                   <i class="bi bi-chevron-compact-right"></i>
@@ -358,6 +368,7 @@
             class="col-8 indipendent-scroll main-page"
           >
             <div
+              id="artist-banner"
               class="d-flex align-items-center h-50"
               style="
                 background-image: url(https://placecats.com/500/500);
@@ -365,9 +376,9 @@
               "
             >
               <div class="ms-3 mb-3 d-flex flex-column align-self-end">
-                <h1 class="fw-bold mb-0" style="font-size: 8em">Olly</h1>
+                <h1 id="artist-name" class="fw-bold mb-0" style="font-size: 8em">Olly</h1>
                 <p class="fw-bold m-0 fs-3">
-                  <span> 3.179.592 </span> ascoltatori mensili
+                  <span id="fan-count"> 3.179.592 </span> ascoltatori mensili
                 </p>
               </div>
             </div>
@@ -432,6 +443,7 @@
               </div>
             </div>
             <!-- lista canzoni/ascolti/tempo -->
+            <div id="tracklist-container">
             <div class="row align-items-center">
               <div class="col-1 text-center fs-5">1</div>
               <div class="col-1">
@@ -471,6 +483,7 @@
                 <p class="fs-5">3:04</p>
               </div>
             </div>
+            </div>
             <div>
               <p class="text-secondary fs-5 fw-bold mt-3 ms-3">Mostra altro</p>
             </div>
@@ -506,18 +519,7 @@
             </div>
             <!-- fine bottoni discografia -->
             <!-- card altro -->
-            <div>
-              <div class="card bg-transparent border-0 w-25 mt-3">
-                <img
-                  src="https://placecats.com/300/200"
-                  class="card-img-top"
-                  alt="foto_album"
-                />
-                <div class="card-body">
-                  <p class="card-text fs-3 m-0">nome album</p>
-                  <p class="card-text text-secondary">anno album</p>
-                </div>
-              </div>
+            <div id="albums-container" class="row mt-3">
             </div>
             <!-- fine card altro -->
             <!--fine album  list/card -->
@@ -533,18 +535,7 @@
               </p>
             </div>
             <!-- card con olly -->
-            <div>
-              <div class="card bg-transparent border-0 w-25 mt-3">
-                <img
-                  src="https://placecats.com/300/200"
-                  class="card-img-top"
-                  alt="foto_album"
-                />
-                <div class="card-body">
-                  <p class="card-text fs-3 m-0">nome album</p>
-                  <p class="card-text text-secondary">anno album</p>
-                </div>
-              </div>
+            <div id="featuring-container" class="row mt-3">
             </div>
             <!-- fine card olly -->
             <!--fine con olly -->
@@ -554,10 +545,10 @@
             <div class="row">
               <div class="col-8 position-relative">
                 <h5 class="mb-3 fw-bold fs-3">Informazioni</h5>
-                <img src="https://placecats.com/800/500" alt=" foto-merch " />
+                <img id="artist-info-img" src="https://placecats.com/800/500" alt=" foto-merch " style="width: 75%; height: auto;" />
                 <div class="position-absolute bottom-0 ms-3">
-                  <p class="fs-5 fw-bold">3.179.592 Ascoltatori mensili</p>
-                  <p class="fs-5 w-75">
+                  <p class="fs-5 fw-bold"><span id="info-fan-count">3.179.592</span> Ascoltatori mensili</p>
+                  <p id="artist-bio" class="fs-5 w-75">
                     Olly, classe 2001, è un cantautore nato e cresciuto a
                     Genova. Vincitore della 75esima edizione del Festival di
                     Sanremo con il brano "Balorda nostalgia" che ha debuttato
@@ -1447,13 +1438,14 @@
             <div class="col-3 p-0">
               <div class="d-flex">
                 <img
+                  id="current-track-img"
                   src="https://www.placecats.com/75/75"
                   alt="Preferiti Spotify"
                   class="img-fluid rounded-1 me-3"
                 />
                 <div class="d-flex flex-column justify-content-center">
-                  <p class="m-0"><b>Everlong</b></p>
-                  <p class="m-0">Foo Fighters</p>
+                  <p id="current-track-title" class="m-0"><b>Everlong</b></p>
+                  <p id="current-track-artist" class="m-0">Foo Fighters</p>
                 </div>
                 <div class="d-flex align-items-center ms-3">
                   <i class="bi bi-check-circle-fill text-success"></i>
@@ -1473,6 +1465,7 @@
                     <i class="bi bi-chevron-bar-left"></i>
                   </button>
                   <button
+                    id="masterPlay"
                     class="m-2 text-black bg-white rounded-circle border-0 fs-3"
                   >
                     <i class="bi bi-caret-right-fill"></i>
@@ -1534,6 +1527,8 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+    <audio id="audio-player" hidden></audio>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="artist_page.js"></script>
   </body>
 </html>
