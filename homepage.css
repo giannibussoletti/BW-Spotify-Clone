@@ -3,14 +3,26 @@ body {
   font-family: "Circular" !important;
 }
 
+.page {
+  top: 50%;
+  left: 50%;
+}
+
 .main-page {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  margin-top: 68px;
 }
 
 .indipendent-scroll {
   position: fixed;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.indipendent-scroll-2 {
+  position: sticky;
   overflow-y: scroll;
   height: 100vh;
 }
@@ -213,4 +225,35 @@ body {
 }
 nav {
   height: 68px;
+}
+
+.hidden_element {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar_end:hover .hidden_element {
+  opacity: 1;
+  visibility: visible;
+}
+
+.foto_hidden_el {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.foto_show_el:hover .foto_hidden_el {
+  opacity: 1;
+  visibility: visible;
+}
+
+.last_footer {
+  font-size: 12px;
+}
+
+.collapsed {
+  transform: translateX(100%);
+  transition: 0.3s ease;
 }
