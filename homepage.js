@@ -63,6 +63,7 @@ getConsigli();
 const artistiCarousel = document.getElementById("artisti-carousel");
 const sezioneVideo = document.getElementById("video-row");
 const carouselPerTe = document.getElementById("per-te-carousel");
+const placeholder = document.querySelectorAll(".card-plahol");
 const getAlbum = function () {
   fetch(search + "rock")
     .then((res) => {
@@ -73,6 +74,9 @@ const getAlbum = function () {
       }
     })
     .then((data) => {
+      placeholder.forEach((element) => {
+        element.classList.add("d-none");
+      });
       data.data.forEach((track) => {
         const id = track.id;
         console.log(track);
@@ -163,7 +167,7 @@ videoArrayObj.forEach((video) => {
             <p class="mb-2 p-0 text-secondary">Per i fan di ${video.name}</p>
 
             <div class="row position-relative rounded-2 m-0">
-              <video class="rounded-2 p-0">
+              <video class="rounded-2 p-0" loop>
                 <source src="${video.video}" type="video/mp4" />
               </video>
               <div

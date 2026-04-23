@@ -42,7 +42,7 @@ fetch(apiAlbum + albumID)
                    class="rounded-circle me-3"
                    alt="foto_artista" />
                  <p class="fw-bold m-0">
-                   ${data.artist.name} • ${data.release_date.slice(0, 4)} • <span> ${data.nb_tracks} </span> brani, <span> ${min} </span> min
+                   <a class="text-decoration-none text-white" href="./artist_page.html?id=${data.artist.id}">${data.artist.name}</a> • ${data.release_date.slice(0, 4)} • <span> ${data.nb_tracks} </span> brani, <span> ${min} </span> min
                    <span> ${sec} </span> sec.
                  </p>
                </div>
@@ -70,19 +70,20 @@ fetch(apiAlbum + albumID)
                 </div>
               </div>`
     })
-    //Altro da artista loop
-    fetch(apiSearchQuery + data.artist.name)
-      .then((response) => {
-        if (response.ok) {
-          return response.json()
-        } else {
-          throw new Error(response.status)
-        }
-      })
-      .then((data) => {
-        data.data.slice(0, 10).forEach((info) => {
-          console.log(info)
-          altroDischi.innerHTML += `
+  })
+
+//Altro da artista loop
+fetch(apiSearchQuery + data.artist.name)
+  .then((response) => {
+    if (response.ok) {
+      return response.json()
+    } else {
+      throw new Error(response.status)
+    }
+  })
+  .then((data) => {
+    data.data.slice(0, 10).forEach((info) => {
+      altroDischi.innerHTML += `
     <div class="col">
         <div class="card bg-transparent border-0 mt-3">
             <a href="./album_page.html?id=${info.album.id}"><img src="${info.album.cover_medium}" class="card-img-top" alt="foto_album" /></a>
@@ -92,8 +93,23 @@ fetch(apiAlbum + albumID)
         </div>
     </div>
         `
-        })
-      })
-      .catch((err) => console.log(err))
+    })
   })
   .catch((err) => console.log(err))
+
+const updateFooterPlayer = function (track) {
+  const footerImg = document.getElementById("current-track-img")
+  const footerTitle = document.getElementById("current-track-title")
+  const footerArtist = document.getElementById("current-track-artist")
+  const masterPlay = document.getElementById("masterPlay")
+
+  if (footerImg) footerImg.src = track.album.cover_small
+  if (footerTitle) footerTitle.innerText = track.title
+  if (footerArtist) footerArtist.innerText = track.artist.name
+
+  if (audio) {
+    audio.src = track.preview
+    audio.play().catch((e) => console.log("Riproduzione interrotta o non disponibile"))
+    if (masterPlay) masterPlay.innerHTML = '<i class="bi bi-pause-fill"></i>'
+  }
+}
