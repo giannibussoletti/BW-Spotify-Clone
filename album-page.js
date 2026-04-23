@@ -69,22 +69,21 @@ fetch(apiAlbum + albumID)
                   <p class="fs-5">${min}:${sec}</p>
                 </div>
               </div>`
-     
-      })
     })
+  })
 
-    //Altro da artista loop
-    fetch(apiSearchQuery + data.artist.name)
-      .then((response) => {
-        if (response.ok) {
-          return response.json()
-        } else {
-          throw new Error(response.status)
-        }
-      })
-      .then((data) => {
-        data.data.slice(0, 10).forEach((info) => {
-          altroDischi.innerHTML += `
+//Altro da artista loop
+fetch(apiSearchQuery + data.artist.name)
+  .then((response) => {
+    if (response.ok) {
+      return response.json()
+    } else {
+      throw new Error(response.status)
+    }
+  })
+  .then((data) => {
+    data.data.slice(0, 10).forEach((info) => {
+      altroDischi.innerHTML += `
     <div class="col">
         <div class="card bg-transparent border-0 mt-3">
             <a href="./album_page.html?id=${info.album.id}"><img src="${info.album.cover_medium}" class="card-img-top" alt="foto_album" /></a>
@@ -94,9 +93,7 @@ fetch(apiAlbum + albumID)
         </div>
     </div>
         `
-        })
-      })
-      .catch((err) => console.log(err))
+    })
   })
   .catch((err) => console.log(err))
 
