@@ -19,7 +19,7 @@ updateRangeColor(volumeBar);
 // Inject Consigliati
 const consigliati = document.getElementById("consigliati");
 const getConsigli = function () {
-  fetch(search + "Childish Gambino")
+  fetch(search + "Avril Lavigne")
     .then((res) => {
       if (res.ok) {
         return res.json();
@@ -65,7 +65,7 @@ const sezioneVideo = document.getElementById("video-row");
 const carouselPerTe = document.getElementById("per-te-carousel");
 const placeholder = document.querySelectorAll(".card-plahol");
 const getAlbum = function () {
-  fetch(search + "rock")
+  fetch(search + "justin bieber")
     .then((res) => {
       if (res.ok) {
         return res.json();
@@ -89,14 +89,15 @@ const getAlbum = function () {
           "col-6",
           "m-3",
           "position-relative",
+          "bg-transparent",
         );
-        cardCarosello.innerHTML = `<a href="./album_page.html?id=${track.album.id}"><img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid w-100 rounded-1 mt-3"></a>
+        cardCarosello.innerHTML = `<a href="./album_page.html?id=${track.album.id}"><img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid w-100 rounded-2 mt-3"></a>
                        <div class="card-body">
                        <p class="card-text fs-5">${titoloAlbum}</p>
-                       <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
+                       <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" id="greenPlay"><i class="bi bi-play-fill"></i></a>
                        </div>`;
         carouselPerTe.appendChild(cardCarosello);
-        //
+
         //
         //
       });
@@ -238,7 +239,7 @@ function scrollRightBtn() {
 }
 
 // mettete dei puttana di commenti
-
+//funzione side bar start
 const getLibrary = function (searchValue) {
   fetch(search + searchValue)
     .then((res) => {
@@ -278,7 +279,7 @@ const getLibrary = function (searchValue) {
 };
 getLibrary("kanye West");
 
-// questa è un altra funzione
+//funzione nav bar
 inputNavbarValue.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     getLibrary(inputNavbarValue.value);
