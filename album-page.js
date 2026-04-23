@@ -69,7 +69,10 @@ fetch(apiAlbum + albumID)
                   <p class="fs-5">${min}:${sec}</p>
                 </div>
               </div>`
+     
+      })
     })
+
     //Altro da artista loop
     fetch(apiSearchQuery + data.artist.name)
       .then((response) => {
@@ -81,7 +84,6 @@ fetch(apiAlbum + albumID)
       })
       .then((data) => {
         data.data.slice(0, 10).forEach((info) => {
-          console.log(info)
           altroDischi.innerHTML += `
     <div class="col">
         <div class="card bg-transparent border-0 mt-3">
@@ -97,3 +99,20 @@ fetch(apiAlbum + albumID)
       .catch((err) => console.log(err))
   })
   .catch((err) => console.log(err))
+
+const updateFooterPlayer = function (track) {
+  const footerImg = document.getElementById("current-track-img")
+  const footerTitle = document.getElementById("current-track-title")
+  const footerArtist = document.getElementById("current-track-artist")
+  const masterPlay = document.getElementById("masterPlay")
+
+  if (footerImg) footerImg.src = track.album.cover_small
+  if (footerTitle) footerTitle.innerText = track.title
+  if (footerArtist) footerArtist.innerText = track.artist.name
+
+  if (audio) {
+    audio.src = track.preview
+    audio.play().catch((e) => console.log("Riproduzione interrotta o non disponibile"))
+    if (masterPlay) masterPlay.innerHTML = '<i class="bi bi-pause-fill"></i>'
+  }
+}
