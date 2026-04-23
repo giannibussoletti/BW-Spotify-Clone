@@ -126,7 +126,7 @@ const initArtistPage = function () {
                     </p>
                   </div>
                 </div>
-                <div class="col-md-4 col-12">
+                <div class="col-4">
                   <p>${info.id}</p>
                 </div>
                 <div class="col-1 m-0">
