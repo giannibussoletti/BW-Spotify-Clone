@@ -1,6 +1,7 @@
 const search = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
 // arrayparolericerca${input.value}
 const albumDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+const artistDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
 
 const dropdownForSearch = document.getElementById("dropdownForSearch")
 const inputNavbarValue = document.getElementById("inputNavbar")
@@ -59,15 +60,15 @@ const getAlbum = function () {
     .then((data) => {
       data.data.forEach((track) => {
         const id = track.id
-        console.log(track)
+
         const titoloAlbum = track.title
         const imgAlbum = track.album.cover_medium
         const artistaAlbum = track.artist.name
         const cardCarosello = document.createElement("div")
         cardCarosello.classList.add("card", "col-6", "m-3", "position-relative")
-        cardCarosello.innerHTML = `<a href="./album_page.html?id=${track.album.id}"><img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid w-100 rounded-1 mt-3"></a>
+        cardCarosello.innerHTML = `<img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid rounded-1 mt-3">
                        <div class="card-body">
-                       <p class="card-text fs-5">${titoloAlbum}</p>
+                       <p class="card-text fs-5">${artistaAlbum}</p>
                        <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
                        </div>`
         carouselPerTe.appendChild(cardCarosello)
@@ -92,14 +93,13 @@ const getArtist = function () {
       }
     })
     .then((artist) => {
-      console.log(artist.data)
       artist.data.forEach((info) => {
         const cardArtista = document.createElement("div")
         cardArtista.classList.add("card", "col", "m-3", "position-relative", "bg-transparent")
         cardArtista.innerHTML += `<a href="./artist_page.html?id=${info.artist.id}"><img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle w-100 mt-3"></a>
                        <div class="card-body">
                        <p class="card-text text-center fs-5">${info.artist.name}</p>
-                       
+
                        </div>`
         artistiCarousel.appendChild(cardArtista)
       })
@@ -122,12 +122,6 @@ const videoArrayObj = [
     video: "./assets/video/tonypitony.mp4",
     image:
       "https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/07yfI2D37Ir0pGQ8huDd4j/it",
-  },
-  {
-    name: "blink-182",
-    video: "./assets/video/blink.mp4",
-    image:
-      "https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/6FBDaR13swtiWwGhX1WQsP/it",
   },
 ]
 
@@ -183,6 +177,7 @@ const rightMovement = function (event) {
     artistiCarousel.scrollBy(artistiCarousel.offsetWidth / 2, 0)
   }
 }
+window.rightMovement = rightMovement
 const leftMovement = function (event) {
   if (event === 0) {
     carouselPerTe.scrollBy(-consigliati.offsetWidth / 2, 0)
@@ -190,6 +185,7 @@ const leftMovement = function (event) {
     artistiCarousel.scrollBy(-artistiCarousel.offsetWidth / 2, 0)
   }
 }
+window.leftMovement = leftMovement
 // funzione di movimento carosello
 function scrollLeftBtn() {
   document.getElementById("scroll").scrollBy({
@@ -233,7 +229,7 @@ const getLibrary = function (searchValue) {
                 <h6><a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${titoloAlbum}</a></h6>
                 <div class="d-flex">
                   <p>Album</p>
-                  <p class="ms-1">• <a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${artistaAlbum}</a></p>
+                  <p class="ms-1">• <a class="text-decoration-none text-white" target="_blank" href="./artist_page.html?id=${track.artist.id}">${artistaAlbum}</a></p>
                 </div>
               </div>`
         appendLibrary.appendChild(cardLibrary)
@@ -244,11 +240,11 @@ const getLibrary = function (searchValue) {
     })
 }
 getLibrary("kanye West")
+
 // questa è un altra funzione
 inputNavbarValue.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     getLibrary(inputNavbarValue.value)
-
     fetch(search + inputNavbarValue.value)
       .then((res) => {
         if (res.ok) {
@@ -258,26 +254,29 @@ inputNavbarValue.addEventListener("keydown", function (event) {
         }
       })
       .then((data) => {
+        console.log(data)
         dropdownForSearch.innerHTML =
           '<li class="list-group-item text-white fs-4" value="">Ricerche recenti</li>'
-        data.data.slice(0, 5).forEach((tracks) => {
+        data.data.slice(0, 5).forEach((tracks, i) => {
           const elementoLista = document.createElement("li")
           const link = tracks.preview
           const title = tracks.title
           const name = tracks.artist.name
           const img = tracks.album.cover_medium
-
           elementoLista.classList.add("list-group-item", "p-2")
           elementoLista.innerHTML = `
           <div class="card rounded-2 p-0 h-100" >
           <div class="row g-0 d-flex">
           <div class="col-4 border-0"style="max-width:100px;">
-          <img src="${img}" class="img-fluid rounded-2 border border-2">
+          <a class="text-decoration-none text-white w-25 m-1" target="_blank" href="./album_page.html?id=${data.data[i].album.id}"><img
+                src="${img}"
+                alt="Preferiti Spotify"
+                class="img-fluid rounded-1 me-1" /></a>
           </div>
           <div class="col-8">
           <div class="card-body">
-          <h6 class="card-title m-0 me-1">${title}</h6>
-          <p class="card-text">• ${name}</p>
+          <h6><a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${title}</a></h6>
+          <p class="ms-1">• <a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${name}</a></p>
           </div>
           </div>
           </div>
@@ -306,22 +305,33 @@ inputNavbarValue.addEventListener("keydown", function (event) {
                 </div>
               </div>`
           })
+          // bottonePlay.addEventListener("click", function () {
+          //   const bottonePlay = document.getElementById("bottonePlay")
+          //   if (audio.paused) {
+          //     audio.play()
+          //     bottonePlay.innerHTML = ` <i class="bi bi-play-fill"></i> `
+          //   } else {
+          //     audio.pause()
+          //     bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`
+          //   }
+          // })
+          const bottonePlay = document.querySelectorAll(".bottonePlay")
+          bottonePlay.forEach((element) => {
+            element.addEventListener("click", function () {
+              if (audio.paused) {
+                audio.play()
+                element.innerHTML = ` <i class="bi bi-play-fill"></i> `
+              } else {
+                audio.pause()
+                element.innerHTML = `<i class="bi bi-pause-fill"></i>`
+              }
+            })
+          })
         })
       })
       .catch((err) => {
         console.log(err)
       })
-  }
-})
-
-bottonePlay.addEventListener("click", function () {
-  const bottonePlay = document.getElementById("bottonePlay")
-  if (audio.paused) {
-    audio.play()
-    bottonePlay.innerHTML = ` <i class="bi bi-play-fill"></i> `
-  } else {
-    audio.pause()
-    bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`
   }
 })
 
@@ -340,7 +350,6 @@ const nameArtistsidebar = function (x, y) {
     })
     .then((data) => {
       const primoRisultato = data.data[0]
-
       //titolo della canzone
       if (nameSong) {
         nameSong.innerText = primoRisultato.title
@@ -373,3 +382,44 @@ const nameArtistsidebar = function (x, y) {
     })
     .catch((err) => console.error("Errore nel recupero dati:", err))
 }
+
+const expandBtnEnd = document.getElementById("expand_btn_end")
+const sideBarEnd = document.getElementById("sidebar_end")
+
+expandBtnEnd.addEventListener("click", function () {
+  sideBarEnd.classList.toggle("col-6")
+  sideBarEnd.classList.toggle("bg-black")
+  videoSong.classList.add("w-25")
+})
+
+const expandBtnStart = document.getElementById("expand_btn_start")
+const sideBarStart = document.getElementById("sidebar_start")
+const arrowBtn = document.querySelectorAll(".arrow-btn")
+
+expandBtnStart.addEventListener("click", function () {
+  sideBarStart.classList.toggle("z-3")
+  sideBarStart.classList.toggle("bg-black")
+  sideBarStart.classList.toggle("col-6")
+  arrowBtn.forEach((element) => {
+    element.classList.toggle("d-none")
+  })
+})
+
+const fullHiddenBtn = document.getElementById("full_hidden_btn")
+const centralPart = document.getElementById("central-part")
+const spaceShowBtn = document.getElementById("space_show_btn")
+
+fullHiddenBtn.addEventListener("click", function () {
+  sideBarEnd.classList.toggle("collapsed")
+  if (centralPart.classList.contains("col-lg-8")) {
+    centralPart.classList.replace("col-lg-8", "col-lg-10")
+    centralPart.classList.replace("indipendent-scroll", "indipendent-scroll-2")
+    centralPart.classList.replace("main-page", "page")
+  } else {
+    centralPart.classList.replace("col-lg-10", "col-lg-8")
+    centralPart.classList.replace("indipendent-scroll-2", "indipendent-scroll")
+    centralPart.classList.replace("page", "main-page")
+  }
+
+  spaceShowBtn.appendChild(newBtnSpace)
+})
