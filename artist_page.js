@@ -60,27 +60,9 @@ const initArtistPage = function () {
     .then((albumsData) => {
       console.log(albumsData)
       populateAlbums(albumsData.data.slice(0, 6))
-
-      albumsData.data.slice(7, 11).forEach((element) => {
-        const divSCopIn = document.getElementById("div_scop_in")
-
-        divSCopIn.innerHTML += `<div
-                class="card bg-transparent border-0 w-25 mt-3 d-flex"
-              >
-              <a href="./album_page.html?id=${element.id}" class='text-decoration-none text-light'>
-                <img
-                  src="${element.cover_medium}"
-                  class="card-img-top"
-                  alt="foto_album"
-                />
-                <div class="card-body">
-                  <p class="card-text fs-5 m-0">${element.title}</p>
-                </div>
-                </a> 
-              </div>`
-      })
+      populateScopiDiPiu(albumsData.data)
+      populatePlaylist(albumsData.data)
     })
-
     .catch((err) => console.error("Si è verificato un errore:", err))
 }
 
@@ -217,6 +199,79 @@ const formatDuration = function (seconds) {
   const min = Math.floor(seconds / 60)
   const sec = seconds % 60
   return `${min}:${sec < 10 ? "0" : ""}${sec}`
+}
+
+/**
+ * Funzione per popolare la sezione "Scopri di più" con gli album rimanenti
+ */
+const populateScopiDiPiu = function (albums) {
+  const divScopIn = document.getElementById("div_scop_in")
+  if (!divScopIn) return
+  divScopIn.innerHTML = ""
+
+ albums.slice(7, 11).forEach((album) => {
+    divScopIn.innerHTML += `
+      <div class="me-4 mt-3" style="width: 160px; cursor: pointer;" onclick="window.location.href='./album_page.html?id=${album.id}'">
+        <img
+          src="${album.cover_medium}"
+          alt="${album.title}"
+          class="rounded"
+          style="width: 160px; height: 160px; object-fit: cover;"
+        />
+        <p class="fw-bold text-white text-truncate mt-2 mb-0 small">${album.title}</p>
+        <p class="text-secondary mb-0" style="font-size: 0.75rem;">${new Date(album.release_date).getFullYear()} • Album</p>
+      </div>`
+  })
+}
+
+const populatePlaylist = function (albums) {
+  const divPlaylistIn = document.getElementById("div_playlist_in")
+  if (!divPlaylistIn) return
+  divPlaylistIn.innerHTML = ""
+
+  albums.slice(11, 15).forEach((album) => {
+    divPlaylistIn.innerHTML += `
+      <div class="me-4 mt-3" style="width: 160px; cursor: pointer;" onclick="window.location.href='./album_page.html?id=${album.id}'">
+        <img
+          src="${album.cover_medium}"
+          alt="${album.title}"
+          class="rounded"
+          style="width: 160px; height: 160px; object-fit: cover;"
+        />
+        <p class="fw-bold text-white text-truncate mt-2 mb-0 small">${album.title}</p>
+        <p class="text-secondary mb-0" style="font-size: 0.75rem;">${new Date(album.release_date).getFullYear()} • Album</p>
+      </div>`
+  })
+}
+
+const populateFanAlsoLike = function (tracks) {
+  const container = document.getElementById("fan-also-like")
+  if (!container) return
+  container.innerHTML = ""
+
+  const uniqueArtists = []
+  const seenIds = []
+
+  tracks.forEach((track) => {
+    if (!seenIds.includes(track.artist.id) && track.artist.id != artistId) {
+      seenIds.push(track.artist.id)
+      uniqueArtists.push(track.artist)
+    }
+  })
+
+  uniqueArtists.slice(0, 6).forEach((artist) => {
+    container.innerHTML += `
+      <div class="me-4 mt-3" style="width: 160px; cursor: pointer;" onclick="window.location.href='./artist_page.html?id=${artist.id}'">
+        <img
+          src="${artist.picture_medium}"
+          alt="${artist.name}"
+          class="rounded-circle"
+          style="width: 160px; height: 160px; object-fit: cover;"
+        />
+        <p class="fw-bold text-white text-truncate mt-2 mb-0 small">${artist.name}</p>
+        <p class="text-secondary mb-0" style="font-size: 0.75rem;">Artista</p>
+      </div>`
+  })
 }
 
 // Avvio
