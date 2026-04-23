@@ -302,20 +302,21 @@ const fullHiddenBtn = document.getElementById("full_hidden_btn")
 const centralPart = document.getElementById("central-part")
 const spaceShowBtn = document.getElementById("space_show_btn")
 
-fullHiddenBtn.addEventListener("click", function () {
-  sideBarEnd.classList.toggle("collapsed")
-  if (centralPart.classList.contains("col-lg-8")) {
-    centralPart.classList.replace("col-lg-8", "col-lg-10")
-    centralPart.classList.replace("indipendent-scroll", "indipendent-scroll-2")
-    centralPart.classList.replace("main-page", "page")
-  } else {
-    centralPart.classList.replace("col-lg-10", "col-lg-8")
-    centralPart.classList.replace("indipendent-scroll-2", "indipendent-scroll")
-    centralPart.classList.replace("page", "main-page")
-  }
+//  MANNAGGIA ALLA PU... PAZZA CIAO STEFANO, STA CAZZO DE FUNZIONE MANDAVA A PUTTANE TUTTO MANNAGGIA A JAVASCRIPT E ANCHE LINUS TORVALS
+// fullHiddenBtn.addEventListener("click", function () {
+//   sideBarEnd.classList.toggle("collapsed")
+//   if (centralPart.classList.contains("col-lg-8")) {
+//     centralPart.classList.replace("col-lg-8", "col-lg-10")
+//     centralPart.classList.replace("indipendent-scroll", "indipendent-scroll-2")
+//     centralPart.classList.replace("main-page", "page")
+//   } else {
+//     centralPart.classList.replace("col-lg-10", "col-lg-8")
+//     centralPart.classList.replace("indipendent-scroll-2", "indipendent-scroll")
+//     centralPart.classList.replace("page", "main-page")
+//   }
 
-  spaceShowBtn.appendChild(newBtnSpace)
-})
+//   spaceShowBtn.appendChild(newBtnSpace)
+// })
 const progressBar = document.getElementById("range3")
 const volumeBar = document.getElementById("volumeBar")
 const volumeIcon = document.getElementById("volumeIcon")
@@ -330,7 +331,7 @@ function aggiornaColoreProgressBar() {
   const percentuale = ((val - min) / (max - min)) * 100
   progressBar.style.background = `linear-gradient(to right, #ffffff ${percentuale}%, #535353 ${percentuale}%)`
 }
-aggiornaColoreProgressBar()
+
 //funzione play
 
 function updateRangeColor(inputElement) {
@@ -340,7 +341,6 @@ function updateRangeColor(inputElement) {
   const color = inputElement.id === "range3" ? "#ffffff" : "#1db954"
   inputElement.style.background = `linear-gradient(to right, ${color} ${percentage}%, #535353 ${percentage}%)`
 }
-updateRangeColor()
 
 bottonePlay.addEventListener("click", function () {
   console.log("bottone")
