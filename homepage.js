@@ -336,18 +336,6 @@ inputNavbarValue.addEventListener("keydown", function (event) {
           //     bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`
           //   }
           // })
-          const bottonePlay = document.querySelectorAll(".bottonePlay")
-          bottonePlay.forEach((element) => {
-            element.addEventListener("click", function () {
-              if (audio.paused) {
-                audio.play()
-                element.innerHTML = ` <i class="bi bi-play-fill"></i> `
-              } else {
-                audio.pause()
-                element.innerHTML = `<i class="bi bi-pause-fill"></i>`
-              }
-            })
-          })
         })
       })
       .catch((err) => {
