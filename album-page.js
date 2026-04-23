@@ -1,5 +1,6 @@
 const apiAlbum = "https://striveschool-api.herokuapp.com/api/deezer/album/"
-const apiSearchQuery = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
+const apiSearchQuery =
+  "https://striveschool-api.herokuapp.com/api/deezer/search?q="
 
 const urlParameters = new URLSearchParams(location.search)
 const albumID = urlParameters.get("id")
@@ -73,7 +74,7 @@ fetch(apiAlbum + albumID)
   })
 
 //Altro da artista loop
-fetch(apiSearchQuery + data.artist.name)
+fetch(apiSearchQuery + albumID)
   .then((response) => {
     if (response.ok) {
       return response.json()
@@ -109,7 +110,9 @@ const updateFooterPlayer = function (track) {
 
   if (audio) {
     audio.src = track.preview
-    audio.play().catch((e) => console.log("Riproduzione interrotta o non disponibile"))
+    audio
+      .play()
+      .catch((e) => console.log("Riproduzione interrotta o non disponibile"))
     if (masterPlay) masterPlay.innerHTML = '<i class="bi bi-pause-fill"></i>'
   }
 }
