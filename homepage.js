@@ -239,7 +239,7 @@ function scrollRightBtn() {
 }
 
 // mettete dei puttana di commenti
-
+//funzione side bar start
 const getLibrary = function (searchValue) {
   fetch(search + searchValue)
     .then((res) => {
@@ -279,7 +279,7 @@ const getLibrary = function (searchValue) {
 };
 getLibrary("kanye West");
 
-// questa è un altra funzione
+//funzione nav bar
 inputNavbarValue.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     getLibrary(inputNavbarValue.value);
