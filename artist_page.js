@@ -80,64 +80,77 @@ const initArtistPage = function () {
       // SECONDA FETCH: Brani Popolari
       return fetch(searchApi + artist.name)
     })
-    // .then((response) => {
-    //   if (response.ok) {
-    //     return response.json()
-    //   } else {
-    //     console.log("errore generico")
-    //   }
-    // })
-    // .then((data) => {
-    //   console.log(data)
+    .then((response) => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        console.log("errore generico")
+      }
+    })
+    .then((data) => {
+      console.log(data)
 
-    //   data.data.forEach((info, i) => {
-    //     // info.album.cover_small
-    //     // info.id
-    //     // info.title_short
-    //     tracklistContainer.innerHTML += `<div class="row align-items-center">
-    //             <div class="col-1 text-center fs-5">${i + 1}</div>
-    //             <div class="col-1">
-    //               <img
-    //                 src=${info.album.cover_small}
-    //                 alt="foto_album"
-    //                 class="rounded-3"
-    //               />
-    //             </div>
-    //             <div class="col-5">
-    //               <div class="d-flex flex-column flex-grow-1">
-    //                 <p class="fw-bold mb-1 fs-3">${info.title_short}</p>
-    //                 <p class="text-secondary fs-5 mb-0">
-    //                   <svg
-    //                     xmlns="http://www.w3.org/2000/svg"
-    //                     width="16"
-    //                     height="16"
-    //                     fill="currentColor"
-    //                     class="bi bi-play-btn rounded-3"
-    //                     viewBox="0 0 16 16"
-    //                   >
-    //                     <path
-    //                       d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"
-    //                     />
-    //                     <path
-    //                       d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"
-    //                     />
-    //                   </svg>
-    //                   Video musicale
-    //                 </p>
-    //               </div>
-    //             </div>
-    //             <div class="col-4">
-    //               <p>${info.id}</p>
-    //             </div>
-    //             <div class="col-1 m-0">
-    //               <p class="fs-5">3:04</p>
-    //             </div>
-    //           </div>`
-    //   })
-    // })
-    // .catch((err) => {
-    //   console.log("err", err)
-    // })
+      data.data.forEach((info, i) => {
+        // info.album.cover_small
+        // info.id
+        // info.title_short
+        tracklistContainer.innerHTML += `<div class="row align-items-center">
+                <div class="col-1 text-center fs-5">${i + 1}</div>
+                <div class="col-1">
+                  <img
+                    src=${info.album.cover_small}
+                    alt="foto_album"
+                    class="rounded-3"
+                  />
+                </div>
+                <div class="col-5">
+                  <div class="d-flex flex-column flex-grow-1">
+                    <p class="fw-bold mb-1 fs-3">${info.title_short}</p>
+                    <p class="text-secondary fs-5 mb-0">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-play-btn rounded-3"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"
+                        />
+                        <path
+                          d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"
+                        />
+                      </svg>
+                      Video musicale
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-4 col-12">
+                  <p>${info.id}</p>
+                </div>
+                <div class="col-1 m-0">
+                  <p class="fs-5">3:04</p>
+                </div>
+              </div>`
+
+        const cardScopertoIn = document.getElementById("card_scoperto_in")
+        const divSCopIn = document.getElementById("div_scop_in")
+
+        divSCopIn.innerHTML = `<img
+                  src="${info.album.cover_medium}"
+                  class="card-img-top"
+                  alt="foto_album"
+                />
+                <div class="card-body">
+                  <p class="card-text fs-5 m-0">${info.title_short}</p>
+                  <p class="card-text text-secondary">anno album</p>
+                </div>`
+      })
+    })
+    .catch((err) => {
+      console.log("err", err)
+    })
 
     .then((res) => res.json())
     .then((searchData) => {
@@ -152,10 +165,6 @@ const initArtistPage = function () {
       populateAlbums(albumsData.data)
       // QUARTA FETCH: Album con l'artista
       return fetch(artistApi + artistId + "/related")
-    })
-    .then((res) => res.json())
-    .then((relatedData) => {
-      populateFeaturing(relatedData.data)
     })
     .catch((err) => console.error("Si è verificato un errore:", err))
 }
@@ -268,3 +277,16 @@ const formatDuration = function (seconds) {
 
 // Avvio
 window.onload = initArtistPage
+
+// const cardScopertoIn = document.getElementById("card_scoperto_in")
+// const divSCopIn = document.getElementById("div_scop_in")
+
+// divSCopIn.innerHTML = `<img
+//                   src="https://placecats.com/200/200"
+//                   class="card-img-top"
+//                   alt="foto_album"
+//                 />
+//                 <div class="card-body">
+//                   <p class="card-text fs-3 m-0">nome album</p>
+//                   <p class="card-text text-secondary">anno album</p>
+//                 </div>`
