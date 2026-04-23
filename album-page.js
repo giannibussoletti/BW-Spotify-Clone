@@ -9,6 +9,7 @@ const tracklist = document.getElementById("tracklist")
 const shuffleImg = document.getElementById("little-img")
 const altroDaTitle = document.getElementById("altro-da")
 const altroDischi = document.getElementById("altri-dischi")
+const audio = document.getElementById("audio")
 
 fetch(apiAlbum + albumID)
   .then((response) => {
@@ -156,6 +157,7 @@ inputNavbarValue.addEventListener("keydown", function (event) {
           </div>
           </div>
           `
+
           dropdownForSearch.appendChild(elementoLista)
           elementoLista.addEventListener("click", function (event) {
             nameArtistsidebar(inputNavbarValue.value, img)
@@ -314,7 +316,6 @@ fullHiddenBtn.addEventListener("click", function () {
 
   spaceShowBtn.appendChild(newBtnSpace)
 })
-const audio = document.getElementById("audio")
 const progressBar = document.getElementById("range3")
 const volumeBar = document.getElementById("volumeBar")
 const volumeIcon = document.getElementById("volumeIcon")
