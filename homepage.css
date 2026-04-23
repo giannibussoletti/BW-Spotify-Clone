@@ -56,19 +56,11 @@ body {
 }
 
 .arrow-right {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 .arrow-left {
-  background: linear-gradient(
-    270deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 /*CSS footer homepage*/
@@ -94,7 +86,7 @@ body {
   scroll-behavior: smooth;
 
   flex-grow: 1;
-  min-width: 0; 
+  min-width: 0;
 }
 
 .scroll-container button {
@@ -201,19 +193,11 @@ body {
 }
 /* Video sezione fine pagina */
 .video-top {
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 .video-bottom {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 #gradientheart {
   background: linear-gradient(135deg, #3b0af5, #8e8cfb, #c4efd9);
@@ -257,11 +241,13 @@ nav {
   transition: 0.3s ease;
 }
 /* --- media player --- */
-#range3.form-range, #volumeBar.form-range {
-  background-image: none !important; 
-  background-color: #535353;       
+#range3.form-range,
+#volumeBar.form-range {
+  background-image: none !important;
+  background-color: #535353;
 }
-#range3, #volumeBar {
+#range3,
+#volumeBar {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -269,11 +255,11 @@ nav {
   border-radius: 2px;
   outline: none;
   cursor: pointer;
-  background: #535353; 
+  background: #535353;
 }
 
 /* pallino*/
-#range3::-webkit-slider-thumb, 
+#range3::-webkit-slider-thumb,
 #volumeBar::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -286,22 +272,25 @@ nav {
   transition: opacity 0.2s ease;
 }
 
-#range3:hover::-webkit-slider-thumb, 
+#range3:hover::-webkit-slider-thumb,
 #volumeBar:hover::-webkit-slider-thumb {
   opacity: 1;
 }
 
-#range3:active, #range3:hover {
+#range3:active,
+#range3:hover {
   height: 4px;
 }
-#greenPlay{
+#greenPlay {
   opacity: 0.5;
 }
-#central-part, #sidebar_start, #sidebar_end{
+#central-part,
+#sidebar_start,
+#sidebar_end {
   border: transparent;
   border-radius: 2em;
 }
-html{
+/* html{
   scrollbar-color: rgb(240, 238, 238) rgba(0, 0, 0, 0.00);
   scrollbar-width:thin;
-}
+} */
