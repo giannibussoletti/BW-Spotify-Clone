@@ -284,12 +284,6 @@ nav {
 #greenPlay {
   opacity: 0.5;
 }
-#central-part,
-#sidebar_start,
-#sidebar_end {
-  border: transparent;
-  border-radius: 2em;
-}
 /* html{
   scrollbar-color: rgb(240, 238, 238) rgba(0, 0, 0, 0.00);
   scrollbar-width:thin;

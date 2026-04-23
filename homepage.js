@@ -36,7 +36,7 @@ const getConsigli = function () {
         const cardCarosello = document.createElement("div")
         cardCarosello.classList.add("card", "d-flex", "border-0", "bg-transparent", "flex")
         cardCarosello.innerHTML = `<div class="col m-0 p-2">
-        <div class="d-flex align-items-center bg-dark bg-opacity-75 rounded-2 p-2">
+        <div class="d-flex align-items-center bg-secondary bg-opacity-50 rounded-2 p-2">
         <img class="rounded-start-2"
         style="height: 50px; width: 50px"
         src="${imgAlbum}" />

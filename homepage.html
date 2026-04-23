@@ -236,7 +236,9 @@
     <main class="position-relative">
       <div class="container-fluid m-0 position-absolute" style="top: 68px">
         <div class="row">
-          <div class="col-2 indipendent-scroll d-none d-lg-block bg-gradient" id="sidebar_start">
+          <div
+            class="col-2 indipendent-scroll d-none d-lg-block bg-gradient rounded-4"
+            id="sidebar_start">
             <div class="col-12 d-flex justify-content-between align-items-center my-3">
               <div>
                 <h6 class="fw-bolder text-white m-0">La tua libreria</h6>
@@ -329,261 +331,278 @@
             </div>
           </div>
           <!-- parte centrale -->
-          <div id="central-part" class="col-12 col-lg-8 indipendent-scroll main-page bg-gradient">
-            <section>
-              <!-- sezione bottoni in alto -->
-              <div class="container-fluid flex-wrap">
-                <div class="container-fluid">
-                  <!-- Bottoni in alto -->
-                  <div class="row mt-3 mb-4">
-                    <div class="col-12 d-flex justify-content-between">
-                      <div class="d-flex gap-3">
-                        <a
-                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                          href="#"
-                          >Tutto</a
-                        >
-                        <a
-                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                          href="#"
-                          >Musica</a
-                        >
-                        <a
-                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                          href="#"
-                          >Podcast</a
-                        >
+          <div id="central-part" class="col-12 col-lg-8 indipendent-scroll main-page">
+            <div class="container-fluid bg-gradient rounded-4 mt-0 pt-3">
+              <section>
+                <!-- sezione bottoni in alto -->
+                <div class="container-fluid flex-wrap">
+                  <div class="container-fluid">
+                    <!-- Bottoni in alto -->
+                    <div class="row mt-3 mb-4">
+                      <div class="col-12 d-flex justify-content-between">
+                        <div class="d-flex gap-3">
+                          <a
+                            class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                            href="#"
+                            >Tutto</a
+                          >
+                          <a
+                            class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                            href="#"
+                            >Musica</a
+                          >
+                          <a
+                            class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                            href="#"
+                            >Podcast</a
+                          >
+                        </div>
+                        <div id="space_show_btn">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-chevron-bar-right"
+                            viewBox="0 0 16 16"
+                            id="full_hidden_btn">
+                            <path
+                              fill-rule="evenodd"
+                              d="M4.146 3.646a.5.5 0 0 0 0 .708L7.793 8l-3.647 3.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0M11.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5" />
+                          </svg>
+                        </div>
                       </div>
-                      <div id="space_show_btn">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          class="bi bi-chevron-bar-right"
-                          viewBox="0 0 16 16"
-                          id="full_hidden_btn">
-                          <path
-                            fill-rule="evenodd"
-                            d="M4.146 3.646a.5.5 0 0 0 0 .708L7.793 8l-3.647 3.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0M11.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5" />
-                        </svg>
+                    </div>
+                  </div>
+                  <!-- Consigli -->
+                  <div class="container-fluid">
+                    <div
+                      id="consigliati"
+                      class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 align-content-center">
+                      <!-- placeholder card -->
+                      <div class="card card-plahol" aria-hidden="true ">
+                        <div class="card-body">
+                          <h5 class="card-title placeholder-glow">
+                            <span class="placeholder col-6"></span>
+                          </h5>
+                          <p class="card-text placeholder-glow">
+                            <span class="placeholder col-7"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                          </p>
+                        </div>
                       </div>
+                      <!-- fine place card -->
                     </div>
                   </div>
                 </div>
-                <!-- Consigli -->
-                <div class="container-fluid">
-                  <div
-                    id="consigliati"
-                    class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 align-content-center">
-                    <!-- placeholder card -->
-                    <div class="card card-plahol" aria-hidden="true ">
-                      <div class="card-body">
-                        <h5 class="card-title placeholder-glow">
-                          <span class="placeholder col-6"></span>
-                        </h5>
-                        <p class="card-text placeholder-glow">
-                          <span class="placeholder col-7"></span>
-                          <span class="placeholder col-4"></span>
-                          <span class="placeholder col-4"></span>
-                          <span class="placeholder col-6"></span>
-                          <span class="placeholder col-8"></span>
-                        </p>
-                      </div>
+              </section>
+              <section>
+                <!-- Sezione caroselli  -->
+                <div class="container-fluid p-0 mt-4">
+                  <!-- sezione Creato pe te -->
+                  <div class="row row-cols-2 justify-content-between mb-3 mx-0 px-3">
+                    <div class="col p-0">
+                      <h6 class="mb-0 p-0 text-secondary">
+                        pensato per <br /><span class="fw-bold fs-1 text-white">Gino Paoli</span>
+                      </h6>
                     </div>
-                    <!-- fine place card -->
+                    <div class="col text-end align-self-end p-0">
+                      <h6 class="mb-0 text-secondary">Mostra Tutto</h6>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </section>
-            <section>
-              <!-- Sezione caroselli  -->
-              <div class="container-fluid p-0 mt-4">
-                <!-- sezione Creato pe te -->
-                <div class="row row-cols-2 justify-content-between mb-3 mx-0 px-3">
-                  <div class="col p-0">
-                    <h6 class="mb-0 p-0 text-secondary">
-                      pensato per <br /><span class="fw-bold fs-1 text-white">Gino Paoli</span>
-                    </h6>
-                  </div>
-                  <div class="col text-end align-self-end p-0">
-                    <h6 class="mb-0 text-secondary">Mostra Tutto</h6>
-                  </div>
-                </div>
 
-                <!-- creato per te carosello -->
-                <div class="row position-relative m-0">
-                  <!-- INIZIO CAROSELLO -->
-                  <div
-                    id="per-te-carousel"
-                    class="p-0 smooth-carousel m-0 row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-5 flex-nowrap overflow-auto hiding-bar">
-                    <!-- placeholder card -->
-                    <div class="card card-plahol" aria-hidden="true">
-                      <div class="card-body">
-                        <h5 class="card-title placeholder-glow">
-                          <span class="placeholder col-6"></span>
-                        </h5>
-                        <p class="card-text placeholder-glow">
-                          <span class="placeholder col-7"></span>
-                          <span class="placeholder col-4"></span>
-                          <span class="placeholder col-4"></span>
-                          <span class="placeholder col-6"></span>
-                          <span class="placeholder col-8"></span>
-                        </p>
+                  <!-- creato per te carosello -->
+                  <div class="row position-relative m-0">
+                    <!-- INIZIO CAROSELLO -->
+                    <div
+                      id="per-te-carousel"
+                      class="p-0 smooth-carousel m-0 row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-5 flex-nowrap overflow-auto hiding-bar">
+                      <!-- placeholder card -->
+                      <div class="card card-plahol" aria-hidden="true">
+                        <div class="card-body">
+                          <h5 class="card-title placeholder-glow">
+                            <span class="placeholder col-6"></span>
+                          </h5>
+                          <p class="card-text placeholder-glow">
+                            <span class="placeholder col-7"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                          </p>
+                        </div>
                       </div>
+                      <!-- fine place card -->
                     </div>
-                    <!-- fine place card -->
+                    <!-- BUTTONS -->
+                    <span
+                      onclick="rightMovement(0)"
+                      style="width: 15%"
+                      class="end-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-right">
+                      <!-- <i class="bi bi-arrow-right-circle-fill fs-3"></i> -->
+                    </span>
+                    <span
+                      onclick="leftMovement(0)"
+                      style="width: 15%"
+                      class="start-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-left">
+                      <!-- <i class="bi bi-arrow-left-circle-fill fs-3"></i> -->
+                    </span>
                   </div>
-                  <!-- BUTTONS -->
-                  <span
-                    onclick="rightMovement(0)"
-                    style="width: 15%"
-                    class="end-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-right">
-                    <!-- <i class="bi bi-arrow-right-circle-fill fs-3"></i> -->
-                  </span>
-                  <span
-                    onclick="leftMovement(0)"
-                    style="width: 15%"
-                    class="start-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-left">
-                    <!-- <i class="bi bi-arrow-left-circle-fill fs-3"></i> -->
-                  </span>
-                </div>
 
-                <!-- I tuoi artisti preferiti -->
-                <div class="row row-cols-2 justify-content-between mx-0 mb-3 mt-5 px-3">
-                  <div class="col p-0">
-                    <h6 class="mb-0 p-0 fw-bold fs-3 text-white">I tuoi artisti preferiti</h6>
-                  </div>
-                  <div class="col text-end align-self-end p-0">
-                    <h6 class="mb-0 text-secondary">Mostra Tutto</h6>
-                  </div>
-                </div>
-                <!-- sezione i tuoi artisti preferiti -->
-                <!-- i tuoi artisti preferiti carosello -->
-                <div class="row position-relative m-0">
-                  <!-- INIZIO CAROSELLO -->
-                  <div
-                    id="artisti-carousel"
-                    class="p-0 smooth-carousel m-0 row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-5 flex-nowrap overflow-auto hiding-bar">
-                    <!-- placeholder card -->
-                    <div class="card card-plahol" aria-hidden="true">
-                      <div class="card-body">
-                        <h5 class="card-title placeholder-glow">
-                          <span class="placeholder col-6"></span>
-                        </h5>
-                        <p class="card-text placeholder-glow">
-                          <span class="placeholder col-7"></span>
-                          <span class="placeholder col-4"></span>
-                          <span class="placeholder col-4"></span>
-                          <span class="placeholder col-6"></span>
-                          <span class="placeholder col-8"></span>
-                        </p>
-                      </div>
+                  <!-- I tuoi artisti preferiti -->
+                  <div class="row row-cols-2 justify-content-between mx-0 mb-3 mt-5 px-3">
+                    <div class="col p-0">
+                      <h6 class="mb-0 p-0 fw-bold fs-3 text-white">I tuoi artisti preferiti</h6>
                     </div>
-                    <!-- fine place card -->
+                    <div class="col text-end align-self-end p-0">
+                      <h6 class="mb-0 text-secondary">Mostra Tutto</h6>
+                    </div>
                   </div>
-                  <!-- BUTTONS -->
-                  <span
-                    onclick="rightMovement(1)"
-                    style="width: 15%"
-                    class="end-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-right">
-                    <!-- <i class="bi bi-arrow-right-circle-fill fs-3"></i> -->
-                  </span>
-                  <span
-                    onclick="leftMovement(1)"
-                    style="width: 15%"
-                    class="start-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-left">
-                    <!-- <i class="bi bi-arrow-left-circle-fill fs-3"></i> -->
-                  </span>
-                </div>
-              </div>
-              <!-- Sezione Video-->
-              <div class="container-fluid my-5">
-                <div id="video-row" class="row row-cols-1 row-cols-md-2 row-cols-xl-4"></div>
-              </div>
-            </section>
-            <!-- inizio footer -->
-            <section style="margin-bottom: 15em" class="footer-mainpage">
-              <div class="container">
-                <div class="row row-cols-2 row-cols-lg-5">
-                  <div class="col">
-                    <ul class="list-unstyled">
-                      <li>Azienda</li>
-                      <li><a href="#">Chi siamo</a></li>
-                      <li><a href="#">Opportunità di lavoro</a></li>
-                      <li><a href="#">For the Record</a></li>
-                    </ul>
-                  </div>
-                  <div class="col">
-                    <ul class="list-unstyled">
-                      <li>Community</li>
-                      <li><a href="#">Per artisti</a></li>
-                      <li><a href="#">Sviluppatori</a></li>
-                      <li><a href="#">Pubblicità</a></li>
-                      <li><a href="#">Investitori</a></li>
-                      <li><a href="#">Venditori</a></li>
-                    </ul>
-                  </div>
-                  <div class="col">
-                    <ul class="list-unstyled">
-                      <li>Link utili</li>
-                      <li><a href="#">Assistenza</a></li>
-                      <li><a href="#">App per cellulare gratuita</a></li>
-                      <li><a href="#">Diritti del consumatore</a></li>
-                      <li><a href="#">Popolare per Paese</a></li>
-                      <li><a href="#">Importa la tua musica</a></li>
-                    </ul>
-                  </div>
-                  <div class="col">
-                    <ul class="list-unstyled">
-                      <li>Piani Spotify</li>
-                      <li><a href="#">Premium Individual</a></li>
-                      <li><a href="#">Premium Duo</a></li>
-                      <li><a href="#">Premium Family</a></li>
-                      <li><a href="#">Premium Student</a></li>
-                      <li><a href="#">Spotify Free</a></li>
-                    </ul>
-                  </div>
-                  <div class="col mt-2 mt-md-0">
-                    <ul class="d-flex p-0 gap-3 flex-wrap">
-                      <li
-                        style="min-width: 40px; height: 40px; padding-top: 2px; border-radius: 50px"
-                        class="bg-secondary bg-opacity-50 d-flex justify-content-center align-items-center">
-                        <i class="bi bi-instagram"></i>
-                      </li>
-                      <li
-                        style="min-width: 40px; height: 40px; padding-top: 2px; border-radius: 50px"
-                        class="bg-secondary bg-opacity-50 d-flex justify-content-center align-items-center">
-                        <i class="bi bi-twitter"></i>
-                      </li>
-                      <li
-                        style="min-width: 40px; height: 40px; padding-top: 2px; border-radius: 50px"
-                        class="bg-secondary bg-opacity-50 d-flex justify-content-center align-items-center">
-                        <i class="bi bi-facebook"></i>
-                      </li>
-                    </ul>
+                  <!-- sezione i tuoi artisti preferiti -->
+                  <!-- i tuoi artisti preferiti carosello -->
+                  <div class="row position-relative m-0">
+                    <!-- INIZIO CAROSELLO -->
+                    <div
+                      id="artisti-carousel"
+                      class="p-0 smooth-carousel m-0 row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-5 flex-nowrap overflow-auto hiding-bar">
+                      <!-- placeholder card -->
+                      <div class="card card-plahol" aria-hidden="true">
+                        <div class="card-body">
+                          <h5 class="card-title placeholder-glow">
+                            <span class="placeholder col-6"></span>
+                          </h5>
+                          <p class="card-text placeholder-glow">
+                            <span class="placeholder col-7"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                          </p>
+                        </div>
+                      </div>
+                      <!-- fine place card -->
+                    </div>
+                    <!-- BUTTONS -->
+                    <span
+                      onclick="rightMovement(1)"
+                      style="width: 15%"
+                      class="end-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-right">
+                      <!-- <i class="bi bi-arrow-right-circle-fill fs-3"></i> -->
+                    </span>
+                    <span
+                      onclick="leftMovement(1)"
+                      style="width: 15%"
+                      class="start-0 p-0 position-absolute top-0 text-end h-100 d-flex justify-content-center align-items-center arrow-left">
+                      <!-- <i class="bi bi-arrow-left-circle-fill fs-3"></i> -->
+                    </span>
                   </div>
                 </div>
-              </div>
-              <hr />
-              <div class="d-flex justify-content-between">
-                <div class="d-flex">
-                  <p class="mb-0 me-3 last_footer">Informazioni legali</p>
-                  <p class="mb-0 me-3 last_footer">Sicurezza e Centro sulla privacy</p>
-                  <p class="mb-0 me-3 last_footer">Informativa sulla privacy</p>
-                  <p class="mb-0 me-3 last_footer">Impostazioni cookie</p>
-                  <p class="mb-0 me-3 last_footer">Info annunci</p>
-                  <p class="mb-0 me-3 last_footer">Accessibilità</p>
+                <!-- Sezione Video-->
+                <div class="container-fluid my-5">
+                  <div id="video-row" class="row row-cols-1 row-cols-md-2 row-cols-xl-4"></div>
                 </div>
-                <p class="last_footer">&copy; 2026 Spotify AB</p>
-              </div>
-            </section>
+              </section>
+              <!-- inizio footer -->
+              <section style="margin-bottom: 15em" class="footer-mainpage">
+                <div class="container">
+                  <div class="row row-cols-2 row-cols-lg-5">
+                    <div class="col">
+                      <ul class="list-unstyled">
+                        <li>Azienda</li>
+                        <li><a href="#">Chi siamo</a></li>
+                        <li><a href="#">Opportunità di lavoro</a></li>
+                        <li><a href="#">For the Record</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="list-unstyled">
+                        <li>Community</li>
+                        <li><a href="#">Per artisti</a></li>
+                        <li><a href="#">Sviluppatori</a></li>
+                        <li><a href="#">Pubblicità</a></li>
+                        <li><a href="#">Investitori</a></li>
+                        <li><a href="#">Venditori</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="list-unstyled">
+                        <li>Link utili</li>
+                        <li><a href="#">Assistenza</a></li>
+                        <li><a href="#">App per cellulare gratuita</a></li>
+                        <li><a href="#">Diritti del consumatore</a></li>
+                        <li><a href="#">Popolare per Paese</a></li>
+                        <li><a href="#">Importa la tua musica</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul class="list-unstyled">
+                        <li>Piani Spotify</li>
+                        <li><a href="#">Premium Individual</a></li>
+                        <li><a href="#">Premium Duo</a></li>
+                        <li><a href="#">Premium Family</a></li>
+                        <li><a href="#">Premium Student</a></li>
+                        <li><a href="#">Spotify Free</a></li>
+                      </ul>
+                    </div>
+                    <div class="col mt-2 mt-md-0">
+                      <ul class="d-flex p-0 gap-3 flex-wrap">
+                        <li
+                          style="
+                            min-width: 40px;
+                            height: 40px;
+                            padding-top: 2px;
+                            border-radius: 50px;
+                          "
+                          class="bg-secondary bg-opacity-50 d-flex justify-content-center align-items-center">
+                          <i class="bi bi-instagram"></i>
+                        </li>
+                        <li
+                          style="
+                            min-width: 40px;
+                            height: 40px;
+                            padding-top: 2px;
+                            border-radius: 50px;
+                          "
+                          class="bg-secondary bg-opacity-50 d-flex justify-content-center align-items-center">
+                          <i class="bi bi-twitter"></i>
+                        </li>
+                        <li
+                          style="
+                            min-width: 40px;
+                            height: 40px;
+                            padding-top: 2px;
+                            border-radius: 50px;
+                          "
+                          class="bg-secondary bg-opacity-50 d-flex justify-content-center align-items-center">
+                          <i class="bi bi-facebook"></i>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <p class="mb-0 me-3 last_footer">Informazioni legali</p>
+                    <p class="mb-0 me-3 last_footer">Sicurezza e Centro sulla privacy</p>
+                    <p class="mb-0 me-3 last_footer">Informativa sulla privacy</p>
+                    <p class="mb-0 me-3 last_footer">Impostazioni cookie</p>
+                    <p class="mb-0 me-3 last_footer">Info annunci</p>
+                    <p class="mb-0 me-3 last_footer">Accessibilità</p>
+                  </div>
+                  <p class="last_footer">&copy; 2026 Spotify AB</p>
+                </div>
+              </section>
+            </div>
             <!-- fine footer -->
           </div>
           <!-- fine parte centrale -->
           <!-- inizio sidebar end   -->
           <div
-            class="col-2 ps-3 indipendent-scroll end-0 d-none d-lg-block sidebar_end bg-gradient"
+            class="col-2 ps-3 indipendent-scroll end-0 d-none d-lg-block sidebar_end bg-gradient rounded-4"
             id="sidebar_end">
             <div
               class="d-flex justify-content-between position-sticky z-2 py-3 w-100 bg-gradient top-0">
