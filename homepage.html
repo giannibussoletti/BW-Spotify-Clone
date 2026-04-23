@@ -282,9 +282,9 @@
     </header>
     <main class="position-relative">
       <div class="container-fluid m-0 position-absolute" style="top: 68px">
-        <div class="row">
+        <div class="row g-5">
           <div
-            class="col-2 indipendent-scroll d-none d-lg-block"
+            class="col-2 indipendent-scroll d-none d-lg-block bg-gradient"
             id="sidebar_start"
           >
             <div
@@ -391,12 +391,27 @@
                 </p>
               </div>
             </div>
-            <div id="appendLibrary"></div>
+            <div id="appendLibrary"><!-- placeholder card -->
+                    <div class="card card-plahol" aria-hidden="true">
+                      <div class="card-body">
+                        <h5 class="card-title placeholder-glow">
+                          <span class="placeholder col-6"></span>
+                        </h5>
+                        <p class="card-text placeholder-glow">
+                          <span class="placeholder col-7"></span>
+                          <span class="placeholder col-4"></span>
+                          <span class="placeholder col-4"></span>
+                          <span class="placeholder col-6"></span>
+                          <span class="placeholder col-8"></span>
+                        </p>
+                      </div>
+                    </div>
+                    <!-- fine place card --></div>
           </div>
           <!-- parte centrale -->
           <div
             id="central-part"
-            class="col-12 col-lg-8 indipendent-scroll main-page"
+            class="col-12 col-lg-8 indipendent-scroll main-page bg-gradient"
           >
             <section>
               <!-- sezione bottoni in alto -->
@@ -442,7 +457,7 @@
                   </div>
                 </div>
                 <!-- Consigli -->
-                <div class="container">
+                <div class="container-fluid">
                   <div
                     id="consigliati"
                     class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 align-content-center"
@@ -476,8 +491,8 @@
                 >
                   <div class="col p-0">
                     <h6 class="mb-0 p-0 text-secondary">
-                      creato per <br /><span class="fw-bold fs-3 text-white"
-                        >Gianni</span
+                      pensato per <br /><span class="fw-bold fs-1 text-white"
+                        >Gino Paoli</span
                       >
                     </h6>
                   </div>
@@ -691,14 +706,14 @@
           <!-- fine parte centrale -->
           <!-- inizio sidebar end   -->
           <div
-            class="col-2 ps-3 indipendent-scroll end-0 d-none d-lg-block sidebar_end"
+            class="col-2 ps-3 indipendent-scroll end-0 d-none d-lg-block sidebar_end bg-gradient"
             id="sidebar_end"
           >
             <div
-              class="d-flex justify-content-between position-sticky z-2 py-3 w-100 bg-black top-0"
+              class="d-flex justify-content-between position-sticky z-2 py-3 w-100 bg-gradient top-0"
             >
               <!-- icone/testo start -->
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center ">
                 <h5 class="m-0">
                   Radio di <span class="name_artist"> Bad Bunny </span>
                 </h5>
@@ -1398,10 +1413,11 @@
             <div class="col-3 p-0" id="brano-in-esecuzione">
               <div class="d-flex">
                 <img
-                  src="https://www.placecats.com/75/75"
+                  src="https://th.bing.com/th?q=Foo+Fighters+Greatest+Hits&w=120&h=120&c=1&rs=1&qlt=70&o=7&cb=1&dpr=1.4&pid=InlineBlock&rm=3&mkt=it-IT&cc=IT&setlang=it&adlt=moderate&t=1&mw=247"
                   alt="Preferiti Spotify"
                   class="img-fluid rounded-1 me-3"
-                />
+                  style="max-width: 100px;" />
+                  
                 <div class="d-flex flex-column justify-content-center">
                   <p class="m-0"><b>Everlong</b></p>
                   <p class="m-0">Foo Fighters</p>
@@ -1418,9 +1434,7 @@
                   <button class="m-2 text-success bg-transparent border-0 fs-4">
                     <i class="bi bi-shuffle"></i>
                   </button>
-                  <button
-                    class="m-2 text-secondary bg-transparent border-0 fs-4"
-                  >
+                  <button class="m-2 text-white bg-transparent border-0 fs-4">
                     <i class="bi bi-chevron-bar-left"></i>
                   </button>
                   <button
@@ -1430,65 +1444,44 @@
                   >
                     <i class="bi bi-caret-right-fill"></i>
                   </button>
-                  <button
-                    class="m-2 text-secondary bg-transparent border-0 fs-4"
-                  >
+                  <button class="m-2 text-white bg-transparent border-0 fs-4">
                     <i class="bi bi-chevron-bar-right"></i>
                   </button>
-                  <button class="m-2 text-green bg-transparent border-0 fs-4">
+                  <button class="m-2 text-success bg-transparent border-0 fs-4">
                     <i class="bi bi-repeat"></i>
                   </button>
                 </div>
-                <div class="d-flex">
+                <div class="d-flex justify-content-center align-items-center">
                   <audio src="" id="audio"></audio>
                   <label for="range3" class="form-label"></label>
-                  <input
-                    type="range"
-                    class="form-range ms-2"
-                    min="0"
-                    max="100"
-                    value="0"
-                    id="range3"
-                  />
-                  <span class="ms-2">0:29</span>
+                  <input type="range" class="form-range ms-2 d-flex align-items-center" min="0" max="100" value="0" id="range3" />
+                  <span class="ms-2 text-white">0:29</span>
                 </div>
               </div>
             </div>
             <!-- parte destra del player -->
             <div class="col-3 d-flex">
-              <button class="m-2 text-secondary bg-transparent border-0 fs-4">
+              <button class="m-2 text-secondary bg-transparent border-0 fs-4 text-white">
                 <i class="bi bi-mic"></i>
               </button>
-              <button class="m-2 text-secondary bg-transparent border-0 fs-4">
+              <button class="m-2 text-secondary bg-transparent border-0 fs-4 text-white">
                 <i class="bi bi-view-list"></i>
               </button>
-              <button class="m-2 text-secondary bg-transparent border-0 fs-4">
+              <button class="m-2 text-secondary bg-transparent border-0 fs-4 text-white">
                 <i class="bi bi-pc-display"></i>
               </button>
-              <!-- qui il volume -->
-              <div class="d-flex align-items-center">
-                <button
-                  id="volumeIcon"
-                  class="m-2 text-secondary bg-transparent border-0 fs-4"
-                >
-                  <i class="bi bi-volume-up"></i>
-                </button>
-                <input
-                  type="range"
-                  id="volumeBar"
-                  class="form-range"
-                  style="width: 100px"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value="1"
-                />
-              </div>
+        <!-- qui il volume -->
+        <div class="d-flex align-items-center">
+          <button id="volumeIcon" class="m-2 text-white bg-transparent border-0 fs-4">
+          <i class="bi bi-volume-up"></i>
+          </button>
+         <input type="range" id="volumeBar" class="form-range" min="0" max="1" step="0.1" value="1">
+        </div>
               <button class="m-2 text-secondary bg-transparent border-0 fs-4">
-                <i class="bi bi-aspect-ratio"></i>
+                <i class="text-white bi bi-aspect-ratio"></i>
               </button>
               <button class="m-2 text-secondary bg-transparent border-0 fs-4">
-                <i class="bi bi-app-indicator"></i>
+                <i class="text-white bi bi-app-indicator"></i>
               </button>
             </div>
           </div>
