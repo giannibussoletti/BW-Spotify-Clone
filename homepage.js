@@ -8,6 +8,7 @@ const artistDetails =
 const dropdownForSearch = document.getElementById("dropdownForSearch");
 const inputNavbarValue = document.getElementById("inputNavbar");
 const audio = document.getElementById("audio");
+const progressBar = document.getElementById("range3");
 
 // Inject Consigliati
 const consigliati = document.getElementById("consigliati");
@@ -68,7 +69,7 @@ const getAlbum = function () {
     .then((data) => {
       data.data.forEach((track) => {
         const id = track.id;
-
+        console.log(track);
         const titoloAlbum = track.title;
         const imgAlbum = track.album.cover_medium;
         const artistaAlbum = track.artist.name;
@@ -79,9 +80,9 @@ const getAlbum = function () {
           "m-3",
           "position-relative",
         );
-        cardCarosello.innerHTML = `<img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid rounded-1 mt-3">
+        cardCarosello.innerHTML = `<a href="./album_page.html?id=${track.album.id}"><img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid w-100 rounded-1 mt-3"></a>
                        <div class="card-body">
-                       <p class="card-text fs-5">${artistaAlbum}</p>
+                       <p class="card-text fs-5">${titoloAlbum}</p>
                        <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
                        </div>`;
         carouselPerTe.appendChild(cardCarosello);
@@ -106,6 +107,7 @@ const getArtist = function () {
       }
     })
     .then((artist) => {
+      console.log(artist.data);
       artist.data.forEach((info) => {
         const cardArtista = document.createElement("div");
         cardArtista.classList.add(
@@ -118,7 +120,7 @@ const getArtist = function () {
         cardArtista.innerHTML += `<a href="./artist_page.html?id=${info.artist.id}"><img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle mt-3 w-100"></a>
                        <div class="card-body">
                        <p class="card-text text-center fs-5">${info.artist.name}</p>
-
+                       
                        </div>`;
         artistiCarousel.appendChild(cardArtista);
       });
@@ -141,6 +143,12 @@ const videoArrayObj = [
     video: "./assets/video/tonypitony.mp4",
     image:
       "https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/07yfI2D37Ir0pGQ8huDd4j/it",
+  },
+  {
+    name: "blink-182",
+    video: "./assets/video/blink.mp4",
+    image:
+      "https://pickasso.spotifycdn.com/image/ab67c0de0000deef/dt/v1/img/thisisv3/6FBDaR13swtiWwGhX1WQsP/it",
   },
 ];
 
@@ -326,33 +334,69 @@ inputNavbarValue.addEventListener("keydown", function (event) {
                 </div>
               </div>`;
           });
-          // bottonePlay.addEventListener("click", function () {
-          //   const bottonePlay = document.getElementById("bottonePlay")
-          //   if (audio.paused) {
-          //     audio.play()
-          //     bottonePlay.innerHTML = ` <i class="bi bi-play-fill"></i> `
-          //   } else {
-          //     audio.pause()
-          //     bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`
-          //   }
-          // })
-          const bottonePlay = document.querySelectorAll(".bottonePlay");
-          bottonePlay.forEach((element) => {
-            element.addEventListener("click", function () {
-              if (audio.paused) {
-                audio.play();
-                element.innerHTML = ` <i class="bi bi-play-fill"></i> `;
-              } else {
-                audio.pause();
-                element.innerHTML = `<i class="bi bi-pause-fill"></i>`;
-              }
-            });
-          });
         });
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+});
+bottonePlay.addEventListener("click", function () {
+  if (audio.paused) {
+    audio.play();
+    this.innerHTML = ` <i class="bi bi-pause-fill"></i> `;
+  } else {
+    audio.pause();
+    this.innerHTML = `<i class="bi bi-play-fill"></i>`;
+  }
+});
+audio.addEventListener("loadedmetadata", function () {
+  progressBar.max = Math.floor(audio.duration);
+  durationLabel.innerText = formatTime(audio.duration);
+  const percentage = (audio.currentTime / audio.duration) * 100;
+  progressBar.style.background = `linear-gradient(to right, #1db954 ${percentage}%, #535353 ${percentage}%)`;
+});
+audio.addEventListener("timeupdate", function () {
+  progressBar.value = Math.floor(audio.currentTime);
+  currentTimeLabel.innerText = formatTime(audio.currentTime);
+});
+progressBar.addEventListener("input", function () {
+  audio.currentTime = progressBar.value;
+});
+function formatTime(time) {
+  if (isNaN(time)) return "0:00";
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+}
+//funzione volume
+volumeBar.addEventListener("input", function () {
+  const value = this.value;
+  audio.volume = value;
+  const volumePercentage = value * 100;
+  this.style.background = `linear-gradient(to right, #1db954 ${volumePercentage}%, #535353 ${volumePercentage}%)`;
+  const icon = volumeIcon.querySelector("i");
+  if (value == 0) {
+    icon.className = "bi bi-volume-mute";
+  } else if (value < 0.5) {
+    icon.className = "bi bi-volume-down";
+  } else {
+    icon.className = "bi bi-volume-up";
+  }
+});
+let lastVolume = 1;
+volumeIcon.addEventListener("click", function () {
+  const icon = this.querySelector("i");
+
+  if (audio.volume > 0) {
+    lastVolume = audio.volume;
+    audio.volume = 0;
+    volumeBar.value = 0;
+    icon.className = "bi bi-volume-mute";
+  } else {
+    audio.volume = lastVolume;
+    volumeBar.value = lastVolume;
+    icon.className = lastVolume < 0.5 ? "bi bi-volume-down" : "bi bi-volume-up";
   }
 });
 
@@ -443,63 +487,4 @@ fullHiddenBtn.addEventListener("click", function () {
   }
 
   spaceShowBtn.appendChild(newBtnSpace);
-});
-//funzione del play
-bottonePlay.addEventListener("click", function () {
-  if (audio.paused) {
-    audio.play();
-    this.innerHTML = ` <i class="bi bi-pause-fill"></i> `;
-  } else {
-    audio.pause();
-    this.innerHTML = `<i class="bi bi-play-fill"></i>`;
-  }
-});
-audio.addEventListener("loadedmetadata", function () {
-  progressBar.max = Math.floor(audio.duration);
-  durationLabel.innerText = formatTime(audio.duration);
-  const percentage = (audio.currentTime / audio.duration) * 100;
-  progressBar.style.background = `linear-gradient(to right, #1db954 ${percentage}%, #535353 ${percentage}%)`;
-});
-audio.addEventListener("timeupdate", function () {
-  progressBar.value = Math.floor(audio.currentTime);
-  currentTimeLabel.innerText = formatTime(audio.currentTime);
-});
-progressBar.addEventListener("input", function () {
-  audio.currentTime = progressBar.value;
-});
-function formatTime(time) {
-  if (isNaN(time)) return "0:00";
-  const minutes = Math.floor(time / 60);
-  const seconds = Math.floor(time % 60);
-  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-}
-//funzione volume
-volumeBar.addEventListener("input", function () {
-  const value = this.value;
-  audio.volume = value;
-  const volumePercentage = value * 100;
-  this.style.background = `linear-gradient(to right, #1db954 ${volumePercentage}%, #535353 ${volumePercentage}%)`;
-  const icon = volumeIcon.querySelector("i");
-  if (value == 0) {
-    icon.className = "bi bi-volume-mute";
-  } else if (value < 0.5) {
-    icon.className = "bi bi-volume-down";
-  } else {
-    icon.className = "bi bi-volume-up";
-  }
-});
-let lastVolume = 1;
-volumeIcon.addEventListener("click", function () {
-  const icon = this.querySelector("i");
-
-  if (audio.volume > 0) {
-    lastVolume = audio.volume;
-    audio.volume = 0;
-    volumeBar.value = 0;
-    icon.className = "bi bi-volume-mute";
-  } else {
-    audio.volume = lastVolume;
-    volumeBar.value = lastVolume;
-    icon.className = lastVolume < 0.5 ? "bi bi-volume-down" : "bi bi-volume-up";
-  }
 });
