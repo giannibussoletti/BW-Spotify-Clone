@@ -1398,10 +1398,11 @@
             <div class="col-3 p-0" id="brano-in-esecuzione">
               <div class="d-flex">
                 <img
-                  src="https://www.placecats.com/75/75"
+                  src="https://th.bing.com/th?q=Foo+Fighters+Greatest+Hits&w=120&h=120&c=1&rs=1&qlt=70&o=7&cb=1&dpr=1.4&pid=InlineBlock&rm=3&mkt=it-IT&cc=IT&setlang=it&adlt=moderate&t=1&mw=247"
                   alt="Preferiti Spotify"
                   class="img-fluid rounded-1 me-3"
-                />
+                  style="max-width: 100px;" />
+                  
                 <div class="d-flex flex-column justify-content-center">
                   <p class="m-0"><b>Everlong</b></p>
                   <p class="m-0">Foo Fighters</p>
@@ -1418,9 +1419,7 @@
                   <button class="m-2 text-success bg-transparent border-0 fs-4">
                     <i class="bi bi-shuffle"></i>
                   </button>
-                  <button
-                    class="m-2 text-secondary bg-transparent border-0 fs-4"
-                  >
+                  <button class="m-2 text-white bg-transparent border-0 fs-4">
                     <i class="bi bi-chevron-bar-left"></i>
                   </button>
                   <button
@@ -1430,65 +1429,44 @@
                   >
                     <i class="bi bi-caret-right-fill"></i>
                   </button>
-                  <button
-                    class="m-2 text-secondary bg-transparent border-0 fs-4"
-                  >
+                  <button class="m-2 text-white bg-transparent border-0 fs-4">
                     <i class="bi bi-chevron-bar-right"></i>
                   </button>
-                  <button class="m-2 text-green bg-transparent border-0 fs-4">
+                  <button class="m-2 text-success bg-transparent border-0 fs-4">
                     <i class="bi bi-repeat"></i>
                   </button>
                 </div>
-                <div class="d-flex">
+                <div class="d-flex justify-content-center align-items-center">
                   <audio src="" id="audio"></audio>
                   <label for="range3" class="form-label"></label>
-                  <input
-                    type="range"
-                    class="form-range ms-2"
-                    min="0"
-                    max="100"
-                    value="0"
-                    id="range3"
-                  />
-                  <span class="ms-2">0:29</span>
+                  <input type="range" class="form-range ms-2 d-flex align-items-center" min="0" max="100" value="0" id="range3" />
+                  <span class="ms-2 text-white">0:29</span>
                 </div>
               </div>
             </div>
             <!-- parte destra del player -->
             <div class="col-3 d-flex">
-              <button class="m-2 text-secondary bg-transparent border-0 fs-4">
+              <button class="m-2 text-secondary bg-transparent border-0 fs-4 text-white">
                 <i class="bi bi-mic"></i>
               </button>
-              <button class="m-2 text-secondary bg-transparent border-0 fs-4">
+              <button class="m-2 text-secondary bg-transparent border-0 fs-4 text-white">
                 <i class="bi bi-view-list"></i>
               </button>
-              <button class="m-2 text-secondary bg-transparent border-0 fs-4">
+              <button class="m-2 text-secondary bg-transparent border-0 fs-4 text-white">
                 <i class="bi bi-pc-display"></i>
               </button>
-              <!-- qui il volume -->
-              <div class="d-flex align-items-center">
-                <button
-                  id="volumeIcon"
-                  class="m-2 text-secondary bg-transparent border-0 fs-4"
-                >
-                  <i class="bi bi-volume-up"></i>
-                </button>
-                <input
-                  type="range"
-                  id="volumeBar"
-                  class="form-range"
-                  style="width: 100px"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value="1"
-                />
-              </div>
+        <!-- qui il volume -->
+        <div class="d-flex align-items-center">
+          <button id="volumeIcon" class="m-2 text-white bg-transparent border-0 fs-4">
+          <i class="bi bi-volume-up"></i>
+          </button>
+         <input type="range" id="volumeBar" class="form-range" min="0" max="1" step="0.1" value="1">
+        </div>
               <button class="m-2 text-secondary bg-transparent border-0 fs-4">
-                <i class="bi bi-aspect-ratio"></i>
+                <i class="text-white bi bi-aspect-ratio"></i>
               </button>
               <button class="m-2 text-secondary bg-transparent border-0 fs-4">
-                <i class="bi bi-app-indicator"></i>
+                <i class="text-white bi bi-app-indicator"></i>
               </button>
             </div>
           </div>
