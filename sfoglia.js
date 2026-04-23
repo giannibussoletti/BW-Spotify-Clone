@@ -280,3 +280,89 @@ fullHiddenBtn.addEventListener("click", function () {
 
   spaceShowBtn.appendChild(newBtnSpace);
 });
+const audio = document.getElementById("audio");
+const progressBar = document.getElementById("range3");
+const volumeBar = document.getElementById("volumeBar");
+const volumeIcon = document.getElementById("volumeIcon");
+const bottonePlay = document.getElementById("bottonePlay");
+const currentTimeLabel = document.querySelector(".d-flex span.ms-2");
+const durationLabel = document.querySelector(".col-6 .d-flex span:last-child");
+//funzione colore
+function aggiornaColoreProgressBar() {
+  const min = progressBar.min || 0;
+  const max = progressBar.max || 100;
+  const val = progressBar.value;
+  const percentuale = ((val - min) / (max - min)) * 100;
+  progressBar.style.background = `linear-gradient(to right, #ffffff ${percentuale}%, #535353 ${percentuale}%)`;
+}
+//funzione play
+function updateRangeColor(inputElement) {
+  const value = inputElement.value;
+  const max = inputElement.max || 100;
+  const percentage = (value / max) * 100;
+  const color = inputElement.id === "range3" ? "#ffffff" : "#1db954";
+  inputElement.style.background = `linear-gradient(to right, ${color} ${percentage}%, #535353 ${percentage}%)`;
+}
+
+bottonePlay.addEventListener("click", function () {
+  if (audio.paused) {
+    audio.play();
+    this.innerHTML = `<i class="bi bi-pause-fill"></i>`;
+  } else {
+    audio.pause();
+    this.innerHTML = `<i class="bi bi-play-fill"></i>`;
+  }
+});
+
+audio.addEventListener("loadedmetadata", function () {
+  progressBar.max = Math.floor(audio.duration);
+  if (durationLabel) durationLabel.innerText = formatTime(audio.duration);
+  updateRangeColor(progressBar);
+});
+
+audio.addEventListener("timeupdate", function () {
+  progressBar.value = Math.floor(audio.currentTime);
+  if (currentTimeLabel)
+    currentTimeLabel.innerText = formatTime(audio.currentTime);
+  updateRangeColor(progressBar);
+});
+
+progressBar.addEventListener("input", function () {
+  audio.currentTime = progressBar.value;
+  updateRangeColor(this);
+});
+function formatTime(time) {
+  if (isNaN(time)) return "0:00";
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+}
+//funzione volume
+volumeBar.addEventListener("input", function () {
+  audio.volume = this.value;
+  updateRangeColor(this);
+
+  const icon = volumeIcon.querySelector("i");
+  if (this.value == 0) {
+    icon.className = "bi bi-volume-mute";
+  } else if (this.value < 0.5) {
+    icon.className = "bi bi-volume-down";
+  } else {
+    icon.className = "bi bi-volume-up";
+  }
+});
+let lastVolume = 1;
+volumeIcon.addEventListener("click", function () {
+  const icon = this.querySelector("i");
+
+  if (audio.volume > 0) {
+    lastVolume = audio.volume;
+    audio.volume = 0;
+    volumeBar.value = 0;
+    icon.className = "bi bi-volume-mute";
+  } else {
+    audio.volume = lastVolume;
+    volumeBar.value = lastVolume;
+    icon.className = lastVolume < 0.5 ? "bi bi-volume-down" : "bi bi-volume-up";
+  }
+});
