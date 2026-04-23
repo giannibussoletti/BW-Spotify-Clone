@@ -294,3 +294,6 @@ nav {
 #range3:active, #range3:hover {
   height: 4px;
 }
+#greenPlay{
+  opacity: 0.5;
+}
