@@ -96,7 +96,7 @@ const getArtist = function () {
       artist.data.forEach((info) => {
         const cardArtista = document.createElement("div")
         cardArtista.classList.add("card", "col", "m-3", "position-relative", "bg-transparent")
-        cardArtista.innerHTML += `<a href="./artist_page.html?id=${info.artist.id}"><img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle mt-3"></a>
+        cardArtista.innerHTML += `<a href="./artist_page.html?id=${info.artist.id}"><img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle w-100 mt-3"></a>
                        <div class="card-body">
                        <p class="card-text text-center fs-5">${info.artist.name}</p>
                        
