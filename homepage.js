@@ -1,9 +1,7 @@
 const search = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
 // arrayparolericerca${input.value}
-const albumDetails =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
-const artistDetails =
-  "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+const albumDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
+const artistDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
 
 const dropdownForSearch = document.getElementById("dropdownForSearch")
 const inputNavbarValue = document.getElementById("inputNavbar")
@@ -30,13 +28,7 @@ const getConsigli = function () {
         const artistaAlbum = track.artist.name
 
         const cardCarosello = document.createElement("div")
-        cardCarosello.classList.add(
-          "card",
-          "d-flex",
-          "border-0",
-          "bg-transparent",
-          "flex",
-        )
+        cardCarosello.classList.add("card", "d-flex", "border-0", "bg-transparent", "flex")
         cardCarosello.innerHTML = `<div class="col m-0 p-2">
         <div class="d-flex align-items-center bg-dark bg-opacity-75 rounded-2 p-2">
         <img class="rounded-start-2"
@@ -73,7 +65,6 @@ const getAlbum = function () {
       })
       data.data.forEach((track) => {
         const id = track.id
-        console.log(track)
         const titoloAlbum = track.title
         const imgAlbum = track.album.cover_medium
         const artistaAlbum = track.artist.name
@@ -106,16 +97,9 @@ const getArtist = function () {
       }
     })
     .then((artist) => {
-      console.log(artist.data)
       artist.data.forEach((info) => {
         const cardArtista = document.createElement("div")
-        cardArtista.classList.add(
-          "card",
-          "col",
-          "m-3",
-          "position-relative",
-          "bg-transparent",
-        )
+        cardArtista.classList.add("card", "col", "m-3", "position-relative", "bg-transparent")
         cardArtista.innerHTML += `<a href="./artist_page.html?id=${info.artist.id}"><img src="${info.artist.picture_medium}" alt="Preferiti Spotify" class="img-fluid rounded-circle mt-3 w-100"></a>
                        <div class="card-body">
                        <p class="card-text text-center fs-5">${info.artist.name}</p>
@@ -280,7 +264,6 @@ inputNavbarValue.addEventListener("keydown", function (event) {
         }
       })
       .then((data) => {
-        console.log(data)
         dropdownForSearch.innerHTML =
           '<li class="list-group-item text-white fs-4" value="">Ricerche recenti</li>'
         data.data.slice(0, 5).forEach((tracks, i) => {
@@ -314,9 +297,7 @@ inputNavbarValue.addEventListener("keydown", function (event) {
             audio.src = link
             audio.play()
             dropdownForSearch.innerHTML = ""
-            const branoInEsecuzione = document.getElementById(
-              "brano-in-esecuzione",
-            )
+            const branoInEsecuzione = document.getElementById("brano-in-esecuzione")
             branoInEsecuzione.innerHTML = ""
             branoInEsecuzione.innerHTML = `<div class="d-flex">
                 <img
