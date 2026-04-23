@@ -337,6 +337,7 @@ function aggiornaColoreProgressBar() {
   const percentuale = ((val - min) / (max - min)) * 100
   progressBar.style.background = `linear-gradient(to right, #ffffff ${percentuale}%, #535353 ${percentuale}%)`
 }
+aggiornaColoreProgressBar()
 //funzione play
 function updateRangeColor(inputElement) {
   const value = inputElement.value
@@ -345,6 +346,7 @@ function updateRangeColor(inputElement) {
   const color = inputElement.id === "range3" ? "#ffffff" : "#1db954"
   inputElement.style.background = `linear-gradient(to right, ${color} ${percentage}%, #535353 ${percentage}%)`
 }
+updateRangeColor()
 
 bottonePlay.addEventListener("click", function () {
   if (audio.paused) {
