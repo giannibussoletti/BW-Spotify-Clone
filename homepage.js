@@ -71,7 +71,6 @@ const getAlbum = function () {
     .then((data) => {
       data.data.forEach((track) => {
         const id = track.id
-        console.log(track)
         const titoloAlbum = track.title
         const imgAlbum = track.album.cover_medium
         const artistaAlbum = track.artist.name
@@ -79,7 +78,7 @@ const getAlbum = function () {
         cardCarosello.classList.add("card", "col-6", "m-3", "position-relative")
         cardCarosello.innerHTML = `<a href="./album_page.html?id=${track.album.id}"><img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid w-100 rounded-1 mt-3"></a>
                        <div class="card-body">
-                       <p class="card-text fs-5">${titoloAlbum}</p>
+                       <p class="card-text fs-5">${artistaAlbum}</p>
                        <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" ><i class="bi bi-play-fill"></i></a>
                        </div>`
         carouselPerTe.appendChild(cardCarosello)
@@ -104,7 +103,6 @@ const getArtist = function () {
       }
     })
     .then((artist) => {
-      console.log(artist.data)
       artist.data.forEach((info) => {
         const cardArtista = document.createElement("div")
         cardArtista.classList.add(
@@ -222,7 +220,7 @@ function scrollRightBtn() {
 }
 
 // mettete dei puttana di commenti
-// sempre cosi dolce sto ragazzo
+
 const getLibrary = function (searchValue) {
   fetch(search + searchValue)
     .then((res) => {
@@ -265,7 +263,6 @@ getLibrary("kanye West")
 inputNavbarValue.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     getLibrary(inputNavbarValue.value)
-
     fetch(search + inputNavbarValue.value)
       .then((res) => {
         if (res.ok) {
@@ -275,26 +272,29 @@ inputNavbarValue.addEventListener("keydown", function (event) {
         }
       })
       .then((data) => {
+        console.log(data)
         dropdownForSearch.innerHTML =
           '<li class="list-group-item text-white fs-4" value="">Ricerche recenti</li>'
-        data.data.slice(0, 5).forEach((tracks) => {
+        data.data.slice(0, 5).forEach((tracks, i) => {
           const elementoLista = document.createElement("li")
           const link = tracks.preview
           const title = tracks.title
           const name = tracks.artist.name
           const img = tracks.album.cover_medium
-
           elementoLista.classList.add("list-group-item", "p-2")
           elementoLista.innerHTML = `
           <div class="card rounded-2 p-0 h-100" >
           <div class="row g-0 d-flex">
           <div class="col-4 border-0"style="max-width:100px;">
-          <img src="${img}" class="img-fluid rounded-2 border border-2">
+          <a class="text-decoration-none text-white w-25 m-1" target="_blank" href="./album_page.html?id=${data.data[i].album.id}"><img
+                src="${img}"
+                alt="Preferiti Spotify"
+                class="img-fluid rounded-1 me-1" /></a>
           </div>
           <div class="col-8">
           <div class="card-body">
-          <h6 class="card-title m-0 me-1">${title}</h6>
-          <p class="card-text">• ${name}</p>
+          <h6><a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${title}</a></h6>
+          <p class="ms-1">• <a class="text-decoration-none text-white" target="_blank" href="./album_page.html?id=${data.data[i].album.id}">${name}</a></p>
           </div>
           </div>
           </div>
@@ -325,6 +325,28 @@ inputNavbarValue.addEventListener("keydown", function (event) {
                   <i class="bi bi-check-circle-fill text-success"></i>
                 </div>
               </div>`
+          })
+          // bottonePlay.addEventListener("click", function () {
+          //   const bottonePlay = document.getElementById("bottonePlay")
+          //   if (audio.paused) {
+          //     audio.play()
+          //     bottonePlay.innerHTML = ` <i class="bi bi-play-fill"></i> `
+          //   } else {
+          //     audio.pause()
+          //     bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`
+          //   }
+          // })
+          const bottonePlay = document.querySelectorAll(".bottonePlay")
+          bottonePlay.forEach((element) => {
+            element.addEventListener("click", function () {
+              if (audio.paused) {
+                audio.play()
+                element.innerHTML = ` <i class="bi bi-play-fill"></i> `
+              } else {
+                audio.pause()
+                element.innerHTML = `<i class="bi bi-pause-fill"></i>`
+              }
+            })
           })
         })
       })
@@ -403,7 +425,6 @@ const nameArtistsidebar = function (x, y) {
     })
     .then((data) => {
       const primoRisultato = data.data[0]
-
       //titolo della canzone
       if (nameSong) {
         nameSong.innerText = primoRisultato.title
