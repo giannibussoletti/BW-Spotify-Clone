@@ -4,8 +4,6 @@ const searchWorld = `https://striveschool-api.herokuapp.com/api/deezer/search?q=
 // const albumDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
 // const artistDetails = "https://striveschool-api.herokuapp.com/api/deezer/album/75621062"
 
-const cardSfoglia = document.querySelectorAll(".card-sfoglia");
-const inputNavbarValue = document.getElementById("inputNavbar");
 const cardContainer = document.getElementById("card-container");
 // funzione estrazione random color
 // array di colori
@@ -19,7 +17,9 @@ const colors = [
   "#608108",
   "#AF2896",
 ];
-//funzione nav bar
+//funzione nav barconst
+cardSfoglia = document.querySelectorAll(".card-sfoglia");
+const inputNavbarValue = document.getElementById("inputNavbar");
 inputNavbarValue.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     getLibrary(inputNavbarValue.value);
@@ -153,6 +153,8 @@ fetch(searchWorld)
 //     // Nota: se passi il nome, il mio artist_page.js lo gestirà tramite la search
 //   }
 // })
+
+//sidebar start function
 const search = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
 const getLibrary = function (searchValue) {
   fetch(search + searchValue)
