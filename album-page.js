@@ -10,7 +10,6 @@ const shuffleImg = document.getElementById("little-img")
 const altroDaTitle = document.getElementById("altro-da")
 const altroDischi = document.getElementById("altri-dischi")
 const audio = document.getElementById("audio")
-console.log(audio)
 
 fetch(apiAlbum + albumID)
   .then((response) => {
@@ -344,6 +343,7 @@ function updateRangeColor(inputElement) {
 updateRangeColor()
 
 bottonePlay.addEventListener("click", function () {
+  console.log("bottone")
   if (audio.paused) {
     audio.play()
     this.innerHTML = `<i class="bi bi-pause-fill"></i>`
@@ -375,6 +375,7 @@ function formatTime(time) {
   const seconds = Math.floor(time % 60)
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`
 }
+
 //funzione volume
 volumeBar.addEventListener("input", function () {
   audio.volume = this.value
