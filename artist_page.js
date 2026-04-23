@@ -50,6 +50,65 @@ const initArtistPage = function () {
       // SECONDA FETCH: Brani Popolari
       return fetch(searchApi + artist.name);
     })
+    // .then((response) => {
+    //   if (response.ok) {
+    //     return response.json()
+    //   } else {
+    //     console.log("errore generico")
+    //   }
+    // })
+    // .then((data) => {
+    //   console.log(data)
+
+    //   data.data.forEach((info, i) => {
+    //     // info.album.cover_small
+    //     // info.id
+    //     // info.title_short
+    //     tracklistContainer.innerHTML += `<div class="row align-items-center">
+    //             <div class="col-1 text-center fs-5">${i + 1}</div>
+    //             <div class="col-1">
+    //               <img
+    //                 src=${info.album.cover_small}
+    //                 alt="foto_album"
+    //                 class="rounded-3"
+    //               />
+    //             </div>
+    //             <div class="col-5">
+    //               <div class="d-flex flex-column flex-grow-1">
+    //                 <p class="fw-bold mb-1 fs-3">${info.title_short}</p>
+    //                 <p class="text-secondary fs-5 mb-0">
+    //                   <svg
+    //                     xmlns="http://www.w3.org/2000/svg"
+    //                     width="16"
+    //                     height="16"
+    //                     fill="currentColor"
+    //                     class="bi bi-play-btn rounded-3"
+    //                     viewBox="0 0 16 16"
+    //                   >
+    //                     <path
+    //                       d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"
+    //                     />
+    //                     <path
+    //                       d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"
+    //                     />
+    //                   </svg>
+    //                   Video musicale
+    //                 </p>
+    //               </div>
+    //             </div>
+    //             <div class="col-4">
+    //               <p>${info.id}</p>
+    //             </div>
+    //             <div class="col-1 m-0">
+    //               <p class="fs-5">3:04</p>
+    //             </div>
+    //           </div>`
+    //   })
+    // })
+    // .catch((err) => {
+    //   console.log("err", err)
+    // })
+
     .then((res) => res.json())
     .then((searchData) => {
       populateTracklist(searchData.data);
@@ -101,8 +160,8 @@ const populateTracklist = function (tracks) {
         <img src="${track.album.cover_small}" class="rounded shadow-sm" alt="cover" style="width: 40px">
       </div>
       <div class="col-6">
-        <p class="m-0 fs-5 fw-bold text-white text-truncate small">${track.title}</p>
-        <p class="m-0 fs-6 x-small text-secondary">${track.artist.name}</p>
+        <p class="m-0 fw-bold text-white text-truncate small">${track.title}</p>
+        <p class="m-0 x-small text-secondary">${track.artist.name}</p>
       </div>
       <div class="col-2 text-secondary small d-none d-md-block text-truncate">
         ${track.rank.toLocaleString()}
