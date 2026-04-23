@@ -344,7 +344,7 @@
                       href="sfoglia.html"
                       class="text-light text-decoration-none"
                     >
-                    Album
+                      Album
                     </a>
                   </button>
                   <button
@@ -406,22 +406,22 @@
                   <div class="row mt-3 mb-4">
                     <div class="col-12 d-flex justify-content-between">
                       <div class="d-flex gap-3">
-                      <a
-                        class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                        href="#"
-                        >Tutto</a
-                      >
-                      <a
-                        class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                        href="#"
-                        >Musica</a
-                      >
-                      <a
-                        class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                        href="#"
-                        >Podcast</a
-                      >
-                    </div>
+                        <a
+                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                          href="#"
+                          >Tutto</a
+                        >
+                        <a
+                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                          href="#"
+                          >Musica</a
+                        >
+                        <a
+                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                          href="#"
+                          >Podcast</a
+                        >
+                      </div>
                       <div id="space_show_btn">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -447,7 +447,22 @@
                     id="consigliati"
                     class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 align-content-center"
                   >
-                    <!-- qui inserire le card dei consigli -->
+                    <!-- placeholder card -->
+                    <div class="card card-plahol" aria-hidden="true ">
+                      <div class="card-body">
+                        <h5 class="card-title placeholder-glow">
+                          <span class="placeholder col-6"></span>
+                        </h5>
+                        <p class="card-text placeholder-glow">
+                          <span class="placeholder col-7"></span>
+                          <span class="placeholder col-4"></span>
+                          <span class="placeholder col-4"></span>
+                          <span class="placeholder col-6"></span>
+                          <span class="placeholder col-8"></span>
+                        </p>
+                      </div>
+                    </div>
+                    <!-- fine place card -->
                   </div>
                 </div>
               </div>
@@ -477,7 +492,24 @@
                   <div
                     id="per-te-carousel"
                     class="p-0 smooth-carousel m-0 row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-5 flex-nowrap overflow-auto hiding-bar"
-                  ></div>
+                  >
+                    <!-- placeholder card -->
+                    <div class="card card-plahol" aria-hidden="true">
+                      <div class="card-body">
+                        <h5 class="card-title placeholder-glow">
+                          <span class="placeholder col-6"></span>
+                        </h5>
+                        <p class="card-text placeholder-glow">
+                          <span class="placeholder col-7"></span>
+                          <span class="placeholder col-4"></span>
+                          <span class="placeholder col-4"></span>
+                          <span class="placeholder col-6"></span>
+                          <span class="placeholder col-8"></span>
+                        </p>
+                      </div>
+                    </div>
+                    <!-- fine place card -->
+                  </div>
                   <!-- BUTTONS -->
                   <span
                     onclick="rightMovement(0)"
@@ -515,7 +547,24 @@
                   <div
                     id="artisti-carousel"
                     class="p-0 smooth-carousel m-0 row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-5 flex-nowrap overflow-auto hiding-bar"
-                  ></div>
+                  >
+                    <!-- placeholder card -->
+                    <div class="card card-plahol" aria-hidden="true">
+                      <div class="card-body">
+                        <h5 class="card-title placeholder-glow">
+                          <span class="placeholder col-6"></span>
+                        </h5>
+                        <p class="card-text placeholder-glow">
+                          <span class="placeholder col-7"></span>
+                          <span class="placeholder col-4"></span>
+                          <span class="placeholder col-4"></span>
+                          <span class="placeholder col-6"></span>
+                          <span class="placeholder col-8"></span>
+                        </p>
+                      </div>
+                    </div>
+                    <!-- fine place card -->
+                  </div>
                   <!-- BUTTONS -->
                   <span
                     onclick="rightMovement(1)"
@@ -1340,7 +1389,10 @@
           <!-- fine sidebar end   -->
         </div>
         <!-- media player -->
-        <div class="container-fluid bg-black position-fixed bottom-0" style="z-index: 100">
+        <div
+          class="container-fluid bg-black position-fixed bottom-0"
+          style="z-index: 100"
+        >
           <div class="row p-2">
             <!-- parte sinistra del player -->
             <div class="col-3 p-0" id="brano-in-esecuzione">
@@ -1373,7 +1425,8 @@
                   <button
                     id="bottonePlay"
                     style="min-width: 40px; height: 40px; border-radius: 50px"
-                    class="m-2 text-black bg-white border-0 fs-3">
+                    class="m-2 text-black bg-white border-0 fs-3"
+                  >
                     <i class="bi bi-caret-right-fill"></i>
                   </button>
                   <button class="m-2 text-white bg-transparent border-0 fs-4">

@@ -20,7 +20,9 @@ const audio = document.getElementById("audio-player")
 const initArtistPage = function () {
   // PRIMA FETCH: Dettagli Artista
   fetch(artistApi + artistId)
-    .then((res) => (res.ok ? res.json() : Promise.reject("Errore caricamento artista")))
+    .then((res) =>
+      res.ok ? res.json() : Promise.reject("Errore caricamento artista"),
+    )
     .then((artist) => {
       // Popoliamo Header/Banner
       if (artistName) artistName.innerText = artist.name
@@ -56,14 +58,29 @@ const initArtistPage = function () {
     })
     .then((res) => res.json())
     .then((albumsData) => {
-      populateAlbums(albumsData.data.slice(0, 10))
-      // QUARTA FETCH: Album con l'artista
-      return fetch(artistApi + artistId + "/related")
+      console.log(albumsData)
+      populateAlbums(albumsData.data.slice(0, 6))
+
+      albumsData.data.slice(7, 11).forEach((element) => {
+        const divSCopIn = document.getElementById("div_scop_in")
+
+        divSCopIn.innerHTML += `<div
+                class="card bg-transparent border-0 w-25 mt-3 d-flex"
+              >
+              <a href="./album_page.html?id=${element.id}" class='text-decoration-none text-light'>
+                <img
+                  src="${element.cover_medium}"
+                  class="card-img-top"
+                  alt="foto_album"
+                />
+                <div class="card-body">
+                  <p class="card-text fs-5 m-0">${element.title}</p>
+                </div>
+                </a> 
+              </div>`
+      })
     })
-    .then((res) => res.json())
-    .then((relatedData) => {
-      populateFeaturing(relatedData.data)
-    })
+
     .catch((err) => console.error("Si è verificato un errore:", err))
 }
 
@@ -76,11 +93,21 @@ const populateTracklist = function (tracks) {
 
   // Filtra i brani per assicurarci di mostrare solo quelli dell'artista corrente
   const filteredTracks = tracks.filter((t) => t.artist.id == artistId)
-  const tracksToShow = filteredTracks.length > 0 ? filteredTracks.slice(0, 10) : tracks.slice(0, 10)
+  const tracksToShow =
+    filteredTracks.length > 0
+      ? filteredTracks.slice(0, 10)
+      : tracks.slice(0, 10)
 
   tracksToShow.forEach((track, index) => {
     const row = document.createElement("div")
-    row.classList.add("row", "align-items-center", "mb-2", "track-row", "p-2", "mx-0")
+    row.classList.add(
+      "row",
+      "align-items-center",
+      "mb-2",
+      "track-row",
+      "p-2",
+      "mx-0",
+    )
     row.style.cursor = "pointer"
 
     row.innerHTML = `
@@ -114,6 +141,7 @@ const populateTracklist = function (tracks) {
 const populateAlbums = function (albums) {
   if (!albumsContainer) return
   albumsContainer.innerHTML = ""
+  console.log(albums)
 
   albums.forEach((album) => {
     const col = document.createElement("div")
@@ -128,7 +156,6 @@ const populateAlbums = function (albums) {
         </div>
       </div>
     `
-
     col.onclick = () => {
       window.location.href = `album_page.html?id=${album.id}`
     }
@@ -179,7 +206,9 @@ const updateFooterPlayer = function (track) {
 
   if (audio) {
     audio.src = track.preview
-    audio.play().catch((e) => console.log("Riproduzione interrotta o non disponibile"))
+    audio
+      .play()
+      .catch((e) => console.log("Riproduzione interrotta o non disponibile"))
     if (masterPlay) masterPlay.innerHTML = '<i class="bi bi-pause-fill"></i>'
   }
 }
