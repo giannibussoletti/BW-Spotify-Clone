@@ -344,7 +344,7 @@
                       href="sfoglia.html"
                       class="text-light text-decoration-none"
                     >
-                      Album
+                    Album
                     </a>
                   </button>
                   <button
@@ -406,22 +406,22 @@
                   <div class="row mt-3 mb-4">
                     <div class="col-12 d-flex justify-content-between">
                       <div class="d-flex gap-3">
-                        <a
-                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                          href="#"
-                          >Tutto</a
-                        >
-                        <a
-                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                          href="#"
-                          >Musica</a
-                        >
-                        <a
-                          class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
-                          href="#"
-                          >Podcast</a
-                        >
-                      </div>
+                      <a
+                        class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                        href="#"
+                        >Tutto</a
+                      >
+                      <a
+                        class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                        href="#"
+                        >Musica</a
+                      >
+                      <a
+                        class="btn rounded-pill link-underline-opacity-0 text-light bg-secondary bg-opacity-50"
+                        href="#"
+                        >Podcast</a
+                      >
+                    </div>
                       <div id="space_show_btn">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -1340,20 +1340,15 @@
           <!-- fine sidebar end   -->
         </div>
         <!-- media player -->
-        <div
-          class="container-fluid bg-black position-fixed bottom-0"
-          style="z-index: 100"
-        >
+        <div class="container-fluid bg-black position-fixed bottom-0" style="z-index: 100">
           <div class="row p-2">
             <!-- parte sinistra del player -->
             <div class="col-3 p-0" id="brano-in-esecuzione">
               <div class="d-flex">
                 <img
-                  src="https://upload.wikimedia.org/wikipedia/it/4/49/Everlong.jpg"
+                  src="https://www.placecats.com/75/75"
                   alt="Preferiti Spotify"
-                  class="img-fluid rounded-1 me-3"
-                  style="width: 75px; height: 75px"
-                />
+                  class="img-fluid rounded-1 me-3" />
                 <div class="d-flex flex-column justify-content-center">
                   <p class="m-0"><b>Everlong</b></p>
                   <p class="m-0">Foo Fighters</p>
@@ -1370,20 +1365,16 @@
                   <button class="m-2 text-success bg-transparent border-0 fs-4">
                     <i class="bi bi-shuffle"></i>
                   </button>
-                  <button
-                    class="m-2 text-secondary bg-transparent border-0 fs-4"
-                  >
+                  <button class="m-2 text-secondary bg-transparent border-0 fs-4">
                     <i class="bi bi-chevron-bar-left"></i>
                   </button>
                   <button
+                    id="bottonePlay"
                     style="min-width: 40px; height: 40px; border-radius: 50px"
-                    class="m-2 text-black bg-white border-0 fs-3 bottonePlay"
-                  >
+                    class="m-2 text-black bg-white border-0 fs-3">
                     <i class="bi bi-caret-right-fill"></i>
                   </button>
-                  <button
-                    class="m-2 text-secondary bg-transparent border-0 fs-4"
-                  >
+                  <button class="m-2 text-secondary bg-transparent border-0 fs-4">
                     <i class="bi bi-chevron-bar-right"></i>
                   </button>
                   <button class="m-2 text-green bg-transparent border-0 fs-4">
@@ -1392,17 +1383,9 @@
                 </div>
                 <div class="d-flex">
                   <audio src="" id="audio"></audio>
-                  <span class="me-1">0:21</span>
                   <label for="range3" class="form-label"></label>
-                  <input
-                    type="range"
-                    class="form-range"
-                    min="0"
-                    max="5"
-                    step="0.5"
-                    id="range3"
-                  />
-                  <span class="ms-1">4:57</span>
+                  <input type="range" class="form-range ms-2" min="0" max="100" value="0" id="range3" />
+                  <span class="ms-2">0:29</span>
                 </div>
               </div>
             </div>
@@ -1417,9 +1400,13 @@
               <button class="m-2 text-secondary bg-transparent border-0 fs-4">
                 <i class="bi bi-pc-display"></i>
               </button>
-              <button class="m-2 text-secondary bg-transparent border-0 fs-4">
-                <i class="bi bi-volume-up"></i>
-              </button>
+        <!-- qui il volume -->
+        <div class="d-flex align-items-center">
+          <button id="volumeIcon" class="m-2 text-secondary bg-transparent border-0 fs-4">
+          <i class="bi bi-volume-up"></i>
+          </button>
+         <input type="range" id="volumeBar" class="form-range" style="width: 100px" min="0" max="1" step="0.1" value="1">
+        </div>
               <button class="m-2 text-secondary bg-transparent border-0 fs-4">
                 <i class="bi bi-aspect-ratio"></i>
               </button>
