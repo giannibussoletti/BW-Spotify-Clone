@@ -9,7 +9,13 @@ const dropdownForSearch = document.getElementById("dropdownForSearch");
 const inputNavbarValue = document.getElementById("inputNavbar");
 const audio = document.getElementById("audio");
 const progressBar = document.getElementById("range3");
-
+const volumeBar = document.getElementById("volumeBar");
+const volumeIcon = document.getElementById("volumeIcon");
+const bottonePlay = document.getElementById("bottonePlay");
+const currentTimeLabel = document.querySelector(".d-flex span.ms-2");
+const durationLabel = document.querySelector(".col-6 .d-flex span:last-child");
+updateRangeColor(progressBar);
+updateRangeColor(volumeBar);
 // Inject Consigliati
 const consigliati = document.getElementById("consigliati");
 const getConsigli = function () {
@@ -341,27 +347,49 @@ inputNavbarValue.addEventListener("keydown", function (event) {
       });
   }
 });
+//funzione colore
+function aggiornaColoreProgressBar() {
+  const min = progressBar.min || 0;
+  const max = progressBar.max || 100;
+  const val = progressBar.value;
+  const percentuale = ((val - min) / (max - min)) * 100;
+  progressBar.style.background = `linear-gradient(to right, #ffffff ${percentuale}%, #535353 ${percentuale}%)`;
+}
+//funzione play
+function updateRangeColor(inputElement) {
+  const value = inputElement.value;
+  const max = inputElement.max || 100;
+  const percentage = (value / max) * 100;
+  const color = inputElement.id === "range3" ? "#ffffff" : "#1db954";
+  inputElement.style.background = `linear-gradient(to right, ${color} ${percentage}%, #535353 ${percentage}%)`;
+}
+
 bottonePlay.addEventListener("click", function () {
   if (audio.paused) {
     audio.play();
-    this.innerHTML = ` <i class="bi bi-pause-fill"></i> `;
+    this.innerHTML = `<i class="bi bi-pause-fill"></i>`;
   } else {
     audio.pause();
     this.innerHTML = `<i class="bi bi-play-fill"></i>`;
   }
 });
+
 audio.addEventListener("loadedmetadata", function () {
   progressBar.max = Math.floor(audio.duration);
-  durationLabel.innerText = formatTime(audio.duration);
-  const percentage = (audio.currentTime / audio.duration) * 100;
-  progressBar.style.background = `linear-gradient(to right, #1db954 ${percentage}%, #535353 ${percentage}%)`;
+  if (durationLabel) durationLabel.innerText = formatTime(audio.duration);
+  updateRangeColor(progressBar);
 });
+
 audio.addEventListener("timeupdate", function () {
   progressBar.value = Math.floor(audio.currentTime);
-  currentTimeLabel.innerText = formatTime(audio.currentTime);
+  if (currentTimeLabel)
+    currentTimeLabel.innerText = formatTime(audio.currentTime);
+  updateRangeColor(progressBar);
 });
+
 progressBar.addEventListener("input", function () {
   audio.currentTime = progressBar.value;
+  updateRangeColor(this);
 });
 function formatTime(time) {
   if (isNaN(time)) return "0:00";
@@ -371,14 +399,13 @@ function formatTime(time) {
 }
 //funzione volume
 volumeBar.addEventListener("input", function () {
-  const value = this.value;
-  audio.volume = value;
-  const volumePercentage = value * 100;
-  this.style.background = `linear-gradient(to right, #1db954 ${volumePercentage}%, #535353 ${volumePercentage}%)`;
+  audio.volume = this.value;
+  updateRangeColor(this);
+
   const icon = volumeIcon.querySelector("i");
-  if (value == 0) {
+  if (this.value == 0) {
     icon.className = "bi bi-volume-mute";
-  } else if (value < 0.5) {
+  } else if (this.value < 0.5) {
     icon.className = "bi bi-volume-down";
   } else {
     icon.className = "bi bi-volume-up";
