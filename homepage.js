@@ -156,7 +156,7 @@ videoArrayObj.forEach((video) => {
             <p class="mb-2 p-0 text-secondary">Per i fan di ${video.name}</p>
 
             <div class="row position-relative rounded-2 m-0">
-              <video class="rounded-2 p-0">
+              <video class="rounded-2 p-0" loop>
                 <source src="${video.video}" type="video/mp4" />
               </video>
               <div
