@@ -256,3 +256,41 @@ nav {
   transform: translateX(100%);
   transition: 0.3s ease;
 }
+/* --- media player --- */
+#range3.form-range, #volumeBar.form-range {
+  background-image: none !important; 
+  background-color: #535353;       
+}
+#range3, #volumeBar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  background: #535353; 
+}
+
+/* pallino*/
+#range3::-webkit-slider-thumb, 
+#volumeBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#range3:hover::-webkit-slider-thumb, 
+#volumeBar:hover::-webkit-slider-thumb {
+  opacity: 1;
+}
+
+#range3:active, #range3:hover {
+  height: 4px;
+}
