@@ -10,6 +10,7 @@ const tracklist = document.getElementById("tracklist")
 const shuffleImg = document.getElementById("little-img")
 const altroDaTitle = document.getElementById("altro-da")
 const altroDischi = document.getElementById("altri-dischi")
+const audio = document.getElementById("audio")
 
 fetch(apiAlbum + albumID)
   .then((response) => {
@@ -71,20 +72,20 @@ fetch(apiAlbum + albumID)
                 </div>
               </div>`
     })
-  })
 
-//Altro da artista loop
-fetch(apiSearchQuery + albumID)
-  .then((response) => {
-    if (response.ok) {
-      return response.json()
-    } else {
-      throw new Error(response.status)
-    }
-  })
-  .then((data) => {
-    data.data.slice(0, 10).forEach((info) => {
-      altroDischi.innerHTML += `
+    //Altro da artista loop
+    fetch(apiSearchQuery + data.artist.name)
+      .then((response) => {
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw new Error(response.status)
+        }
+      })
+      .then((data) => {
+        data.data.slice(0, 5).forEach((info) => {
+          console.log(info)
+          altroDischi.innerHTML += `
     <div class="col">
         <div class="card bg-transparent border-0 mt-3">
             <a href="./album_page.html?id=${info.album.id}"><img src="${info.album.cover_medium}" class="card-img-top" alt="foto_album" /></a>
@@ -94,9 +95,10 @@ fetch(apiSearchQuery + albumID)
         </div>
     </div>
         `
-    })
+        })
+      })
+      .catch((err) => console.log(err))
   })
-  .catch((err) => console.log(err))
 
 const updateFooterPlayer = function (track) {
   const footerImg = document.getElementById("current-track-img")
@@ -304,21 +306,21 @@ const fullHiddenBtn = document.getElementById("full_hidden_btn")
 const centralPart = document.getElementById("central-part")
 const spaceShowBtn = document.getElementById("space_show_btn")
 
-fullHiddenBtn.addEventListener("click", function () {
-  sideBarEnd.classList.toggle("collapsed")
-  if (centralPart.classList.contains("col-lg-8")) {
-    centralPart.classList.replace("col-lg-8", "col-lg-10")
-    centralPart.classList.replace("indipendent-scroll", "indipendent-scroll-2")
-    centralPart.classList.replace("main-page", "page")
-  } else {
-    centralPart.classList.replace("col-lg-10", "col-lg-8")
-    centralPart.classList.replace("indipendent-scroll-2", "indipendent-scroll")
-    centralPart.classList.replace("page", "main-page")
-  }
+//  MANNAGGIA ALLA PU... PAZZA CIAO STEFANO, STA CAZZO DE FUNZIONE MANDAVA A PUTTANE TUTTO MANNAGGIA A JAVASCRIPT E ANCHE LINUS TORVALS
+// fullHiddenBtn.addEventListener("click", function () {
+//   sideBarEnd.classList.toggle("collapsed")
+//   if (centralPart.classList.contains("col-lg-8")) {
+//     centralPart.classList.replace("col-lg-8", "col-lg-10")
+//     centralPart.classList.replace("indipendent-scroll", "indipendent-scroll-2")
+//     centralPart.classList.replace("main-page", "page")
+//   } else {
+//     centralPart.classList.replace("col-lg-10", "col-lg-8")
+//     centralPart.classList.replace("indipendent-scroll-2", "indipendent-scroll")
+//     centralPart.classList.replace("page", "main-page")
+//   }
 
-  spaceShowBtn.appendChild(newBtnSpace)
-})
-const audio = document.getElementById("audio")
+//   spaceShowBtn.appendChild(newBtnSpace)
+// })
 const progressBar = document.getElementById("range3")
 const volumeBar = document.getElementById("volumeBar")
 const volumeIcon = document.getElementById("volumeIcon")
@@ -333,7 +335,9 @@ function aggiornaColoreProgressBar() {
   const percentuale = ((val - min) / (max - min)) * 100
   progressBar.style.background = `linear-gradient(to right, #ffffff ${percentuale}%, #535353 ${percentuale}%)`
 }
+
 //funzione play
+
 function updateRangeColor(inputElement) {
   const value = inputElement.value
   const max = inputElement.max || 100
@@ -343,6 +347,7 @@ function updateRangeColor(inputElement) {
 }
 
 bottonePlay.addEventListener("click", function () {
+  console.log("bottone")
   if (audio.paused) {
     audio.play()
     this.innerHTML = `<i class="bi bi-pause-fill"></i>`
@@ -375,6 +380,7 @@ function formatTime(time) {
   const seconds = Math.floor(time % 60)
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`
 }
+
 //funzione volume
 volumeBar.addEventListener("input", function () {
   audio.volume = this.value
