@@ -173,7 +173,7 @@ videoArrayObj.forEach((video) => {
                     alt="" />
                 </div>
                 <div class="col-9">
-                  <h3 class="m-0 fw-bold">This is ${video.name}</h3>
+                  <h4 class="m-0 fw-bold">This is ${video.name}</h4>
                   <p style="font-size: 0.8rem" class="m-0">playlist - spotify</p>
                 </div>
               </div>
