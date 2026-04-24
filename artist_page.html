@@ -13,7 +13,7 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-   <link rel="stylesheet" href="./homepage.css">
+    <link rel="stylesheet" href="./homepage.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
       rel="stylesheet"
@@ -26,7 +26,7 @@
 
   <body>
     <header>
-     <!-- inizio navbar -->
+      <!-- inizio navbar -->
       <nav class="navbar position-fixed w-100 z-3 bg-black py-2 px-3">
         <div
           class="container-fluid d-flex align-items-center justify-content-between p-0 flex-nowrap"
@@ -392,32 +392,34 @@
                 </p>
               </div>
             </div>
-            <div id="appendLibrary"><!-- placeholder card -->
-                    <div class="card card-plahol" aria-hidden="true">
-                      <div class="card-body">
-                        <h5 class="card-title placeholder-glow">
-                          <span class="placeholder col-6"></span>
-                        </h5>
-                        <p class="card-text placeholder-glow">
-                          <span class="placeholder col-7"></span>
-                          <span class="placeholder col-4"></span>
-                          <span class="placeholder col-4"></span>
-                          <span class="placeholder col-6"></span>
-                          <span class="placeholder col-8"></span>
-                        </p>
-                      </div>
-                    </div>
-                    <!-- fine place card --></div>
+            <div id="appendLibrary">
+              <!-- placeholder card -->
+              <div class="card card-plahol" aria-hidden="true">
+                <div class="card-body">
+                  <h5 class="card-title placeholder-glow">
+                    <span class="placeholder col-6"></span>
+                  </h5>
+                  <p class="card-text placeholder-glow">
+                    <span class="placeholder col-7"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-4"></span>
+                    <span class="placeholder col-6"></span>
+                    <span class="placeholder col-8"></span>
+                  </p>
+                </div>
+              </div>
+              <!-- fine place card -->
+            </div>
           </div>
           <!-- side bar fine -->
-           <!-- inizio central part -->
+          <!-- inizio central part -->
           <div
-            style="margin-top: 68px"
-            class="col-8 indipendent-scroll main-page"
+            class="col-12 col-lg-8 indipendent-scroll main-page"
+            id="central-part"
           >
             <div
               id="artist-banner"
-              class="d-flex align-items-center h-50"
+              class="d-flex align-items-center h-50 justify-content-between"
               style="
                 background-image: url(https://placecats.com/500/500);
                 background-size: cover;
@@ -435,7 +437,24 @@
                   <span id="fan-count"> 3.179.592 </span> ascoltatori mensili
                 </p>
               </div>
+              <div id="space_show_btn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-bar-right me-3"
+                  viewBox="0 0 16 16"
+                  id="full_hidden_btn"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.146 3.646a.5.5 0 0 0 0 .708L7.793 8l-3.647 3.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0M11.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5"
+                  />
+                </svg>
+              </div>
             </div>
+
             <div class="d-flex justify-content-between">
               <div class="d-flex align-items-center mt-3">
                 <!-- button  -->
@@ -641,28 +660,33 @@
             <div class="d-flex justify-content-between align-items-center">
               <h5 class="mb-0 mt-4 fw-bold fs-3">Scoperto in</h5>
               <p class="mb-0 mt-4">
-                
-                  <a href="#" class="mb-0 text-secondary text-decoration-none fw-bold"> </a>Mostra tutto</a>
+                <a
+                  href="#"
+                  class="mb-0 text-secondary text-decoration-none fw-bold"
+                >
+                  Mostra tutto</a
                 >
               </p>
             </div>
             <!-- card scoperto in -->
-            <div id="div_scop_in" class="d-flex flex-wrap">
-            </div>
+            <div id="div_scop_in" class="d-flex flex-nowrap"></div>
             <!-- fine card scoperto in -->
             <!--fine sezione scoperto in -->
-           <!-- sezione playlist artista -->
+            <!-- sezione playlist artista -->
             <div class="d-flex justify-content-between align-items-center">
               <h5 class="mb-0 mt-4 fw-bold fs-3">Playlist dell'artista</h5>
               <p class="mb-0 mt-4">
-                <a href="#" class="mb-0 text-secondary text-decoration-none fw-bold">Mostra tutto</a>
+                <a
+                  href="#"
+                  class="mb-0 text-secondary text-decoration-none fw-bold"
+                  >Mostra tutto</a
+                >
               </p>
             </div>
             <!-- card playlist artista -->
-            <div id="div_playlist_in" class="d-flex flex-wrap">
-            </div>
+            <div id="div_playlist_in" class="d-flex flex-nowrap"></div>
             <!-- fine sezione playlist artista -->
-            
+
             <!-- sezione playlist dell'artista -->
 
             <!-- footer -->
@@ -748,7 +772,7 @@
             <!-- fine footer -->
           </div>
           <!-- fine central part -->
-        <!-- inizio sidebar end   -->
+          <!-- inizio sidebar end   -->
           <div
             class="col-2 ps-3 indipendent-scroll end-0 d-none d-lg-block sidebar_end bg-gradient"
             id="sidebar_end"
@@ -757,7 +781,7 @@
               class="d-flex justify-content-between position-sticky z-2 py-3 w-100 bg-gradient top-0"
             >
               <!-- icone/testo start -->
-              <div class="d-flex align-items-center ">
+              <div class="d-flex align-items-center">
                 <h5 class="m-0">
                   Radio di <span class="name_artist"> Bad Bunny </span>
                 </h5>
@@ -1447,7 +1471,7 @@
           </div>
           <!-- fine sidebar end   -->
         </div>
-         <!-- media player -->
+        <!-- media player -->
         <div
           class="container-fluid bg-black position-fixed bottom-0"
           style="z-index: 100"
@@ -1460,8 +1484,9 @@
                   src="https://th.bing.com/th?q=Foo+Fighters+Greatest+Hits&w=120&h=120&c=1&rs=1&qlt=70&o=7&cb=1&dpr=1.4&pid=InlineBlock&rm=3&mkt=it-IT&cc=IT&setlang=it&adlt=moderate&t=1&mw=247"
                   alt="Preferiti Spotify"
                   class="img-fluid rounded-1 me-3"
-                  style="max-width: 100px;" />
-                  
+                  style="max-width: 100px"
+                />
+
                 <div class="d-flex flex-column justify-content-center">
                   <p class="m-0"><b>Everlong</b></p>
                   <p class="m-0">Foo Fighters</p>
@@ -1498,29 +1523,53 @@
                 <div class="d-flex justify-content-center align-items-center">
                   <audio src="" id="audio"></audio>
                   <label for="range3" class="form-label"></label>
-                  <input type="range" class="form-range ms-2 d-flex align-items-center" min="0" max="100" value="0" id="range3" />
+                  <input
+                    type="range"
+                    class="form-range ms-2 d-flex align-items-center"
+                    min="0"
+                    max="100"
+                    value="0"
+                    id="range3"
+                  />
                   <span class="ms-2 text-white">0:29</span>
                 </div>
               </div>
             </div>
             <!-- parte destra del player -->
             <div class="col-3 d-flex">
-              <button class="m-2 text-secondary bg-transparent border-0 fs-4 text-white">
+              <button
+                class="m-2 text-secondary bg-transparent border-0 fs-4 text-white"
+              >
                 <i class="bi bi-mic"></i>
               </button>
-              <button class="m-2 text-secondary bg-transparent border-0 fs-4 text-white">
+              <button
+                class="m-2 text-secondary bg-transparent border-0 fs-4 text-white"
+              >
                 <i class="bi bi-view-list"></i>
               </button>
-              <button class="m-2 text-secondary bg-transparent border-0 fs-4 text-white">
+              <button
+                class="m-2 text-secondary bg-transparent border-0 fs-4 text-white"
+              >
                 <i class="bi bi-pc-display"></i>
               </button>
-        <!-- qui il volume -->
-        <div class="d-flex align-items-center">
-          <button id="volumeIcon" class="m-2 text-white bg-transparent border-0 fs-4">
-          <i class="bi bi-volume-up"></i>
-          </button>
-         <input type="range" id="volumeBar" class="form-range" min="0" max="1" step="0.1" value="1">
-        </div>
+              <!-- qui il volume -->
+              <div class="d-flex align-items-center">
+                <button
+                  id="volumeIcon"
+                  class="m-2 text-white bg-transparent border-0 fs-4"
+                >
+                  <i class="bi bi-volume-up"></i>
+                </button>
+                <input
+                  type="range"
+                  id="volumeBar"
+                  class="form-range"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value="1"
+                />
+              </div>
               <button class="m-2 text-secondary bg-transparent border-0 fs-4">
                 <i class="text-white bi bi-aspect-ratio"></i>
               </button>
