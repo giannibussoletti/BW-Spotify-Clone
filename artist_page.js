@@ -1,15 +1,14 @@
 const searchApi = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
 const artistApi = "https://striveschool-api.herokuapp.com/api/deezer/artist/"
 const params = new URLSearchParams(window.location.search)
-const artistId = params.get("id") || "356798482" //fa fallback su olly nel caso
+const artistId = params.get("id") || "428675" //fa fallback su olly nel caso
 const artistBanner = document.getElementById("artist-banner")
 const artistName = document.getElementById("artist-name")
 const tracklistContainer = document.getElementById("tracklist-container")
 const albumsContainer = document.getElementById("albums-container")
 const featuringContainer = document.getElementById("featuring-container")
 const apiAlbum = "https://striveschool-api.herokuapp.com/api/deezer/album/"
-const apiSearchQuery =
-  "https://striveschool-api.herokuapp.com/api/deezer/search?q="
+const apiSearchQuery = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
 const progressBar = document.getElementById("range3")
 const volumeBar = document.getElementById("volumeBar")
 const volumeIcon = document.getElementById("volumeIcon")
@@ -72,9 +71,7 @@ inputNavbarValue.addEventListener("keydown", function (event) {
             audio.src = link
             audio.play()
             dropdownForSearch.innerHTML = ""
-            const branoInEsecuzione = document.getElementById(
-              "brano-in-esecuzione",
-            )
+            const branoInEsecuzione = document.getElementById("brano-in-esecuzione")
             branoInEsecuzione.innerHTML = ""
             branoInEsecuzione.innerHTML = `<div class="d-flex">
                 <img
@@ -174,8 +171,7 @@ audio.addEventListener("loadedmetadata", function () {
 
 audio.addEventListener("timeupdate", function () {
   progressBar.value = Math.floor(audio.currentTime)
-  if (currentTimeLabel)
-    currentTimeLabel.innerText = formatTime(audio.currentTime)
+  if (currentTimeLabel) currentTimeLabel.innerText = formatTime(audio.currentTime)
   // updateRangeColor(progressBar);
 })
 
@@ -223,9 +219,7 @@ volumeIcon.addEventListener("click", function () {
 //dettagli artista
 const initArtistPage = function () {
   fetch(artistApi + artistId)
-    .then((res) =>
-      res.ok ? res.json() : Promise.reject("Errore caricamento artista"),
-    )
+    .then((res) => (res.ok ? res.json() : Promise.reject("Errore caricamento artista")))
     .then((artist) => {
       // Popoliamo Header/Banner
       if (artistName) artistName.innerText = artist.name
@@ -272,21 +266,11 @@ const populateTracklist = function (tracks) {
 
   // Filtra i brani per assicurarci di mostrare solo quelli dell'artista corrente
   const filteredTracks = tracks.filter((t) => t.artist.id == artistId)
-  const tracksToShow =
-    filteredTracks.length > 0
-      ? filteredTracks.slice(0, 10)
-      : tracks.slice(0, 10)
+  const tracksToShow = filteredTracks.length > 0 ? filteredTracks.slice(0, 10) : tracks.slice(0, 10)
 
   tracksToShow.forEach((track, index) => {
     const row = document.createElement("div")
-    row.classList.add(
-      "row",
-      "align-items-center",
-      "mb-2",
-      "track-row",
-      "p-2",
-      "mx-0",
-    )
+    row.classList.add("row", "align-items-center", "mb-2", "track-row", "p-2", "mx-0")
     row.style.cursor = "pointer"
 
     row.innerHTML = `
@@ -328,7 +312,7 @@ const populateAlbums = function (albums) {
       <div class="card bg-transparent border-0 h-100 album-card" style="cursor: pointer;">
         <img src="${album.cover_medium}" class="card-img-top rounded shadow mb-2" alt="${album.title}">
         <div class="card-body p-0">
-          <p class="m-0 fw-bold text-white text-truncate small">${album.title}</p>
+          <p class="m-0 fw-bold text-white text-truncate">${album.title}</p>
           <p class="m-0 text-secondary x-small">${new Date(album.release_date).getFullYear()} • Album</p>
         </div>
       </div>
@@ -357,7 +341,7 @@ const populateFeaturing = function (artists) {
       <div class="card bg-transparent border-0 h-100 album-card" style="cursor: pointer;">
         <img src="${artist.picture_medium}" class="card-img-top rounded shadow mb-2" alt="${artist.name}">
         <div class="card-body p-0">
-          <p class="m-0 fw-bold text-white text-truncate small">${artist.name}</p>
+          <p class="m-0 fw-bold text-white text-truncate">${artist.name}</p>
           <p class="m-0 text-secondary x-small">Artista</p>
         </div>
       </div>
@@ -402,17 +386,17 @@ const populateScopiDiPiu = function (albums) {
   if (!divScopIn) return
   divScopIn.innerHTML = ""
 
-  albums.slice(7, 14).forEach((album) => {
+  albums.slice(7, 13).forEach((album) => {
     divScopIn.innerHTML += `
-      <div class="me-4 mt-3" style="width: 160px; cursor: pointer;" onclick="window.location.href='./album_page.html?id=${album.id}'">
+      <div class="me-4 mt-3" style="width: 260px; cursor: pointer;" onclick="window.location.href='./album_page.html?id=${album.id}'">
         <img
           src="${album.cover_medium}"
           alt="${album.title}"
           class="rounded"
-          style="width: 160px; height: 160px; object-fit: cover;"
+          style="width: 260px; height: 260px; object-fit: cover;"
         />
-        <p class="fw-bold text-white text-truncate mt-2 mb-0 small">${album.title}</p>
-        <p class="text-secondary mb-0" style="font-size: 0.75rem;">${new Date(album.release_date).getFullYear()} • Album</p>
+        <p class="fw-bold text-white text-truncate mt-2 mb-0">${album.title}</p>
+        <p class="text-secondary mb-0">${new Date(album.release_date).getFullYear()} • Album</p>
       </div>`
   })
 }
@@ -422,17 +406,17 @@ const populatePlaylist = function (albums) {
   if (!divPlaylistIn) return
   divPlaylistIn.innerHTML = ""
 
-  albums.slice(11, 18).forEach((album) => {
+  albums.slice(11, 17).forEach((album) => {
     divPlaylistIn.innerHTML += `
-      <div class="me-4 mt-3" style="width: 160px; cursor: pointer;" onclick="window.location.href='./album_page.html?id=${album.id}'">
+      <div class="me-4 mt-3" style="width: 260px; cursor: pointer;" onclick="window.location.href='./album_page.html?id=${album.id}'">
         <img
           src="${album.cover_medium}"
           alt="${album.title}"
           class="rounded"
-          style="width: 160px; height: 160px; object-fit: cover;"
+          style="width: 260px; height: 260px; object-fit: cover;"
         />
-        <p class="fw-bold text-white text-truncate mt-2 mb-0 small">${album.title}</p>
-        <p class="text-secondary mb-0" style="font-size: 0.75rem;">${new Date(album.release_date).getFullYear()} • Album</p>
+        <p class="fw-bold text-white text-truncate mt-2 mb-0">${album.title}</p>
+        <p class="text-secondary mb-0">${new Date(album.release_date).getFullYear()} • Album</p>
       </div>`
   })
 }
@@ -454,12 +438,12 @@ const populateFanAlsoLike = function (tracks) {
 
   uniqueArtists.slice(0, 6).forEach((artist) => {
     container.innerHTML += `
-      <div class="me-4 mt-3" style="width: 160px; cursor: pointer;" onclick="window.location.href='./artist_page.html?id=${artist.id}'">
+      <div class="me-4 mt-3" style="width: 260px; cursor: pointer;" onclick="window.location.href='./artist_page.html?id=${artist.id}'">
         <img
           src="${artist.picture_medium}"
           alt="${artist.name}"
           class="rounded-circle"
-          style="width: 160px; height: 160px; object-fit: cover;"
+          style="width: 260px; height: 260px; object-fit: cover;"
         />
         <p class="fw-bold text-white text-truncate mt-2 mb-0 small">${artist.name}</p>
         <p class="text-secondary mb-0" style="font-size: 0.75rem;">Artista</p>
