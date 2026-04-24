@@ -71,7 +71,6 @@ const getAlbum = function () {
       })
       data.data.forEach((track) => {
         const id = track.id
-        console.log(track)
         const titoloAlbum = track.title
         const imgAlbum = track.album.cover_medium
         const artistaAlbum = track.artist.name
@@ -104,7 +103,6 @@ const getArtist = function () {
       }
     })
     .then((artist) => {
-      console.log(artist.data)
       artist.data.forEach((info) => {
         const cardArtista = document.createElement("div")
         cardArtista.classList.add("card", "col", "m-3", "position-relative", "bg-transparent")
