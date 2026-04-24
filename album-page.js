@@ -1,6 +1,5 @@
 const apiAlbum = "https://striveschool-api.herokuapp.com/api/deezer/album/"
-const apiSearchQuery =
-  "https://striveschool-api.herokuapp.com/api/deezer/search?q="
+const apiSearchQuery = "https://striveschool-api.herokuapp.com/api/deezer/search?q="
 
 const urlParameters = new URLSearchParams(location.search)
 const albumID = urlParameters.get("id")
@@ -84,7 +83,6 @@ fetch(apiAlbum + albumID)
       })
       .then((data) => {
         data.data.slice(0, 5).forEach((info) => {
-          console.log(info)
           altroDischi.innerHTML += `
     <div class="col">
         <div class="card bg-transparent border-0 mt-3">
@@ -112,9 +110,7 @@ const updateFooterPlayer = function (track) {
 
   if (audio) {
     audio.src = track.preview
-    audio
-      .play()
-      .catch((e) => console.log("Riproduzione interrotta o non disponibile"))
+    audio.play().catch((e) => console.log("Riproduzione interrotta o non disponibile"))
     if (masterPlay) masterPlay.innerHTML = '<i class="bi bi-pause-fill"></i>'
   }
 }
@@ -167,9 +163,7 @@ inputNavbarValue.addEventListener("keydown", function (event) {
             audio.src = link
             audio.play()
             dropdownForSearch.innerHTML = ""
-            const branoInEsecuzione = document.getElementById(
-              "brano-in-esecuzione",
-            )
+            const branoInEsecuzione = document.getElementById("brano-in-esecuzione")
             branoInEsecuzione.innerHTML = ""
             branoInEsecuzione.innerHTML = `<div class="d-flex">
                 <img
@@ -373,8 +367,7 @@ audio.addEventListener("loadedmetadata", function () {
 
 audio.addEventListener("timeupdate", function () {
   progressBar.value = Math.floor(audio.currentTime)
-  if (currentTimeLabel)
-    currentTimeLabel.innerText = formatTime(audio.currentTime)
+  if (currentTimeLabel) currentTimeLabel.innerText = formatTime(audio.currentTime)
   updateRangeColor(progressBar)
 })
 
