@@ -157,7 +157,13 @@ bottonePlay.addEventListener("click", function () {
     audio.pause();
     this.innerHTML = `<i class="bi bi-play-fill"></i>`;
   }
-  console.log(bottonePlay);
+});
+audio.addEventListener("play", () => {
+  bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`;
+});
+
+audio.addEventListener("pause", () => {
+  bottonePlay.innerHTML = `<i class="bi bi-play-fill"></i>`;
 });
 
 audio.addEventListener("loadedmetadata", function () {
