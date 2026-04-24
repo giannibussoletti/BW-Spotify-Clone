@@ -160,6 +160,7 @@ inputNavbarValue.addEventListener("keydown", function (event) {
           </div>
           </div>
           `
+
           dropdownForSearch.appendChild(elementoLista)
           elementoLista.addEventListener("click", function (event) {
             nameArtistsidebar(inputNavbarValue.value, img)
@@ -231,7 +232,7 @@ const getLibrary = function (searchValue) {
       console.log(err)
     })
 }
-getLibrary("miley cyrus")
+getLibrary("mgk")
 
 //funzione del buon roberto che ha rotto tutto e ha fatto andare alessia a dormire alle 3 di notte
 const nomeArtista = document.querySelectorAll(".name_artist")
@@ -355,6 +356,13 @@ bottonePlay.addEventListener("click", function () {
     audio.pause()
     this.innerHTML = `<i class="bi bi-play-fill"></i>`
   }
+})
+audio.addEventListener("play", () => {
+  bottonePlay.innerHTML = `<i class="bi bi-pause-fill"></i>`
+})
+
+audio.addEventListener("pause", () => {
+  bottonePlay.innerHTML = `<i class="bi bi-play-fill"></i>`
 })
 
 audio.addEventListener("loadedmetadata", function () {
