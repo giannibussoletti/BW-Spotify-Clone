@@ -75,13 +75,22 @@ const getAlbum = function () {
         const imgAlbum = track.album.cover_medium
         const artistaAlbum = track.artist.name
         const cardCarosello = document.createElement("div")
-        cardCarosello.classList.add("card", "col-6", "m-3", "position-relative", "bg-transparent")
-        cardCarosello.innerHTML = `<a href="./album_page.html?id=${track.album.id}"><img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid w-100 rounded-2 mt-3"></a>
+        cardCarosello.classList.add("card", "col-6", "position-relative", "bg-transparent")
+        cardCarosello.innerHTML = `<div class:"position-relative hover-opacity-button"><a href="./album_page.html?id=${track.album.id}"><img src="${imgAlbum}" alt="Preferiti Spotify" class="img-fluid w-100 rounded-2 mt-3"></a>
+        <a href="#"style="opacity:0; transition: 200ms ease-in;" class="btn text-black position-absolute rounded-circle d-flex justify-content-center align-items-center greenPlay"><i style="line-height:0;" class="bi bi-play-fill fs-4"></i></a></div>
                        <div class="card-body">
                        <p class="card-text fs-5">${titoloAlbum}</p>
-                       <a href="#" class="btn text-black rounded-circle position-absolute" style="bottom:40%;right: 10%; z-index:10; background-color:#3BE477" id="greenPlay"><i class="bi bi-play-fill"></i></a>
                        </div>`
         carouselPerTe.appendChild(cardCarosello)
+
+        cardCarosello.addEventListener("mouseenter", () => {
+          const greenButton = cardCarosello.childNodes[0].childNodes[2]
+          greenButton.style.opacity = "1"
+        })
+        cardCarosello.addEventListener("mouseleave", () => {
+          const greenButton = cardCarosello.childNodes[0].childNodes[2]
+          greenButton.style.opacity = "0"
+        })
 
         //
         //
@@ -169,7 +178,7 @@ videoArrayObj.forEach((video) => {
                 </div>
               </div>
               <div
-                class="row rounded-bottom-2 bottom-0 m-0 position-absolute video-bottom align-items-center py-3">
+                class="row rounded-bottom-2 bottom-0 m-0 position-absolute video-bottom align-items-center py-3" style="max-height: 50%;">
                 <div class="col rounded-bottom-2">
                   <p class="m-0"></p>
                   <p style="font-size: 0.8rem" class="my-5 pt-5 pb-3">
