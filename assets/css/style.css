@@ -232,10 +232,6 @@ nav {
   visibility: visible;
 }
 
-.last_footer {
-  font-size: 12px;
-}
-
 .collapsed {
   transform: translateX(100%);
   transition: 0.3s ease;
