@@ -232,7 +232,7 @@ const getLibrary = function (searchValue) {
       console.log(err);
     });
 };
-getLibrary("miley cyrus");
+getLibrary("mgk");
 
 //funzione del buon roberto che ha rotto tutto e ha fatto andare alessia a dormire alle 3 di notte
 const nomeArtista = document.querySelectorAll(".name_artist");
