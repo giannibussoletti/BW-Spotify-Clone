@@ -281,8 +281,15 @@ nav {
 #range3:hover {
   height: 4px;
 }
-#greenPlay {
-  opacity: 0.5;
+.greenPlay {
+  z-index: 10;
+  background-color: #3be477;
+  min-height: 50px;
+  min-width: 50px;
+  padding-top: 5px;
+  padding-left: 14px;
+  right: 2em;
+  bottom: 7em;
 }
 /* html{
   scrollbar-color: rgb(240, 238, 238) rgba(0, 0, 0, 0.00);
