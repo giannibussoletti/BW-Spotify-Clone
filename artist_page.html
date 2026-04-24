@@ -1448,10 +1448,7 @@
           <!-- fine sidebar end   -->
         </div>
          <!-- media player -->
-        <div
-          class="container-fluid bg-black position-fixed bottom-0"
-          style="z-index: 100"
-        >
+             <div class="container-fluid bg-black position-fixed bottom-0" style="z-index: 100">
           <div class="row p-2">
             <!-- parte sinistra del player -->
             <div class="col-3 p-0" id="brano-in-esecuzione">
@@ -1460,8 +1457,8 @@
                   src="https://th.bing.com/th?q=Foo+Fighters+Greatest+Hits&w=120&h=120&c=1&rs=1&qlt=70&o=7&cb=1&dpr=1.4&pid=InlineBlock&rm=3&mkt=it-IT&cc=IT&setlang=it&adlt=moderate&t=1&mw=247"
                   alt="Preferiti Spotify"
                   class="img-fluid rounded-1 me-3"
-                  style="max-width: 100px;" />
-                  
+                  style="max-width: 100px" />
+
                 <div class="d-flex flex-column justify-content-center">
                   <p class="m-0"><b>Everlong</b></p>
                   <p class="m-0">Foo Fighters</p>
@@ -1484,8 +1481,7 @@
                   <button
                     id="bottonePlay"
                     style="min-width: 40px; height: 40px; border-radius: 50px"
-                    class="m-2 text-black bg-white border-0 fs-3"
-                  >
+                    class="m-2 text-black bg-white border-0 fs-3">
                     <i class="bi bi-caret-right-fill"></i>
                   </button>
                   <button class="m-2 text-white bg-transparent border-0 fs-4">
@@ -1498,7 +1494,13 @@
                 <div class="d-flex justify-content-center align-items-center">
                   <audio src="" id="audio"></audio>
                   <label for="range3" class="form-label"></label>
-                  <input type="range" class="form-range ms-2 d-flex align-items-center" min="0" max="100" value="0" id="range3" />
+                  <input
+                    type="range"
+                    class="form-range ms-2 d-flex align-items-center"
+                    min="0"
+                    max="100"
+                    value="0"
+                    id="range3" />
                   <span class="ms-2 text-white">0:29</span>
                 </div>
               </div>
@@ -1514,13 +1516,20 @@
               <button class="m-2 text-secondary bg-transparent border-0 fs-4 text-white">
                 <i class="bi bi-pc-display"></i>
               </button>
-        <!-- qui il volume -->
-        <div class="d-flex align-items-center">
-          <button id="volumeIcon" class="m-2 text-white bg-transparent border-0 fs-4">
-          <i class="bi bi-volume-up"></i>
-          </button>
-         <input type="range" id="volumeBar" class="form-range" min="0" max="1" step="0.1" value="1">
-        </div>
+              <!-- qui il volume -->
+              <div class="d-flex align-items-center">
+                <button id="volumeIcon" class="m-2 text-white bg-transparent border-0 fs-4">
+                  <i class="bi bi-volume-up"></i>
+                </button>
+                <input
+                  type="range"
+                  id="volumeBar"
+                  class="form-range"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value="1" />
+              </div>
               <button class="m-2 text-secondary bg-transparent border-0 fs-4">
                 <i class="text-white bi bi-aspect-ratio"></i>
               </button>
